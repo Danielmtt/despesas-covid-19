@@ -1,7 +1,9 @@
-import C from '../organisms/C.jsx'
+import LinhaAno from '../atoms/Linha-ano.jsx'
 import React from 'react';
 
 export const D = ()=> {
-    return (<C></C>)
+    return (<LinhaAno LinhaAno={[1,2,3,4,5]}  >
+
+    </LinhaAno>)
   }
 export default D;
