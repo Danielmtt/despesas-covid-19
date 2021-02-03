@@ -1,5 +1,6 @@
 {
   "name": "despesas-covid-19",
+  "proxy": "http://portaldatransparencia.cgu.gov.br/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
