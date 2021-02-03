@@ -3,32 +3,30 @@ import LinhaAno from '../atoms/Linha-ano.jsx';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
 
-const useStyles = makeStyles({
-  root: {
-    height: 240,
-    flexGrow: 1,
-    maxWidth: 400,
-  },
-});
+const TreeViewStyle = styled.div`
+  margin-left: 20px;
+  padding-top: 25px;
+  color: #ffdf00;
+`;
 
 const MenuLateral = (props) => {
-  const classes = useStyles();
   if (props.linhaAno) {
     return (
-      <TreeView
-        className={classes.root}
-        defaultCollapseIcon={<ExpandMoreIcon />}
-        defaultExpandIcon={<ChevronRightIcon />}
-      >
-        <>
-          {LinhaAno({
-            linhaAno: props.linhaAno,
-            gerarLinhaMesAno: props.gerarLinhaMesAno,
-          })}
-        </>
-      </TreeView>
+      <TreeViewStyle>
+        <TreeView
+          defaultCollapseIcon={<ExpandMoreIcon />}
+          defaultExpandIcon={<ChevronRightIcon />}
+        >
+          <>
+            {LinhaAno({
+              linhaAno: props.linhaAno,
+              gerarLinhaMesAno: props.gerarLinhaMesAno,
+            })}
+          </>
+        </TreeView>
+      </TreeViewStyle>
     );
   } else {
     return <></>;

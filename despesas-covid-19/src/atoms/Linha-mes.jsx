@@ -19,6 +19,7 @@ const meses = [
 export default function gerarLinhaMesAno(valorAno) {
   return meses.map((valor) => (
     <TreeItem
+      onClick={() => alert('Leaf clicked: ' + `${valorAno}${valor}`)}
       nodeId={`${valorAno}${valor}`}
       key={`${valorAno}${valor}`}
       label={`${valorAno}/${valor}`}
