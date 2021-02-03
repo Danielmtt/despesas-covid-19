@@ -1,5 +1,6 @@
 import React from 'react';
 import TreeItem from '@material-ui/lab/TreeItem';
+import { getCovidSpendingByMonthYear } from '../services/ServiceApi.js';
 
 const meses = [
   '01',
@@ -19,7 +20,7 @@ const meses = [
 export default function gerarLinhaMesAno(valorAno) {
   return meses.map((valor) => (
     <TreeItem
-      onClick={() => alert('Leaf clicked: ' + `${valorAno}${valor}`)}
+      onClick={() => getCovidSpendingByMonthYear()}
       nodeId={`${valorAno}${valor}`}
       key={`${valorAno}${valor}`}
       label={`${valorAno}/${valor}`}
