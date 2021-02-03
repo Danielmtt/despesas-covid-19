@@ -1,9 +1,9 @@
 import './App.css';
-import D from '../templates/D.jsx'
+import DespesasCovid from '../templates/Despesas-covid.jsx'
 import React from 'react';
 
 function App() {
-  return (<D></D>);
+  return (<DespesasCovid></DespesasCovid>);
 }
 
 export default App;
