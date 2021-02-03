@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Caixa = styled.div`
   background-color: #009c3b;
-  max-width: 200px;
+  width: 200px;
   min-height: 100vh;
 `;
 
