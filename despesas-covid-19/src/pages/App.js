@@ -1,10 +1,12 @@
 import './App.css';
+import DespesasCovid from '../templates/Despesas-covid.jsx'
 import React from 'react';
-import TemplatePageTitle from '../templates/TemplatePageTitle';
 
 function App() {
   return (
-    <TemplatePageTitle></TemplatePageTitle>
+    <>
+      <DespesasCovid></DespesasCovid>
+    </>
   );
 }
 

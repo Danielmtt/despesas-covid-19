@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const PageTitle = (props) => {
-  const title = props.title ?? "Titulo padrão";
+  const title = props.title ?? 'Titulo padrão';
   const Titulo = styled.h1`
     border-bottom: 1px solid #009c3b;
     color: #002776;
