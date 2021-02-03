@@ -1,9 +1,13 @@
-import LinhaAno from '../atoms/Linha-ano.jsx'
 import React from 'react';
+import MenuLateral from '../molecules/Menu-lateral.jsx';
+import gerarLinhaMesAno from '../atoms/Linha-mes.jsx';
 
-export const D = ()=> {
-    return (<LinhaAno LinhaAno={[1,2,3,4,5]}  >
-
-    </LinhaAno>)
-  }
+export const D = () => {
+  return (
+    <MenuLateral
+      linhaAno={[1, 2]}
+      gerarLinhaMesAno={gerarLinhaMesAno}
+    ></MenuLateral>
+  );
+};
 export default D;
