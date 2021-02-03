@@ -19,7 +19,10 @@
     "plugins": [
         "react"
     ],
-    "rules": {
+    "settings": {
+      "react": {
+        "version": "17.0.1" // React version. "detect" automatically picks the version you have installed.
+      }
     },
     "overrides": [
         {
