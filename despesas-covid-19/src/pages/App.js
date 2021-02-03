@@ -1,9 +1,11 @@
 import './App.css';
-import D from '../templates/D.jsx'
 import React from 'react';
+import TemplatePageTitle from '../templates/TemplatePageTitle';
 
 function App() {
-  return (<D></D>);
+  return (
+    <TemplatePageTitle></TemplatePageTitle>
+  );
 }
 
 export default App;
