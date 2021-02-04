@@ -15,7 +15,6 @@ export default function LinhaAno(props) {
         <>{props.gerarLinhaMesAno(dataAtual - valor)}</>
       </TreeItem>
     ));
-
     return <>{elementAnos}</>;
   } else {
     return <></>;
