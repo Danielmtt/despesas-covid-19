@@ -19,10 +19,10 @@ export const BotaoAvancar = (props) => {
         color="primary"
         onClick={() => {
           setPaginaRecebida(props.paginaRecebida + 1);
-          getCovidSpendingByMonthYear({
-            data: dataCOVID19[0].mesAno,
-            paginaRecebida,
-          });
+          getCovidSpendingByMonthYear(
+            dataCOVID19[0].mesAno,
+            props.paginaRecebida + 1
+          );
         }}
       >
         avançar
