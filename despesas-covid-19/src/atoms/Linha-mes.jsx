@@ -20,7 +20,7 @@ const meses = [
 export default function gerarLinhaMesAno(valorAno) {
   return meses.map((valor) => (
     <TreeItem
-      onClick={() => getCovidSpendingByMonthYear()}
+      onClick={() => getCovidSpendingByMonthYear(valorAno + valor, 1)}
       nodeId={`${valorAno}${valor}`}
       key={`${valorAno}${valor}`}
       label={`${valorAno}/${valor}`}
