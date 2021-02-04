@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import PageTitleNamed from '../molecules/PageTitleNamed';
 
-const BoxPageTitle = () => {
-  const Box = styled.div`
-    padding: 15px 0;
-    width: 100%;
-  `;
+const Box = styled.div`
+  padding: 15px 0;
+  width: 100%;
+`;
 
+const BoxPageTitle = () => {
   return (
     <Box>
       <PageTitleNamed></PageTitleNamed>

@@ -1,14 +1,7 @@
 import React from 'react';
-import CardsContainer from '../molecules/CardsContainer'
-const Caixa = styled.div`
-  background-color: #009c3b;
-  width: 200px;
-  min-height: 100vh;
-`;
+import CardsContainer from '../molecules/CardsContainer';
 
 export const CaixaMenu = () => {
-  return (
-    <CardsContainer/>
-  );
+  return <CardsContainer />;
 };
 export default CaixaMenu;

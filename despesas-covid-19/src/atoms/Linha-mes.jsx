@@ -18,12 +18,25 @@ const meses = [
 ];
 
 export default function gerarLinhaMesAno(valorAno) {
-  return meses.map((valor) => (
-    <TreeItem
-      onClick={() => getCovidSpendingByMonthYear(valorAno + valor, 1)}
-      nodeId={`${valorAno}${valor}`}
-      key={`${valorAno}${valor}`}
-      label={`${valorAno}/${valor}`}
-    />
-  ));
+  if (valorAno < new Date().getFullYear()) {
+    return meses.map((valor) => (
+      <TreeItem
+        onClick={() => getCovidSpendingByMonthYear(valorAno + valor, 1)}
+        nodeId={`${valorAno}${valor}`}
+        key={`${valorAno}${valor}`}
+        label={`${valorAno}/${valor}`}
+      />
+    ));
+  } else {
+    return meses
+      .filter((valor) => parseInt(valor, 10) <= new Date().getMonth())
+      .map((valor) => (
+        <TreeItem
+          onClick={() => getCovidSpendingByMonthYear(valorAno + valor, 1)}
+          nodeId={`${valorAno}${valor}`}
+          key={`${valorAno}${valor}`}
+          label={`${valorAno}/${valor}`}
+        />
+      ));
+  }
 }
