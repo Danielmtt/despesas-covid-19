@@ -45,15 +45,16 @@ export const getCovidSpendingByMonthYear = async (mesAnoLancamento, pagina) => {
             'chave-api-dados': '85260d138512b44976de13aaf7766f89',
           },
         }
-      ).then((response) => response.json())
-    )
-      .then((dados) => {
-        if (dados.length) {
-          notify();
-        }
-        dataCOVID19 = sortItemsByPago(dados);
-        resolve(dados);
-      })
-      .catch(() => notifyError());
+      )
+        .then((response) => response.json())
+        .then((dados) => {
+          console.log(dados);
+          if (dados.length) {
+            notify();
+          }
+          dataCOVID19 = sortItemsByPago(dados);
+          resolve(dados);
+        })
+    ).catch(() => notifyError());
   });
 };
