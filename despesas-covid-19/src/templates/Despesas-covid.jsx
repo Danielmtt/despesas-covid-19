@@ -4,6 +4,7 @@ import gerarLinhaMesAno from '../atoms/Linha-mes.jsx';
 import BoxPageTitle from '../organisms/BoxPageTitle.jsx';
 import CaixaPaginador from '../organisms/CaixaPaginador.jsx';
 import styled from 'styled-components';
+import CardsContainer from '../molecules/CardsContainer.jsx';
 
 const DespesasCovidDiv = styled.div`
   width: 100%;
@@ -26,6 +27,7 @@ export const DespesasCovid = () => {
       <BoxInfosTitleCards>
         <BoxPageTitle></BoxPageTitle>
         <CaixaPaginador></CaixaPaginador>
+        <CardsContainer></CardsContainer>
       </BoxInfosTitleCards>
     </DespesasCovidDiv>
   );
