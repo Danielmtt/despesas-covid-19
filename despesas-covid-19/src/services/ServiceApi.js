@@ -1,6 +1,6 @@
 import profile from './requisicao.json';
 
-export let dataCOVID19 = [];
+export let dataCOVID19;
 
 export const getCovidSpendingByMonthYear = async () => {
   return new Promise((resolve) =>
