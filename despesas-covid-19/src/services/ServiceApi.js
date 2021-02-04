@@ -1,4 +1,22 @@
+import 'react-toastify/dist/ReactToastify.css';
 export let dataCOVID19 = [];
+import { toast } from 'react-toastify';
+
+const notifyError = () =>
+  toast.error('Acabou a mana, por favor tente mais tarde', {
+    position: 'top-right',
+    autoClose: 5000,
+    closeOnClick: true,
+    pauseOnHover: true,
+  });
+
+const notify = () =>
+  toast.warning('Não existe mais respostas aqui', {
+    position: 'top-right',
+    autoClose: 5000,
+    closeOnClick: true,
+    pauseOnHover: true,
+  });
 
 export let sortItemsByPago = (arrayList) => {
   return arrayList.sort(function (a, b) {
@@ -22,15 +40,18 @@ export const getCovidSpendingByMonthYear = async (mesAnoLancamento, pagina) => {
       {
         headers: {
           Accept: '*/*',
-          'chave-api-dados': 'cd628a98add0946165e28dc947665a90',
+          'chave-api-dados': '85260d138512b44976de13aaf7766f89',
         },
       }
     )
       .then((response) => response.json())
       .then((dados) => {
+        if (dados.length) {
+          notify();
+        }
         dataCOVID19 = sortItemsByPago(dados);
         resolve(dados);
       })
-      .catch((err) => console.log(err.message));
+      .catch(() => notifyError());
   });
 };

@@ -22,7 +22,7 @@ export const BotaoVoltar = (props) => {
             setPaginaRecebida(props.paginaRecebida - 1);
           }
           getCovidSpendingByMonthYear(
-            dataCOVID19[0].mesAno,
+            dataCOVID19[0]?.mesAno,
             props.paginaRecebida - 1
           );
         }}
