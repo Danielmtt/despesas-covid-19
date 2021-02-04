@@ -7,7 +7,7 @@ const Container = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  height: 80vh;
+  height: 75vh;
   font- family: "Roboto";
   overflow-y: scroll;
   padding-top: 20px;
@@ -17,29 +17,45 @@ const CardsContainer = () => {
   return (
     <Container>
       <Card
-        programa={'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'}
-        acao={'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'}
+        programa={
+          'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'
+        }
+        acao={
+          'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'
+        }
         empenhado={'347.677,43'}
         pago={'297.771,51'}
         liquidado={'297.771,51'}
       />
       <Card
-        programa={'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'}
-        acao={'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'}
+        programa={
+          'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'
+        }
+        acao={
+          'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'
+        }
         empenhado={'347.677,43'}
         pago={'297.771,51'}
         liquidado={'297.771,51'}
       />
       <Card
-        programa={'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'}
-        acao={'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'}
+        programa={
+          'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'
+        }
+        acao={
+          'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'
+        }
         empenhado={'347.677,43'}
         pago={'297.771,51'}
         liquidado={'297.771,51'}
       />
       <Card
-        programa={'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'}
-        acao={'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'}
+        programa={
+          'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'
+        }
+        acao={
+          'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'
+        }
         empenhado={'347.677,43'}
         pago={'297.771,51'}
         liquidado={'297.771,51'}

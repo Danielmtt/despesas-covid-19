@@ -9,7 +9,7 @@ const CaixaPaginador = styled.div`
   position: absolute;
   bottom: 20px;
   display: flex;
-  width: 35vw;
+  width: 450px;
   justify-content: space-between;
   font-size: 10px;
   color: #002776;
