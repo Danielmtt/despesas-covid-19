@@ -1,5 +1,5 @@
 import './App.css';
-import DespesasCovid from '../templates/Despesas-covid.jsx'
+import DespesasCovid from '../templates/Despesas-covid.jsx';
 import React from 'react';
 
 function App() {
