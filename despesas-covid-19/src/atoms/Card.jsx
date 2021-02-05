@@ -6,6 +6,7 @@ const CardStyle = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 300px;
+  background: #ffdf00;
   height:400px;
   padding: 24px;
   margin: 10px;
@@ -14,14 +15,17 @@ const CardStyle = styled.div`
 `;
 
 const TitleCard = styled.h1`
+  color: #002776;
   font-size: 18px;
 `;
 
 const DescriptionCard = styled.p`
+  color: #002776;
   font-size: 14px;
-`
+`;
 
 const ValueTitleStyle = styled.h2`
+  color: #009c3b;
   font-size: 20px;
   margin: 0;
   text-transform: uppercase;
@@ -29,12 +33,11 @@ const ValueTitleStyle = styled.h2`
 
 const ValueStyle = styled.p`
   font-size: 28px;
+  color: #002776;
   margin: 0;
   text-align: center;
   font- family: "Roboto";
 `;
-
-
 
 const Card = (props) => {
   if (props) {
@@ -45,11 +48,11 @@ const Card = (props) => {
           <DescriptionCard>{props.acao}</DescriptionCard>
         </div>
         <div>
-          <ValueTitleStyle>Empenhado</ValueTitleStyle>
-          <ValueStyle>{props.empenhado}</ValueStyle>
-
           <ValueTitleStyle>Pago</ValueTitleStyle>
           <ValueStyle>{props.pago}</ValueStyle>
+
+          <ValueTitleStyle>Empenhado</ValueTitleStyle>
+          <ValueStyle>{props.empenhado}</ValueStyle>
 
           <ValueTitleStyle>Liquidado</ValueTitleStyle>
           <ValueStyle>{props.liquidado}</ValueStyle>
