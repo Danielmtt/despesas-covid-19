@@ -6,6 +6,7 @@ import CaixaPaginador from '../organisms/CaixaPaginador.jsx';
 import styled from 'styled-components';
 import CardsContainer from '../molecules/CardsContainer.jsx';
 import { Spinner } from '../atoms/Spinner.jsx';
+import BoxMensagemBoasVindas from '../organisms/BoxMensagemBoasVindas.jsx';
 
 const LoaderCSS = styled.div`
   top: 0;
@@ -14,7 +15,7 @@ const LoaderCSS = styled.div`
 
 const DespesasCovidDiv = styled.div`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
 `;
 
@@ -32,6 +33,7 @@ export const DespesasCovid = () => {
       ></CaixaMenu>
       <BoxInfosTitleCards>
         <BoxPageTitle />
+        <BoxMensagemBoasVindas />
         <LoaderCSS>
           <Spinner />
         </LoaderCSS>

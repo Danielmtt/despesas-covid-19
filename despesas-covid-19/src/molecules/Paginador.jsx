@@ -24,7 +24,7 @@ const MarginVertical = styled.div`
 export const Paginador = () => {
   const { paginaAtual, despesas } = React.useContext(DespesasContext);
 
-  if (despesas?.length !== 0) {
+  if (despesas && despesas?.length !== 0) {
     return (
       <CaixaPaginador>
         {paginaAtual >= 2 && (
