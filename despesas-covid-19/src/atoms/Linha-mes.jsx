@@ -23,11 +23,12 @@ const meses = [
 ];
 
 export default function gerarLinhaMesAno(valorAno) {
-  const { setDespesas } = React.useContext(DespesasContext);
+  const { setDespesas, setPaginaAtual } = React.useContext(DespesasContext);
 
   const getApiService = (valorAno, valor) => {
+    setPaginaAtual(1);
     getCovidSpendingByMonthYear(valorAno + valor, 1).then((dados) => {
-      if (dados.length) {
+      if (dados.length === 0) {
         notify();
       }
       setDespesas(sortItemsByPago(dados));
