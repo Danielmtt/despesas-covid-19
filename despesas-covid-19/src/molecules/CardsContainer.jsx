@@ -8,20 +8,19 @@ const Container = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  height: 85vh;
+  height: 90%;
   font- family: "Roboto";
   overflow-y: scroll;
   padding-top: 20px;
 `;
 
 const CardsContainer = () => {
-  
   const { despesas } = React.useContext(DespesasContext);
-  
-  return (
-    <Container>
-      {despesas.map((data, index) => {
-        if (data) {
+
+  if (despesas && despesas.length > 0) {
+    return (
+      <Container>
+        {despesas.map((data, index) => {
           return (
             <Card
               programa={data.programa}
@@ -32,9 +31,12 @@ const CardsContainer = () => {
               key={index}
             />
           );
-        }
-      })}
-    </Container>
-  );
+        })}
+      </Container>
+    );
+  } else {
+    return <></>;
+  }
 };
+
 export default CardsContainer;
