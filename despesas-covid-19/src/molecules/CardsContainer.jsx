@@ -15,26 +15,29 @@ const Container = styled.div`
 `;
 
 const CardsContainer = () => {
-  
   const { despesas } = React.useContext(DespesasContext);
-  
-  return (
-    <Container>
-      {despesas.map((data, index) => {
-        if (data) {
-          return (
-            <Card
-              programa={data.programa}
-              acao={data.acao}
-              empenhado={data.empenhado}
-              pago={data.pago}
-              liquidado={data.liquidado}
-              key={index}
-            />
-          );
-        }
-      })}
-    </Container>
-  );
+
+  if (despesas && despesas.length > 0) {
+    return (
+      <Container>
+        {despesas.map((data, index) => {
+          if (data) {
+            return (
+              <Card
+                programa={data.programa}
+                acao={data.acao}
+                empenhado={data.empenhado}
+                pago={data.pago}
+                liquidado={data.liquidado}
+                key={index}
+              />
+            );
+          }
+        })}
+      </Container>
+    );
+  } else {
+    return <></>;
+  }
 };
 export default CardsContainer;
