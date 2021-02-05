@@ -9,10 +9,16 @@ const CaixaPaginador = styled.div`
   position: absolute;
   bottom: 20px;
   display: flex;
-  width: 450px;
-  justify-content: space-between;
+  padding: 10px 15px;
+  width: auto;
   font-size: 10px;
   color: #002776;
+  border-radius: 5px;
+  background-color: #ffdf00;
+`;
+
+const MarginVertical = styled.div`
+  margin: 0 5px;
 `;
 
 export const Paginador = () => {
@@ -21,8 +27,17 @@ export const Paginador = () => {
   if (despesas && despesas?.length !== 0) {
     return (
       <CaixaPaginador>
-        {paginaAtual >= 2 && <BotaoVoltar></BotaoVoltar>}
-        {despesas.length === 15 && <BotaoAvancar></BotaoAvancar>}
+        {paginaAtual >= 2 && (
+          <MarginVertical>
+            <BotaoVoltar></BotaoVoltar>
+          </MarginVertical>
+        )}
+
+        {despesas.length === 15 && (
+          <MarginVertical>
+            <BotaoAvancar></BotaoAvancar>
+          </MarginVertical>
+        )}
         <TextoPaginador
           paginaAtual={paginaAtual}
           totalItens={despesas?.length}

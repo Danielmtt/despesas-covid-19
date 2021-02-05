@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  height: 75vh;
+  height: 90%;
   font- family: "Roboto";
   overflow-y: scroll;
   padding-top: 20px;
@@ -21,18 +21,16 @@ const CardsContainer = () => {
     return (
       <Container>
         {despesas.map((data, index) => {
-          if (data) {
-            return (
-              <Card
-                programa={data.programa}
-                acao={data.acao}
-                empenhado={data.empenhado}
-                pago={data.pago}
-                liquidado={data.liquidado}
-                key={index}
-              />
-            );
-          }
+          return (
+            <Card
+              programa={data.programa}
+              acao={data.acao}
+              empenhado={data.empenhado}
+              pago={data.pago}
+              liquidado={data.liquidado}
+              key={index}
+            />
+          );
         })}
       </Container>
     );
@@ -40,4 +38,5 @@ const CardsContainer = () => {
     return <></>;
   }
 };
+
 export default CardsContainer;
