@@ -31,6 +31,7 @@ export default function gerarLinhaMesAno(valorAno) {
       if (dados.length === 0) {
         notify();
       }
+      console.log(sortItemsByPago(dados));
       setDespesas(sortItemsByPago(dados));
     });
   };
