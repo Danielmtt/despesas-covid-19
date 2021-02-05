@@ -5,6 +5,7 @@ import BoxPageTitle from '../organisms/BoxPageTitle.jsx';
 import CaixaPaginador from '../organisms/CaixaPaginador.jsx';
 import styled from 'styled-components';
 import CardsContainer from '../molecules/CardsContainer.jsx';
+import { DespesasContext } from '../providers/despesas-context.js';
 
 const DespesasCovidDiv = styled.div`
   width: 100%;
@@ -18,6 +19,8 @@ const BoxInfosTitleCards = styled.div`
 `;
 
 export const DespesasCovid = () => {
+  const { despesas } = React.useContext(DespesasContext);
+  console.log(despesas);
   return (
     <DespesasCovidDiv>
       <CaixaMenu
