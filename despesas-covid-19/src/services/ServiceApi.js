@@ -1,6 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 export let dataCOVID19 = [];
 import { toast } from 'react-toastify';
+import { trackPromise } from 'react-promise-tracker';
 
 export const notifyError = () =>
   toast.error('Acabou a mana, por favor tente mais tarde', {
@@ -36,17 +37,19 @@ export let sortItemsByPago = (arrayList) => {
 export const getCovidSpendingByMonthYear = async (mesAnoLancamento, pagina) => {
   return new Promise((resolve) => {
     resolve(
-      fetch(
-        `https://cors-anywhere.herokuapp.com/http://www.portaltransparencia.gov.br/api-de-dados/coronavirus/movimento-liquido-despesa?mesAnoLancamento=${mesAnoLancamento}&pagina=${pagina}`,
-        {
-          headers: {
-            Accept: '*/*',
-            'chave-api-dados': '85260d138512b44976de13aaf7766f89',
-          },
-        }
+      trackPromise(
+        fetch(
+          `https://cors-anywhere.herokuapp.com/http://www.portaltransparencia.gov.br/api-de-dados/coronavirus/movimento-liquido-despesa?mesAnoLancamento=${mesAnoLancamento}&pagina=${pagina}`,
+          {
+            headers: {
+              Accept: '*/*',
+              'chave-api-dados': '85260d138512b44976de13aaf7766f89',
+            },
+          }
+        )
+          .then((response) => response.json())
+          .catch(() => notifyError())
       )
-        .then((response) => response.json())
-        .catch(() => notifyError())
     );
   });
 };

@@ -6,6 +6,12 @@ import CaixaPaginador from '../organisms/CaixaPaginador.jsx';
 import styled from 'styled-components';
 import CardsContainer from '../molecules/CardsContainer.jsx';
 import { DespesasContext } from '../providers/despesas-context.js';
+import { Spinner } from '../atoms/Spinner.jsx';
+
+const LoaderCSS = styled.div`
+  top: 0;
+  posision: absolute;
+`;
 
 const DespesasCovidDiv = styled.div`
   width: 100%;
@@ -28,9 +34,12 @@ export const DespesasCovid = () => {
         gerarLinhaMesAno={gerarLinhaMesAno}
       ></CaixaMenu>
       <BoxInfosTitleCards>
-        <BoxPageTitle></BoxPageTitle>
-        <CaixaPaginador></CaixaPaginador>
-        <CardsContainer></CardsContainer>
+        <BoxPageTitle />
+        <LoaderCSS>
+          <Spinner />
+        </LoaderCSS>
+        <CaixaPaginador />
+        <CardsContainer />
       </BoxInfosTitleCards>
     </DespesasCovidDiv>
   );
