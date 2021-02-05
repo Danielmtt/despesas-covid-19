@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import CardsContainer from '../molecules/CardsContainer.jsx';
 import { DespesasContext } from '../providers/despesas-context.js';
 import { Spinner } from '../atoms/Spinner.jsx';
+import BoxMensagemBoasVindas from '../organisms/BoxMensagemBoasVindas.jsx';
 
 const LoaderCSS = styled.div`
   top: 0;
@@ -40,6 +41,7 @@ export const DespesasCovid = () => {
         </LoaderCSS>
         <CaixaPaginador />
         <CardsContainer />
+        <BoxMensagemBoasVindas />
       </BoxInfosTitleCards>
     </DespesasCovidDiv>
   );
