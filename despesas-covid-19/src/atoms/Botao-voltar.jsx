@@ -1,30 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   getCovidSpendingByMonthYear,
-  dataCOVID19,
+  notify,
+  sortItemsByPago,
 } from '../services/ServiceApi.js';
 import Button from '@material-ui/core/Button';
+import { DespesasContext } from '../providers/despesas-context.js';
 
-export const BotaoVoltar = (props) => {
-  const [paginaRecebida, setPaginaRecebida] = useState(props.paginaRecebida);
+export const BotaoVoltar = () => {
+  const {
+    setDespesas,
+    despesas,
+    paginaAtual,
+    setPaginaAtual,
+  } = React.useContext(DespesasContext);
 
-  useEffect(() => {
-    props.onChangePagina(paginaRecebida);
-  }, [paginaRecebida]);
+  const getApiService = (valorAno, valor) => {
+    getCovidSpendingByMonthYear(valorAno, valor).then((dados) => {
+      if (dados.length === 0) {
+        notify();
+      }
+      setDespesas(sortItemsByPago(dados));
+    });
+  };
 
-  if (props) {
+  if (despesas) {
     return (
       <Button
         variant="contained"
         color="primary"
         onClick={() => {
-          if (props.paginaRecebida !== 1) {
-            setPaginaRecebida(props.paginaRecebida - 1);
-          }
-          getCovidSpendingByMonthYear(
-            dataCOVID19[0]?.mesAno,
-            props.paginaRecebida - 1
-          );
+          setPaginaAtual(paginaAtual - 1);
+          getApiService(despesas[0]?.mesAno, paginaAtual - 1);
         }}
       >
         voltar

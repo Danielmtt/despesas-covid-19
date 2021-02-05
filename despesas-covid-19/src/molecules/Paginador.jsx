@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { dataCOVID19 } from '../services/ServiceApi.js';
+import React from 'react';
 import styled from 'styled-components';
 import BotaoVoltar from '../atoms/Botao-voltar.jsx';
 import BotaoAvancar from '../atoms/Botao-avancar.jsx';
 import TextoPaginador from '../atoms/TextoPaginador.jsx';
+import { DespesasContext } from '../providers/despesas-context.js';
 
 const CaixaPaginador = styled.div`
   position: absolute;
@@ -22,29 +22,30 @@ const MarginVertical = styled.div`
 `;
 
 export const Paginador = () => {
+  const { paginaAtual, despesas } = React.useContext(DespesasContext);
 
-  const [paginaAtual, setPaginaAtual] = useState(1);
+  if (despesas?.length !== 0) {
+    return (
+      <CaixaPaginador>
+        {paginaAtual >= 2 && (
+          <MarginVertical>
+            <BotaoVoltar></BotaoVoltar>
+          </MarginVertical>
+        )}
 
-  return (
-    <CaixaPaginador>
-      <MarginVertical>
-        <BotaoVoltar
-          paginaRecebida={paginaAtual}
-          onChangePagina={setPaginaAtual}
-        ></BotaoVoltar>
-      </MarginVertical>
-
-      <MarginVertical>
-        <BotaoAvancar
-          paginaRecebida={paginaAtual}
-          onChangePagina={setPaginaAtual}
-        ></BotaoAvancar>
-      </MarginVertical>
-      <TextoPaginador
-        paginaAtual={paginaAtual}
-        totalItens={dataCOVID19?.length}
-      ></TextoPaginador>
-    </CaixaPaginador>
-  );
+        {despesas.length === 15 && (
+          <MarginVertical>
+            <BotaoAvancar></BotaoAvancar>
+          </MarginVertical>
+        )}
+        <TextoPaginador
+          paginaAtual={paginaAtual}
+          totalItens={despesas?.length}
+        ></TextoPaginador>
+      </CaixaPaginador>
+    );
+  } else {
+    return <></>;
+  }
 };
 export default Paginador;
