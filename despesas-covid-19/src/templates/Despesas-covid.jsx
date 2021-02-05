@@ -2,6 +2,7 @@ import React from 'react';
 import CaixaMenu from '../organisms/CaixaMenu.jsx';
 import gerarLinhaMesAno from '../atoms/Linha-mes.jsx';
 import BoxPageTitle from '../organisms/BoxPageTitle.jsx';
+import CaixaPaginador from '../organisms/CaixaPaginador.jsx';
 import styled from 'styled-components';
 import CardsContainer from '../molecules/CardsContainer.jsx';
 
@@ -25,6 +26,7 @@ export const DespesasCovid = () => {
       ></CaixaMenu>
       <BoxInfosTitleCards>
         <BoxPageTitle></BoxPageTitle>
+        <CaixaPaginador></CaixaPaginador>
         <CardsContainer></CardsContainer>
       </BoxInfosTitleCards>
     </DespesasCovidDiv>
