@@ -12,7 +12,7 @@ export const notifyError = () =>
   });
 
 export const notify = () =>
-  toast.warning('Não existe mais respostas aqui', {
+  toast.warning('Não existe mais respostas aqui!', {
     position: 'top-right',
     autoClose: 5000,
     closeOnClick: true,
@@ -22,8 +22,12 @@ export const notify = () =>
 export let sortItemsByPago = (arrayList) => {
   if (arrayList && typeof arrayList[0] === 'object') {
     return arrayList?.sort(function (a, b) {
-      let aConverted = parseFloat(a.pago.replace(/[.]/g, '').replace(',', '.'));
-      let bConverted = parseFloat(b.pago.replace(/[.]/g, '').replace(',', '.'));
+      let aConverted = parseFloat(
+        a.pago.replace(' ', '').replace(/[.]/g, '').replace(',', '.')
+      );
+      let bConverted = parseFloat(
+        b.pago.replace(' ', '').replace(/[.]/g, '').replace(',', '.')
+      );
       if (aConverted > bConverted) {
         return -1;
       }
@@ -45,7 +49,7 @@ export const getCovidSpendingByMonthYear = async (mesAnoLancamento, pagina) => {
           {
             headers: {
               Accept: '*/*',
-              'chave-api-dados': '85260d138512b44976de13aaf7766f89',
+              'chave-api-dados': 'cd628a98add0946165e28dc947665a90',
             },
           }
         )
