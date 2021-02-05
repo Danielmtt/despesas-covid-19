@@ -9,34 +9,42 @@ const CaixaPaginador = styled.div`
   position: absolute;
   bottom: 20px;
   display: flex;
-  width: 450px;
-  justify-content: space-between;
+  padding: 10px 15px;
+  width: auto;
   font-size: 10px;
   color: #002776;
+  border-radius: 5px;
+  background-color: #ffdf00;
+`;
+
+const MarginVertical = styled.div`
+  margin: 0 5px;
 `;
 
 export const Paginador = () => {
+
   const [paginaAtual, setPaginaAtual] = useState(1);
 
-  // if (dataCOVID19.length >= 15) {
   return (
     <CaixaPaginador>
-      <BotaoVoltar
-        paginaRecebida={paginaAtual}
-        onChangePagina={setPaginaAtual}
-      ></BotaoVoltar>
-      <BotaoAvancar
-        paginaRecebida={paginaAtual}
-        onChangePagina={setPaginaAtual}
-      ></BotaoAvancar>
+      <MarginVertical>
+        <BotaoVoltar
+          paginaRecebida={paginaAtual}
+          onChangePagina={setPaginaAtual}
+        ></BotaoVoltar>
+      </MarginVertical>
+
+      <MarginVertical>
+        <BotaoAvancar
+          paginaRecebida={paginaAtual}
+          onChangePagina={setPaginaAtual}
+        ></BotaoAvancar>
+      </MarginVertical>
       <TextoPaginador
         paginaAtual={paginaAtual}
         totalItens={dataCOVID19?.length}
       ></TextoPaginador>
     </CaixaPaginador>
   );
-  // } else {
-  //   return <></>;
-  // }
 };
 export default Paginador;

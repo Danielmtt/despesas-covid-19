@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  height: 75vh;
+  height: 85vh;
   font- family: "Roboto";
   overflow-y: scroll;
   padding-top: 20px;
