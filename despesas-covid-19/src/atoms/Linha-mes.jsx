@@ -1,6 +1,11 @@
 import React from 'react';
 import TreeItem from '@material-ui/lab/TreeItem';
-import { getCovidSpendingByMonthYear } from '../services/ServiceApi.js';
+import {
+  getCovidSpendingByMonthYear,
+  notify,
+  sortItemsByPago,
+} from '../services/ServiceApi.js';
+import { DespesasContext } from '../providers/despesas-context.js';
 
 const meses = [
   '01',
@@ -18,10 +23,21 @@ const meses = [
 ];
 
 export default function gerarLinhaMesAno(valorAno) {
+  const { setDespesas } = React.useContext(DespesasContext);
+
+  const getApiService = (valorAno, valor) => {
+    getCovidSpendingByMonthYear(valorAno + valor, 1).then((dados) => {
+      if (dados.length) {
+        notify();
+      }
+      setDespesas(sortItemsByPago(dados));
+    });
+  };
+
   if (valorAno < new Date().getFullYear()) {
     return meses.map((valor) => (
       <TreeItem
-        onClick={() => getCovidSpendingByMonthYear(valorAno + valor, 1)}
+        onClick={() => getApiService(valorAno, valor)}
         nodeId={`${valorAno}${valor}`}
         key={`${valorAno}${valor}`}
         label={`${valorAno}/${valor}`}
@@ -32,7 +48,7 @@ export default function gerarLinhaMesAno(valorAno) {
       .filter((valor) => parseInt(valor, 10) <= new Date().getMonth())
       .map((valor) => (
         <TreeItem
-          onClick={() => getCovidSpendingByMonthYear(valorAno + valor, 1)}
+          onClick={() => getApiService(valorAno, valor)}
           nodeId={`${valorAno}${valor}`}
           key={`${valorAno}${valor}`}
           label={`${valorAno}/${valor}`}

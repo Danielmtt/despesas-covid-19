@@ -4,7 +4,13 @@ import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
 
 const LoaderCSSInterne = styled.div`
-  height: 80vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 5;
   display: flex;
   justify-content: center;
   align-items: center;
