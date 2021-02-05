@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Card from '../atoms/Card';
+import { DespesasContext } from '../providers/despesas-context';
 
 const Container = styled.div`
   display: flex;
@@ -14,52 +15,25 @@ const Container = styled.div`
 `;
 
 const CardsContainer = () => {
+  
+  const { despesas } = React.useContext(DespesasContext);
+  
   return (
     <Container>
-      <Card
-        programa={
-          'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'
+      {despesas.map((data, index) => {
+        if (data) {
+          return (
+            <Card
+              programa={data.programa}
+              acao={data.acao}
+              empenhado={data.empenhado}
+              pago={data.pago}
+              liquidado={data.liquidado}
+              key={index}
+            />
+          );
         }
-        acao={
-          'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'
-        }
-        empenhado={'347.677,43'}
-        pago={'297.771,51'}
-        liquidado={'297.771,51'}
-      />
-      <Card
-        programa={
-          'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'
-        }
-        acao={
-          'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'
-        }
-        empenhado={'347.677,43'}
-        pago={'297.771,51'}
-        liquidado={'297.771,51'}
-      />
-      <Card
-        programa={
-          'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'
-        }
-        acao={
-          'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'
-        }
-        empenhado={'347.677,43'}
-        pago={'297.771,51'}
-        liquidado={'297.771,51'}
-      />
-      <Card
-        programa={
-          'EDUCACAO SUPERIOR - GRADUACAO, POS-GRADUACAO, ENSINO, PESQUI'
-        }
-        acao={
-          'ENFRENTAMENTO DA EMERGENCIA DE SAUDE PUBLICA DE IMPORTANCIA INTERNACIONAL DECORRENTE DO CORONAVIRUS'
-        }
-        empenhado={'347.677,43'}
-        pago={'297.771,51'}
-        liquidado={'297.771,51'}
-      />
+      })}
     </Container>
   );
 };
