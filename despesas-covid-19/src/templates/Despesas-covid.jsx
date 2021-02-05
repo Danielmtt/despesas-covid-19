@@ -33,12 +33,12 @@ export const DespesasCovid = () => {
       ></CaixaMenu>
       <BoxInfosTitleCards>
         <BoxPageTitle />
+        <BoxMensagemBoasVindas />
         <LoaderCSS>
           <Spinner />
         </LoaderCSS>
         <CaixaPaginador />
         <CardsContainer />
-        <BoxMensagemBoasVindas />
       </BoxInfosTitleCards>
     </DespesasCovidDiv>
   );

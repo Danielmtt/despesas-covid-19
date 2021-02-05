@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Titulo = styled.h2`
   color: #002776;
   font-size: 20px;
-  padding: 10px;
+  padding: 40px;
   margin: 0 auto;
   width: fit-content;
 `;
