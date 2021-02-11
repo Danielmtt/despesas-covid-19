@@ -35,7 +35,8 @@ const ValueStyle = styled.p`
   font-size: 28px;
   color: #002776;
   margin: 0;
-  text-align: center;
+  text-align: left;
+  padding-left: 15px;
   font- family: "Roboto";
 `;
 
@@ -49,13 +50,13 @@ const Card = (props) => {
         </div>
         <div>
           <ValueTitleStyle>Pago</ValueTitleStyle>
-          <ValueStyle>{props.pago}</ValueStyle>
+          <ValueStyle>R$ {props.pago}</ValueStyle>
 
           <ValueTitleStyle>Empenhado</ValueTitleStyle>
-          <ValueStyle>{props.empenhado}</ValueStyle>
+          <ValueStyle>R$ {props.empenhado}</ValueStyle>
 
           <ValueTitleStyle>Liquidado</ValueTitleStyle>
-          <ValueStyle>{props.liquidado}</ValueStyle>
+          <ValueStyle>R$ {props.liquidado}</ValueStyle>
         </div>
       </CardStyle>
     );

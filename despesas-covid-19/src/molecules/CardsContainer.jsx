@@ -12,6 +12,8 @@ const Container = styled.div`
   font- family: "Roboto";
   overflow-y: scroll;
   padding-top: 20px;
+  box-sizing: border-box;
+  padding-bottom: 75px;
 `;
 
 const CardsContainer = () => {

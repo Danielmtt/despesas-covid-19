@@ -17,6 +17,7 @@ const DespesasCovidDiv = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+  overflow-y: hidden;
 `;
 
 const BoxInfosTitleCards = styled.div`
