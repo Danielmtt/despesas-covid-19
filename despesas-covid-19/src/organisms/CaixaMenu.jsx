@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuLateral from '../molecules/Menu-lateral.jsx';
-import gerarLinhaMesAno from '../atoms/Linha-mes.jsx';
+import gerarLinhaMesAno from '../atoms/Linha-mes.tsx';
 import styled from 'styled-components';
 
 const Caixa = styled.div`
