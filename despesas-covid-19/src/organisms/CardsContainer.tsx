@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from '../atoms/Card';
 import { DespesasContext } from '../providers/despesas-context';
+import Card from '../molecules/Card';
+import { Despesas } from '../settings/despesas';
 
 const Container = styled.div`
   display: flex;
@@ -17,12 +18,12 @@ const Container = styled.div`
 `;
 
 const CardsContainer = () => {
-  const { despesas } = React.useContext(DespesasContext);
+  const { despesas }: any = React.useContext(DespesasContext);
 
   if (despesas && despesas.length > 0) {
     return (
       <Container>
-        {despesas.map((data, index) => {
+        {despesas.map((data: Despesas, index: number) => {
           return (
             <Card
               programa={data.programa}

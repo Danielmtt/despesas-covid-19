@@ -4,7 +4,7 @@ import gerarLinhaMesAno from '../atoms/Linha-mes.tsx';
 import BoxPageTitle from '../organisms/BoxPageTitle.jsx';
 import CaixaPaginador from '../organisms/CaixaPaginador.jsx';
 import styled from 'styled-components';
-import CardsContainer from '../molecules/CardsContainer.jsx';
+import CardsContainer from '../organisms/CardsContainer.tsx';
 import { Spinner } from '../atoms/Spinner.jsx';
 import BoxMensagemBoasVindas from '../organisms/BoxMensagemBoasVindas.jsx';
 
