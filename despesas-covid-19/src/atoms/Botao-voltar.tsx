@@ -7,15 +7,15 @@ import {
 import Button from '@material-ui/core/Button';
 import { DespesasContext } from '../providers/despesas-context.js';
 
-export const BotaoAvancar = () => {
+export const BotaoVoltar = () => {
   const {
     setDespesas,
     despesas,
     paginaAtual,
     setPaginaAtual,
-  } = React.useContext(DespesasContext);
+  }: any = React.useContext(DespesasContext);
 
-  const getApiService = (valorAno, valor) => {
+  const getApiService = (valorAno: string, valor: number) => {
     getCovidSpendingByMonthYear(valorAno, valor).then((dados) => {
       if (dados.length === 0) {
         notify();
@@ -30,13 +30,15 @@ export const BotaoAvancar = () => {
         variant="contained"
         color="primary"
         onClick={() => {
-          setPaginaAtual(paginaAtual + 1);
-          getApiService(despesas[0]?.mesAno, paginaAtual + 1);
+          setPaginaAtual(paginaAtual - 1);
+          getApiService(despesas[0]?.mesAno, paginaAtual - 1);
         }}
       >
-        avançar
+        voltar
       </Button>
     );
+  } else {
+    return <></>;
   }
 };
-export default BotaoAvancar;
+export default BotaoVoltar;
