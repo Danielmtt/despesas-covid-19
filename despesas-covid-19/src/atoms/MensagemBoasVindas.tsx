@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Mensagem } from '../settings/Mensagem';
 
 const Titulo = styled.h2`
   color: #002776;
@@ -9,7 +10,7 @@ const Titulo = styled.h2`
   width: fit-content;
 `;
 
-const MensagemBoasVindas = (props) => {
+const MensagemBoasVindas = (props: Mensagem) => {
   const mensagem = props.mensagem ?? 'Titulo padrão';
 
   if (props) {
@@ -19,7 +20,9 @@ const MensagemBoasVindas = (props) => {
       </>
     );
   } else {
-    <></>;
+    return (
+      <></>
+    )
   }
 };
 
