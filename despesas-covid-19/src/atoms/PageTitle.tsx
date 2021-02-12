@@ -28,7 +28,9 @@ const PageTitle = (props: PageTitleInterface) => {
       </>
     );
   } else {
-    <></>;
+    return(
+      <></>
+    )
   }
 };
 
