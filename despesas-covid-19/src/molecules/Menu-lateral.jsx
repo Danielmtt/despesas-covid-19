@@ -1,5 +1,5 @@
 import React from 'react';
-import LinhaAno from '../atoms/Linha-ano.jsx';
+import LinhaAno from '../atoms/Linha-ano.tsx';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
