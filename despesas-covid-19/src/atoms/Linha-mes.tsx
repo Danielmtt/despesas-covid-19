@@ -36,7 +36,7 @@ export const meses: Mes[] =
   ];
 
 export default function gerarLinhaMesAno(valorAno: number) {
-  const { setDespesas, setPaginaAtual } = useContext<any>(DespesasContext);
+  const { setDespesas, setPaginaAtual, setMesAnoSelecionado } = useContext<any>(DespesasContext);
   const classes = useStyles();
 
   const getApiService = (valorAno: string, valor: string) => {
@@ -45,7 +45,6 @@ export default function gerarLinhaMesAno(valorAno: number) {
       if (dados.length === 0) {
         notify();
       }
-      console.log(sortItemsByPago(dados));
       setDespesas(sortItemsByPago(dados));
     });
   };
@@ -53,8 +52,8 @@ export default function gerarLinhaMesAno(valorAno: number) {
   if (valorAno < new Date().getFullYear()) {
     return meses.map((valor) => (
       <TreeItem
+        onClick={() => {getApiService(valorAno.toString(), valor.valor); setMesAnoSelecionado(`${valor.nome}/${valorAno}`)}}
         className={classes.root}
-        onClick={() => getApiService(valorAno.toString(), valor.valor)}
         nodeId={`${valorAno}${valor.valor}`}
         key={`${valorAno}${valor.valor}`}
         label={`${valor.nome}`}
@@ -65,8 +64,8 @@ export default function gerarLinhaMesAno(valorAno: number) {
       .filter((valor) => parseInt(valor.valor, 10) <= new Date().getMonth())
       .map((valor) => (
         <TreeItem
+          onClick={() => {getApiService(valorAno.toString(), valor.valor); setMesAnoSelecionado(`${valor.nome}/${valorAno}`)}}
           className={classes.root}
-          onClick={() => getApiService(valorAno.toString(), valor.valor)}
           nodeId={`${valorAno}${valor.valor}`}
           key={`${valorAno}${valor.valor}`}
           label={`${valor.nome}`}
