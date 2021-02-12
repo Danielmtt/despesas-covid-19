@@ -1,13 +1,30 @@
 import React from 'react';
 import TreeItem from '@material-ui/lab/TreeItem';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  root: {
+    '& .MuiTreeItem-label': {
+      fontSize: 18,
+      color: '#002776',
+    },
+    '& .MuiTreeItem-iconContainer': {
+      color: '#002776',
+    },
+    paddingTop: 5,
+    fontSize: 14,
+  },
+});
 
 export default function LinhaAno(props) {
   const quantidadeAnos = props.linhaAno;
   const dataAtual = new Date().getFullYear();
+  const classes = useStyles();
 
   if (quantidadeAnos) {
     const elementAnos = quantidadeAnos.map((valor) => (
       <TreeItem
+        className={classes.root}
         key={valor}
         nodeId={(dataAtual - valor).toString()}
         label={dataAtual - valor}
