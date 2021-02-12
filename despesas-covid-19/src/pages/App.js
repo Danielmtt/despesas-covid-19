@@ -1,5 +1,5 @@
 import './App.css';
-import DespesasCovid from '../templates/Despesas-covid.jsx';
+import DespesasCovid from '../templates/Despesas-covid';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 

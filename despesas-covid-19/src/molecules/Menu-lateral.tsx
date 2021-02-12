@@ -11,7 +11,7 @@ const TreeViewStyle = styled.div`
   color: #ffdf00;
 `;
 
-const MenuLateral = (props) => {
+const MenuLateral = (props: any) => {
   if (props.linhaAno) {
     return (
       <TreeViewStyle>
