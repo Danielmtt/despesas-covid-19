@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import BotaoVoltar from '../atoms/Botao-voltar.jsx';
-import BotaoAvancar from '../atoms/Botao-avancar.jsx';
-import TextoPaginador from '../atoms/TextoPaginador.jsx';
+import BotaoVoltar from '../atoms/Botao-voltar';
+import BotaoAvancar from '../atoms/Botao-avancar';
+import TextoPaginador from '../atoms/TextoPaginador';
 import { DespesasContext } from '../providers/despesas-context.js';
 
 const CaixaPaginador = styled.div`
@@ -23,20 +23,20 @@ const MarginVertical = styled.div`
 `;
 
 export const Paginador = () => {
-  const { paginaAtual, despesas } = React.useContext(DespesasContext);
+  const { paginaAtual, despesas }: any = React.useContext(DespesasContext);
 
   if (despesas && despesas?.length !== 0) {
     return (
       <CaixaPaginador>
         {paginaAtual >= 2 && (
           <MarginVertical>
-            <BotaoVoltar></BotaoVoltar>
+            <BotaoVoltar />
           </MarginVertical>
         )}
 
         {despesas.length === 15 && (
           <MarginVertical>
-            <BotaoAvancar></BotaoAvancar>
+            <BotaoAvancar />
           </MarginVertical>
         )}
         <TextoPaginador

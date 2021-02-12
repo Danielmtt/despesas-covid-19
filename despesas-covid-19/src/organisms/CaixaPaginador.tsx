@@ -1,5 +1,5 @@
 import React from 'react';
-import Paginador from '../molecules/Paginador.jsx';
+import Paginador from '../molecules/Paginador';
 
 export const CaixaPaginador = () => {
   return (

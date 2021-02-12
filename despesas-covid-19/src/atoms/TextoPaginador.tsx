@@ -5,17 +5,17 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: left;
-  margin-left: 10px; 
-  color: #002776
-`
+  margin-left: 10px;
+  color: #002776;
+`;
 const Pagina = styled.h2`
   margin: 0;
-`
+`;
 const Quantidade = styled.p`
   margin: 0;
-`
+`;
 
-const textoPaginador = (props) => {
+const textoPaginador = (props: { paginaAtual: number; totalItens: number }) => {
   if (props) {
     return (
       <Container>
@@ -24,7 +24,7 @@ const textoPaginador = (props) => {
       </Container>
     );
   } else {
-    <></>;
+    return <></>;
   }
 };
 
