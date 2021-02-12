@@ -1,12 +1,11 @@
 import React from 'react';
-import CaixaMenu from '../organisms/CaixaMenu.jsx';
-import gerarLinhaMesAno from '../atoms/Linha-mes.tsx';
-import BoxPageTitle from '../organisms/BoxPageTitle.jsx';
-import CaixaPaginador from '../organisms/CaixaPaginador.jsx';
+import CaixaMenu from '../organisms/CaixaMenu';
+import BoxPageTitle from '../organisms/BoxPageTitle';
+import CaixaPaginador from '../organisms/CaixaPaginador';
 import styled from 'styled-components';
-import CardsContainer from '../organisms/CardsContainer.tsx';
-import { Spinner } from '../atoms/Spinner.jsx';
-import BoxMensagemBoasVindas from '../organisms/BoxMensagemBoasVindas.jsx';
+import CardsContainer from '../organisms/CardsContainer';
+import Spinner from '../atoms/Spinner';
+import BoxMensagemBoasVindas from '../organisms/BoxMensagemBoasVindas';
 
 const LoaderCSS = styled.div`
   top: 0;
@@ -28,10 +27,7 @@ const BoxInfosTitleCards = styled.div`
 export const DespesasCovid = () => {
   return (
     <DespesasCovidDiv>
-      <CaixaMenu
-        linhaAno={[1, 2]}
-        gerarLinhaMesAno={gerarLinhaMesAno}
-      ></CaixaMenu>
+      <CaixaMenu />
       <BoxInfosTitleCards>
         <BoxPageTitle />
         <BoxMensagemBoasVindas />

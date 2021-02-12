@@ -1,5 +1,5 @@
 import React from 'react';
-import LinhaAno from '../atoms/Linha-ano.tsx';
+import LinhaAno from '../atoms/Linha-ano';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -11,7 +11,7 @@ const TreeViewStyle = styled.div`
   color: #e4cc37;
 `;
 
-const MenuLateral = (props) => {
+const MenuLateral = (props: any) => {
   if (props.linhaAno) {
     return (
       <TreeViewStyle>

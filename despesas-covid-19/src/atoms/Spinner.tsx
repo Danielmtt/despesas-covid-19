@@ -16,14 +16,17 @@ const LoaderCSSInterne = styled.div`
   align-items: center;
 `;
 
-export const Spinner = () => {
+function Spinner() {
   const { promiseInProgress } = usePromiseTracker();
 
   return (
-    promiseInProgress && (
-      <LoaderCSSInterne>
-        <Loader type="ThreeDots" color="#2BAD60" height="100" width="100" />
-      </LoaderCSSInterne>
-    )
+    <>
+      {promiseInProgress && (
+        <LoaderCSSInterne>
+          <Loader type="ThreeDots" color="#2BAD60" height="100" width="100" />
+        </LoaderCSSInterne>
+      )}
+    </>
   );
-};
+}
+export default Spinner;
