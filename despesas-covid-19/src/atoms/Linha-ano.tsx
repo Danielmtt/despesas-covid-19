@@ -1,6 +1,7 @@
 import React from 'react';
 import TreeItem from '@material-ui/lab/TreeItem';
 import { makeStyles } from '@material-ui/core';
+import { LinhaAnoInterface } from '../settings/LinhaAnoInterface';
 
 const useStyles = makeStyles({
   root: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function LinhaAno(props) {
+export default function LinhaAno(props: LinhaAnoInterface) {
   const quantidadeAnos = props.linhaAno;
   const dataAtual = new Date().getFullYear();
   const classes = useStyles();
