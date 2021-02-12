@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuLateral from '../molecules/Menu-lateral.jsx';
+import MenuLateral from '../molecules/Menu-lateral';
 import gerarLinhaMesAno from '../atoms/Linha-mes';
 import styled from 'styled-components';
 

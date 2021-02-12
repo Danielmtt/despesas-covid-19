@@ -3,7 +3,7 @@ import MensagemBoasVindasContainer from '../molecules/MensagemBoasVindasContaine
 import { DespesasContext } from '../providers/despesas-context';
 
 const BoxMensagemBoasVindas = () => {
-  const { despesas } = React.useContext(DespesasContext);
+  const { despesas }: any = React.useContext(DespesasContext);
 
   if (despesas && despesas.length === 0) {
     return <MensagemBoasVindasContainer></MensagemBoasVindasContainer>;
