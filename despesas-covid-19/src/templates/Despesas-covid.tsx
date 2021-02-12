@@ -1,7 +1,7 @@
 import React from 'react';
 import CaixaMenu from '../organisms/CaixaMenu';
-import BoxPageTitle from '../organisms/BoxPageTitle.jsx';
-import CaixaPaginador from '../organisms/CaixaPaginador.jsx';
+import BoxPageTitle from '../organisms/BoxPageTitle';
+import CaixaPaginador from '../organisms/CaixaPaginador';
 import styled from 'styled-components';
 import CardsContainer from '../organisms/CardsContainer';
 import Spinner from '../atoms/Spinner';
@@ -17,6 +17,7 @@ const DespesasCovidDiv = styled.div`
   height: 100vh;
   display: flex;
   overflow-y: hidden;
+  background-color: rgba(0,0,0,0.03);
 `;
 
 const BoxInfosTitleCards = styled.div`
