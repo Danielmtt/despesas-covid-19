@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const TreeViewStyle = styled.div`
   margin-left: 20px;
   padding-top: 25px;
-  color: #ffdf00;
+  color: #e4cc37;
 `;
 
 const MenuLateral = (props) => {
