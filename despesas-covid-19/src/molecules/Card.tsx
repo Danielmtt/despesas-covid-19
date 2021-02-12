@@ -8,8 +8,9 @@ const CardStyle = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 300px;
-  background: #ffdf00;
-  height:400px;
+  border: solid #e4cc37 5px;
+  background: #fffafa;
+  height: auto;
   padding: 24px;
   margin: 10px;
   box-shadow: 3px 4px 10px 1px rgba(0,0,0,0.75);
@@ -26,7 +27,7 @@ const DescriptionCard2 = styled(DescriptionCard)`
 `;
 
 const ValueTitleStyle = styled.h2`
-  color: #009c3b;
+  color: #8fc931;
   font-size: 20px;
   margin: 0;
   text-transform: uppercase;
