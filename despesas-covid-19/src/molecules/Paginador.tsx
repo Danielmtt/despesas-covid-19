@@ -7,15 +7,15 @@ import { DespesasContext } from '../providers/despesas-context.js';
 
 const CaixaPaginador = styled.div`
   position: absolute;
-  right: 1%;
-  bottom: 20px;
+  right: 3%;
+  bottom: 7px;
   display: flex;
   padding: 10px 15px;
   width: max-content;
   font-size: 10px;
   color: #002776;
-  border-radius: 5px;
-  background-color: #ffdf00;
+  border: solid #e4cc37 2px;
+  background-color: #fffafa;
 `;
 
 const MarginVertical = styled.div`
