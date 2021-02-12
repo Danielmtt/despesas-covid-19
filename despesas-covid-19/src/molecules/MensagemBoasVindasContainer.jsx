@@ -20,7 +20,7 @@ const MensagemBoasVindasContainer = () => {
         mensagem={
           'Selecione uma data no menu lateral para ver os gastos públicos'
         }
-      ></MensagemBoasVindas>
+      />
     </Card>
   );
 };
