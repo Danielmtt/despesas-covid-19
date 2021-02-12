@@ -7,6 +7,17 @@ import {
 } from '../services/ServiceApi.js';
 import { DespesasContext } from '../providers/despesas-context.js';
 import { Mes } from '../settings/Mes.js';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  root: {
+    '& .MuiTreeItem-label': {
+      fontSize: 18
+    },
+    paddingTop: 5,
+    fontSize: 14,
+  },
+});
 
 export const meses: Mes[] = 
   [
@@ -26,6 +37,7 @@ export const meses: Mes[] =
 
 export default function gerarLinhaMesAno(valorAno: number) {
   const { setDespesas, setPaginaAtual } = useContext<any>(DespesasContext);
+  const classes = useStyles();
 
   const getApiService = (valorAno: string, valor: string) => {
     setPaginaAtual(1);
@@ -41,6 +53,7 @@ export default function gerarLinhaMesAno(valorAno: number) {
   if (valorAno < new Date().getFullYear()) {
     return meses.map((valor) => (
       <TreeItem
+        className={classes.root}
         onClick={() => getApiService(valorAno.toString(), valor.valor)}
         nodeId={`${valorAno}${valor.valor}`}
         key={`${valorAno}${valor.valor}`}
@@ -52,6 +65,7 @@ export default function gerarLinhaMesAno(valorAno: number) {
       .filter((valor) => parseInt(valor.valor, 10) <= new Date().getMonth())
       .map((valor) => (
         <TreeItem
+          className={classes.root}
           onClick={() => getApiService(valorAno.toString(), valor.valor)}
           nodeId={`${valorAno}${valor.valor}`}
           key={`${valorAno}${valor.valor}`}

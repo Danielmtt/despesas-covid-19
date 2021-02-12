@@ -4,8 +4,8 @@ import gerarLinhaMesAno from '../atoms/Linha-mes';
 import styled from 'styled-components';
 
 const Caixa = styled.div`
-  background-color: #009c3b;
-  width: 200px;
+  background-color: #e4cc37;
+  min-width: 200px;
   min-height: 100vh;
 `;
 
