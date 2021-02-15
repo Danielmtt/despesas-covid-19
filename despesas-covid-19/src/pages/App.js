@@ -1,34 +1,14 @@
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import DespesasCovidPage from './DespesasCovidPage';
 import DespesasBolsaFamiliaPage from './DespesasBolsaFamiliaPage';
 import React from 'react';
+import Menu from '../templates/Menu';
 
 function App() {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/" exact>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/despesas/covid-19">Despesas Covid-19</NavLink>
-          </li>
-          <li>
-            <NavLink to="/despesas/bolsa-familia">
-              Despesas Bolsa Família
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+      <Menu />
 
       <header>
         <Switch>

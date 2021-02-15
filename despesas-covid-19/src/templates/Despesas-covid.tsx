@@ -9,7 +9,6 @@ import BoxMensagemBoasVindas from '../organisms/BoxMensagemBoasVindas';
 
 const LoaderCSS = styled.div`
   top: 0;
-  posision: absolute;
 `;
 
 const DespesasCovidDiv = styled.div`
