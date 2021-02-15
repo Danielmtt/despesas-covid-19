@@ -23,10 +23,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './pages/Home.tsx';
 import { DespesasProvider } from './providers/despesas-context';
+import Menu from './templates/Menu';
 
 ReactDOM.render(
   <DespesasProvider>
     <Router>
+      <Menu />
       <Switch>
         <Route path="/despesas/covid-19">
           <DespesasCovidPage />
