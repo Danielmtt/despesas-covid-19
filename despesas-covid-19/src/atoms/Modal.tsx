@@ -3,6 +3,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,24 +23,20 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function TransitionsModal(props: { corpoModal: any }) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  const { aModalEstaAberta, setAModalEstaAberta } = React.useContext<any>(
+    BolsaFamiliaContext
+  );
 
   const handleClose = () => {
-    setOpen(false);
+    setAModalEstaAberta(false);
   };
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button>
       <Modal
         className={classes.modal}
-        open={open}
+        open={aModalEstaAberta}
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -47,7 +44,7 @@ export default function TransitionsModal(props: { corpoModal: any }) {
           timeout: 500,
         }}
       >
-        <Fade in={open}>{props?.corpoModal}</Fade>
+        <Fade in={aModalEstaAberta}>{props?.corpoModal}</Fade>
       </Modal>
     </div>
   );

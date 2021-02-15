@@ -2,7 +2,6 @@ import React from 'react';
 import OpcaoData from '../atoms/OpcaoData';
 import SeletorData from '../atoms/seletorData';
 import meses from '../settings/consts/arrayMeses';
-import TransitionsModal from '../atoms/Modal';
 
 function calcularOpcoes() {
   const arrayOpcoes: any[] = [];
@@ -31,7 +30,6 @@ const FiltroData = () => {
   return (
     <>
       <SeletorData opcoes={calcularOpcoes()} />{' '}
-      <TransitionsModal corpoModal={<div>asdasdasdasdasd</div>} />
     </>
   );
 };
