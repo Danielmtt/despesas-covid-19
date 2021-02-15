@@ -8,7 +8,6 @@ import familyIcon from '../settings/icons/familyIcon.svg';
 const Box = styled.div`
   padding: 15px 0;
   width: 100%;
-  cursor: pointer;
 `;
 const CardBox = styled.div`
   display: flex;
@@ -22,8 +21,8 @@ const HomeCards = () => {
     <Box>
       <PageTitle title={'Escolha o gastos públicos'}></PageTitle>
       <CardBox>
-        <CardsPaginas icon={coronavirusIcon} titulo={'Gasto com COVID 19'} />
-        <CardsPaginas icon={familyIcon} titulo={'Gasto com bolsa familia'} />
+        <CardsPaginas icon={coronavirusIcon} titulo={'Gastos com COVID 19'} />
+        <CardsPaginas icon={familyIcon} titulo={'Gastos com bolsa familia'} />
       </CardBox>
     </Box>
   );
