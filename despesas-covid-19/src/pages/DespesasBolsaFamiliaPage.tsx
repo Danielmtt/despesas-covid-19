@@ -1,11 +1,12 @@
 import React from 'react';
+import SeletorData from '../molecules/FiltroData';
 
 const DespesasBolsaFamiliaPage = () => {
   return (
     <>
-      <h1>Pagina de despesas com bolsa familia</h1>
+      <SeletorData />
     </>
-  )
-} 
+  );
+};
 
-export default DespesasBolsaFamiliaPage
+export default DespesasBolsaFamiliaPage;
