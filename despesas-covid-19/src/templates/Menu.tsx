@@ -1,9 +1,16 @@
 import * as React from 'react';
 import MenuSuperior from '../organisms/MenuSuperior';
+import { useLocation } from 'react-router-dom';
 
 const Menu = () => {
+  const currentUrl = useLocation();
+
   return (
-    <MenuSuperior></MenuSuperior>
+    <>
+      {currentUrl.pathname !== '/' &&
+        <MenuSuperior></MenuSuperior>
+      }
+    </>
   )   
 }
 

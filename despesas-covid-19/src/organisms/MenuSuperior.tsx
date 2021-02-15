@@ -2,19 +2,19 @@ import * as React from 'react';
 import styled from 'styled-components';
 import LinhaItemMenu from '../molecules/LinhaItemMenu';
 
+const Menu = styled.nav`
+background-color: #002776;
+width: 100%;
+`
+
+const Lista = styled.ul`
+margin: 0;
+list-style-type: none;
+display: flex;
+flex-direction: row;
+`
+
 const MenuSuperior = () => {
-
-  const Menu = styled.nav`
-    background-color: #002776;
-    width: 100%;
-  `
-
-  const Lista = styled.ul`
-    margin: 0;
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-  `
 
   return (
     <Menu>
