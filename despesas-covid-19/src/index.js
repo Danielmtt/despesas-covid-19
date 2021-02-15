@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './pages/App';
+import Home from './pages/Home.tsx';
 import reportWebVitals from './pages/reportWebVitals';
-import { DespesasProvider } from './providers/despesas-context';
+import { ToastContainer } from 'react-toastify';
 
 ReactDOM.render(
-  <DespesasProvider>
-    <App />
-  </DespesasProvider>,
+  <>
+    <ToastContainer />
+    <Home />
+  </>,
   document.getElementById('root')
 );
 
