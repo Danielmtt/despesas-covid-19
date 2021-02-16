@@ -5,6 +5,7 @@ import { Button } from '@material-ui/core';
 import styled from 'styled-components';
 import { getBolsaFamiliaSpendingByMonthYearAndIbge } from '../services/BolsaFamiliaService';
 import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
+import { toast } from 'react-toastify';
 
 const CaixaBusca = styled.div`
   font-size: 10px;
@@ -24,12 +25,27 @@ export const BotaoBusca = () => {
 
   const saveSpending = () => {
     //TODO implementar contextMunicipio
-    getBolsaFamiliaSpendingByMonthYearAndIbge(dataSelecionada, '3550308').then(
-      (resultadoApi) => {
+    if (dataSelecionada) {
+      getBolsaFamiliaSpendingByMonthYearAndIbge(
+        dataSelecionada,
+        '3550308'
+      ).then((resultadoApi) => {
         setDespesasBolsaFamilia(resultadoApi);
         setAModalEstaAberta(true);
-      }
-    );
+      });
+    } else {
+      toast.warning(
+        `campo obrigatoria ${
+          !dataSelecionada ? 'data ' : 'municipio '
+        } não preenchido`,
+        {
+          position: 'top-right',
+          autoClose: 5000,
+          closeOnClick: true,
+          pauseOnHover: true,
+        }
+      );
+    }
   };
 
   return (

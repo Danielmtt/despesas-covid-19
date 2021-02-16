@@ -16,6 +16,7 @@ function calcularOpcoes() {
 
     arrayOpcoes.push(
       <OpcaoData
+        key={ano + ' / ' + meses[mes - 1].nome}
         valorCampo={ano + meses[mes - 1].valor}
         ValorTexto={ano + ' / ' + meses[mes - 1].nome}
       />

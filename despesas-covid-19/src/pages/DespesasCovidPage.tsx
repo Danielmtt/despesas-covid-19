@@ -9,6 +9,6 @@ const DespesasCovidPage = () => {
       <DespesasCovid></DespesasCovid>
     </>
   );
-}
+};
 
-export default DespesasCovidPage
+export default DespesasCovidPage;
