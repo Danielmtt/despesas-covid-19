@@ -26,6 +26,7 @@ export const BotaoBusca = () => {
     //TODO implementar contextMunicipio
     getBolsaFamiliaSpendingByMonthYearAndIbge(dataSelecionada, '3550308').then(
       (resultadoApi) => {
+        console.log(resultadoApi);
         setDespesasBolsaFamilia(resultadoApi);
         setAModalEstaAberta(true);
       }
