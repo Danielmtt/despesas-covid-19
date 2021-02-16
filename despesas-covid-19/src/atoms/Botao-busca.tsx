@@ -16,15 +16,18 @@ const CaixaBusca = styled.div`
 `;
 
 export const BotaoBusca = () => {
-  const { dataSelecionada, setDespesasBolsaFamilia } = React.useContext<any>(
-    BolsaFamiliaContext
-  );
+  const {
+    dataSelecionada,
+    setDespesasBolsaFamilia,
+    setAModalEstaAberta,
+  } = React.useContext<any>(BolsaFamiliaContext);
 
   const saveSpending = () => {
     //TODO implementar contextMunicipio
     getBolsaFamiliaSpendingByMonthYearAndIbge(dataSelecionada, '3550308').then(
       (resultadoApi) => {
         setDespesasBolsaFamilia(resultadoApi);
+        setAModalEstaAberta(true);
       }
     );
   };
@@ -32,7 +35,11 @@ export const BotaoBusca = () => {
   return (
     <>
       <CaixaBusca>
-        <Button onClick={() => saveSpending()}>
+        <Button
+          onClick={() => {
+            saveSpending();
+          }}
+        >
           <SearchIcon />
           Buscar
         </Button>

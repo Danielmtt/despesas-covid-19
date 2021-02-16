@@ -27,23 +27,25 @@ export const Paginador = () => {
 
   if (despesas && despesas?.length !== 0) {
     return (
-      <CaixaPaginador>
-        {paginaAtual >= 2 && (
-          <MarginVertical>
-            <BotaoVoltar />
-          </MarginVertical>
-        )}
+      <>
+        <CaixaPaginador>
+          {paginaAtual >= 2 && (
+            <MarginVertical>
+              <BotaoVoltar />
+            </MarginVertical>
+          )}
 
-        {despesas.length === 15 && (
-          <MarginVertical>
-            <BotaoAvancar />
-          </MarginVertical>
-        )}
-        <TextoPaginador
-          paginaAtual={paginaAtual}
-          totalItens={despesas?.length}
-        ></TextoPaginador>
-      </CaixaPaginador>
+          {despesas.length === 15 && (
+            <MarginVertical>
+              <BotaoAvancar />
+            </MarginVertical>
+          )}
+          <TextoPaginador
+            paginaAtual={paginaAtual}
+            totalItens={despesas?.length}
+          ></TextoPaginador>
+        </CaixaPaginador>
+      </>
     );
   } else {
     return <></>;

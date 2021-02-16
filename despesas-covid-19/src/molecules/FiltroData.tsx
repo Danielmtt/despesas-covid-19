@@ -27,7 +27,11 @@ function calcularOpcoes() {
 }
 
 const FiltroData = () => {
-  return <SeletorData opcoes={calcularOpcoes()} />;
+  return (
+    <>
+      <SeletorData opcoes={calcularOpcoes()} />{' '}
+    </>
+  );
 };
 
 export default FiltroData;
