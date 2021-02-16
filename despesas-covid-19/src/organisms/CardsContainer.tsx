@@ -10,7 +10,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: 85%;
-  font- family: "Roboto";
   overflow-y: scroll;
   padding-top: 20px;
   box-sizing: border-box;
