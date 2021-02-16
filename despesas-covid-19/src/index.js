@@ -24,27 +24,28 @@ import './index.css';
 import Home from './pages/Home.tsx';
 import { DespesasProvider } from './providers/despesas-context';
 import Menu from './templates/Menu';
-import CampoMunicipio from './atoms/CampoMunicipio';
+import { BolsaFamiliaProvider } from './providers/bolsa-familia-context';
 
 ReactDOM.render(
-  <DespesasProvider>
-    <CampoMunicipio />
-    <Router>
-      <Menu />
-      <Switch>
-        <Route path="/despesas/covid-19">
+  <Router>
+    <Menu />
+    <Switch>
+      <Route path="/despesas/covid-19">
+        <DespesasProvider>
           <DespesasCovidPage />
-        </Route>
+        </DespesasProvider>
+      </Route>
 
-        <Route path="/despesas/bolsa-familia">
+      <Route path="/despesas/bolsa-familia">
+        <BolsaFamiliaProvider>
           <DespesasBolsaFamiliaPage />
-        </Route>
+        </BolsaFamiliaProvider>
+      </Route>
 
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
-  </DespesasProvider>,
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
+  </Router>,
   document.getElementById('root')
 );
