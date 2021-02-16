@@ -5,6 +5,7 @@ import { Button } from '@material-ui/core';
 import styled from 'styled-components';
 import { getBolsaFamiliaSpendingByMonthYearAndIbge } from '../services/BolsaFamiliaService';
 import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
+import { toast } from 'react-toastify';
 
 const CaixaBusca = styled.div`
   font-size: 10px;
@@ -16,22 +17,45 @@ const CaixaBusca = styled.div`
 `;
 
 export const BotaoBusca = () => {
-  const { dataSelecionada, municipioSelecionado, setDespesasBolsaFamilia } = React.useContext<any>(
-    BolsaFamiliaContext
-  );
+  const {
+    dataSelecionada,
+    setDespesasBolsaFamilia,
+    setAModalEstaAberta,
+    municipioSelecionado
+  } = React.useContext<any>(BolsaFamiliaContext);
 
   const saveSpending = () => {
-    getBolsaFamiliaSpendingByMonthYearAndIbge(dataSelecionada, municipioSelecionado.municipio.id).then(
-      (resultadoApi) => {
+    if (dataSelecionada) {
+      getBolsaFamiliaSpendingByMonthYearAndIbge(
+        dataSelecionada,
+        municipioSelecionado.municipio.id
+      ).then((resultadoApi) => {
         setDespesasBolsaFamilia(resultadoApi);
-      }
-    );
+        setAModalEstaAberta(true);
+      });
+    } else {
+      toast.warning(
+        `campo obrigatoria ${
+          !dataSelecionada ? 'data ' : 'municipio '
+        } não preenchido`,
+        {
+          position: 'top-right',
+          autoClose: 5000,
+          closeOnClick: true,
+          pauseOnHover: true,
+        }
+      );
+    }
   };
 
   return (
     <>
       <CaixaBusca>
-        <Button onClick={() => saveSpending()}>
+        <Button
+          onClick={() => {
+            saveSpending();
+          }}
+        >
           <SearchIcon />
           Buscar
         </Button>

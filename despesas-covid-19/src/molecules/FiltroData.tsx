@@ -16,6 +16,7 @@ function calcularOpcoes() {
 
     arrayOpcoes.push(
       <OpcaoData
+        key={ano + ' / ' + meses[mes - 1].nome}
         valorCampo={ano + meses[mes - 1].valor}
         ValorTexto={ano + ' / ' + meses[mes - 1].nome}
       />
@@ -27,7 +28,11 @@ function calcularOpcoes() {
 }
 
 const FiltroData = () => {
-  return <SeletorData opcoes={calcularOpcoes()} />;
+  return (
+    <>
+      <SeletorData opcoes={calcularOpcoes()} />{' '}
+    </>
+  );
 };
 
 export default FiltroData;
