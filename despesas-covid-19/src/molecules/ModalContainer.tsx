@@ -14,7 +14,6 @@ const CardStyle = styled.div`
   padding: 24px;
   margin: 10px;
   box-shadow: 3px 4px 10px 1px rgba(0,0,0,0.75);
-  font- family: "Roboto";
 `;
 
 const ValueTitleStyle = styled.h2`
@@ -30,7 +29,6 @@ const ValueStyle = styled.p`
   margin: 0;
   text-align: left;
   padding-left: 15px;
-  font- family: "Roboto";
 `;
 
 const ModalContainer = (props: DespesasBolsaFamilia) => {
@@ -65,7 +63,7 @@ const ModalContainer = (props: DespesasBolsaFamilia) => {
         />
         <LinhaCard
           conteudo={
-            'R$ ' + props?.quantidadeBeneficiados.toLocaleString() + ',00'
+            props?.quantidadeBeneficiados.toLocaleString()
           }
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}

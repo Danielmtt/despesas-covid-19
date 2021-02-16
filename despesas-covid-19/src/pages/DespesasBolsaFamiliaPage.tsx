@@ -1,5 +1,6 @@
 import React from 'react';
 import BotaoBusca from '../atoms/Botao-busca';
+import CampoMunicipio from '../atoms/CampoMunicipio';
 import SeletorData from '../molecules/FiltroData';
 import TransitionsModal from '../atoms/Modal';
 import ModalContainer from '../molecules/ModalContainer';
@@ -12,8 +13,9 @@ const DespesasBolsaFamiliaPage = () => {
     <>
       <h1>Pagina de despesas com bolsa familia</h1>
       <ToastContainer />
-      <BotaoBusca></BotaoBusca>
       <SeletorData />
+      <CampoMunicipio />
+      <BotaoBusca></BotaoBusca>
       <TransitionsModal corpoModal={ModalContainer(despesasBolsaFamilia[0])} />
     </>
   );

@@ -21,14 +21,14 @@ export const BotaoBusca = () => {
     dataSelecionada,
     setDespesasBolsaFamilia,
     setAModalEstaAberta,
+    municipioSelecionado
   } = React.useContext<any>(BolsaFamiliaContext);
 
   const saveSpending = () => {
-    //TODO implementar contextMunicipio
     if (dataSelecionada) {
       getBolsaFamiliaSpendingByMonthYearAndIbge(
         dataSelecionada,
-        '3550308'
+        municipioSelecionado.municipio.id
       ).then((resultadoApi) => {
         setDespesasBolsaFamilia(resultadoApi);
         setAModalEstaAberta(true);
