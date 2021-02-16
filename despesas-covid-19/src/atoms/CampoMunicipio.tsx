@@ -1,46 +1,45 @@
-import { makeStyles, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
-import * as React from 'react';
-
-const useStyles = makeStyles({
-  option: {
-    fontSize: 15,
-    '& > span': {
-      marginRight: 10,
-      fontSize: 18,
-    },
-  },
-});
+import React, {  useState, useEffect, useContext } from 'react';
+import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
+import { getMunicipios } from '../services/BolsaFamiliaService';
+import { Distrito } from '../settings/Municipio';
 
 const CampoMunicipio = () => {
-  const [inputValue, setInputValue] = React.useState('');
-  const classes = useStyles();
+  const [listaMunicipios, setListaMunicipios] = useState<Distrito[]>([])
+  const [value, setValue] = useState<Distrito>()
+  const [inputValue, setInputValue] = useState('');
+  const { setMunicipioSelecionado } = useContext<any>(BolsaFamiliaContext);
+
+  useEffect(() => {
+    getMunicipios()
+      .then((municipios) => municipios.filter((v, i, a)=> a.findIndex(t=>(t.municipio.nome === v.municipio.nome))===i))
+      .then((municipiosSemDuplicatas) => setListaMunicipios(municipiosSemDuplicatas))
+  }, [])
+
   return (
     <>
       <Autocomplete
         id="country-select-demo"
-        style={{ width: 300 }}
-        options={countries}
-        classes={{
-          option: classes.option,
-        }}
+        options={listaMunicipios}
+        style={{width: 300}}
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);
         }}
-        autoHighlight
-        getOptionLabel={(option) => option.label}
+        onChange={(event, value: any) => {(setValue(value), setMunicipioSelecionado(value))}}
+        getOptionLabel={(option: Distrito) => option.municipio.nome}
         renderOption={(option) => (
           <React.Fragment>
-            <span>{(option.code)}</span>
-            {option.label} ({option.code}) +{option.phone}
+            {option.municipio.nome}
           </React.Fragment>
         )}
-        open={inputValue.length >= 3}
+        freeSolo
+        open={inputValue.length >= 3 && value?.municipio.nome !== inputValue}
         renderInput={(params) => (
           <TextField
             {...params}
             label="Digite um município"
-            variant="outlined"
+            variant="standard"
           />
         )}
       />
@@ -48,17 +47,5 @@ const CampoMunicipio = () => {
     </>
   )
 }
-
-interface CountryType {
-  code: string;
-  label: string;
-  phone: string;
-}
-
-const countries: CountryType[] = [
-  { code: 'AD', label: 'Andorra', phone: '376' },
-  { code: 'AE', label: 'United Arab Emirates', phone: '971' },
-  { code: 'AF', label: 'Afghanistan', phone: '93' },
-]
 
 export default CampoMunicipio;

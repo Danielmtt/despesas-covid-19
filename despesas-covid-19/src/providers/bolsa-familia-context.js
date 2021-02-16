@@ -4,6 +4,7 @@ export const BolsaFamiliaContext = React.createContext([{}]);
 export const BolsaFamiliaProvider = (props) => {
   const [despesasBolsaFamilia, setDespesasBolsaFamilia] = useState([]);
   const [dataSelecionada, setdataSelecionada] = useState('');
+  const [municipioSelecionado, setMunicipioSelecionado] = useState();
 
   return (
     <BolsaFamiliaContext.Provider
@@ -12,6 +13,8 @@ export const BolsaFamiliaProvider = (props) => {
         setdataSelecionada,
         despesasBolsaFamilia,
         setDespesasBolsaFamilia,
+        municipioSelecionado,
+        setMunicipioSelecionado,
       }}
     >
       {props.children}

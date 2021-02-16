@@ -16,13 +16,12 @@ const CaixaBusca = styled.div`
 `;
 
 export const BotaoBusca = () => {
-  const { dataSelecionada, setDespesasBolsaFamilia } = React.useContext<any>(
+  const { dataSelecionada, municipioSelecionado, setDespesasBolsaFamilia } = React.useContext<any>(
     BolsaFamiliaContext
   );
 
   const saveSpending = () => {
-    //TODO implementar contextMunicipio
-    getBolsaFamiliaSpendingByMonthYearAndIbge(dataSelecionada, '3550308').then(
+    getBolsaFamiliaSpendingByMonthYearAndIbge(dataSelecionada, municipioSelecionado.municipio.id).then(
       (resultadoApi) => {
         setDespesasBolsaFamilia(resultadoApi);
       }
