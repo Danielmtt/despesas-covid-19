@@ -6,7 +6,7 @@ export const getBolsaFamiliaSpendingByMonthYearAndIbge = async (
   mesAno: string,
   codigoIbge: string
 ) => {
-  return new Promise((resolve) => {
+  return new Promise<any[]>((resolve) => {
     resolve(
       trackPromise(
         fetch(

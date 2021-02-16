@@ -10,7 +10,7 @@ const SeletorData = (props: { opcoes?: any[] }) => {
 
   return (
     <FormControl>
-      <InputLabel htmlFor="age-native-simple">Age</InputLabel>
+      <InputLabel htmlFor="age-native-simple">Mês/ano</InputLabel>
       <Select
         onChange={(event) => {
           setdataSelecionada(event.target.value);
