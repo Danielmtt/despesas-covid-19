@@ -17,7 +17,7 @@ const SeletorData = (props: { opcoes?: any[] }) => {
         }}
         native
       >
-        <option value={''}></option>
+        <option key={''} value={''}></option>
         {props.opcoes}
       </Select>
     </FormControl>
