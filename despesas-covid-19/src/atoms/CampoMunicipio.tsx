@@ -4,12 +4,14 @@ import React, {  useState, useEffect, useContext } from 'react';
 import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
 import { getMunicipios } from '../services/BolsaFamiliaService';
 import { Distrito } from '../settings/Municipio';
+import { useDebounce } from 'use-debounce';
 
 const CampoMunicipio = () => {
   const [listaMunicipios, setListaMunicipios] = useState<Distrito[]>([])
   const [value, setValue] = useState<Distrito>()
   const [inputValue, setInputValue] = useState('');
   const { setMunicipioSelecionado } = useContext<any>(BolsaFamiliaContext);
+  const [debouncedValue] = useDebounce(inputValue, 500);
 
   useEffect(() => {
     getMunicipios()
@@ -34,7 +36,7 @@ const CampoMunicipio = () => {
           </React.Fragment>
         )}
         freeSolo
-        open={inputValue.length >= 3 && value?.municipio.nome !== inputValue}
+        open={inputValue.length >= 3 && value?.municipio.nome !== inputValue && debouncedValue === inputValue}
         renderInput={(params) => (
           <TextField
             {...params}
