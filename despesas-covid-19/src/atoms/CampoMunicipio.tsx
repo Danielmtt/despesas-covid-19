@@ -35,7 +35,9 @@ const CampoMunicipio = () => {
             {option.municipio.nome}
           </React.Fragment>
         )}
-        freeSolo
+        clearOnEscape
+        disableCloseOnSelect
+        popupIcon={false}
         open={inputValue.length >= 3 && value?.municipio.nome !== inputValue && debouncedValue === inputValue}
         renderInput={(params) => (
           <TextField
