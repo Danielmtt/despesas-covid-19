@@ -46,7 +46,12 @@ ReactDOM.render(
         </DespesasProvider>
       </Route>
 
-      <Route path="/despesas/bolsa-familia">
+      <Route
+        path={[
+          '/despesas/bolsa-familia/:ano/:mes/:codigosIbge',
+          '/despesas/bolsa-familia',
+        ]}
+      >
         <BolsaFamiliaProvider>
           <DespesasBolsaFamiliaPage />
         </BolsaFamiliaProvider>
