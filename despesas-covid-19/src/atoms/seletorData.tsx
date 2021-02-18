@@ -1,12 +1,23 @@
 import Select from '@material-ui/core/Select';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
 
 const SeletorData = (props: { opcoes?: any[] }) => {
-  const { setdataSelecionada } = useContext<any>(BolsaFamiliaContext);
+  const { dataSelecionada, setdataSelecionada } = useContext<any>(BolsaFamiliaContext);
+
+  function verificaUrl() {
+    const urlParams = new URLSearchParams(window.location.search).get('anoMes');
+    if (urlParams){
+      setdataSelecionada(urlParams)
+    }
+  }
+
+  useEffect(() => {
+    verificaUrl()
+  }, []);
 
   return (
     <FormControl>
@@ -15,6 +26,7 @@ const SeletorData = (props: { opcoes?: any[] }) => {
         onChange={(event) => {
           setdataSelecionada(event.target.value);
         }}
+        value={dataSelecionada}
         native
       >
         <option key={''} value={''}></option>
