@@ -20,7 +20,7 @@ const DespesasCovidPage = () => {
   let query = Number(useQuery().get('page'));
   let { ano, mes }: any = useParams();
 
-  if (ano !== '0' && mes !== '0' && controlador === 0) {
+  if (ano && mes && controlador === 0) {
     getCovidSpendingByMonthYear(ano + mes, query > 0 ? query : 1).then(
       (dados) => {
         setControlador(1);

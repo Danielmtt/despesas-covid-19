@@ -20,7 +20,7 @@ ReactDOM.render(
   <Router>
     <Menu />
     <Switch>
-      <Route path="/covid-19/:ano/:mes">
+      <Route path={['/covid-19/:ano/:mes', '/covid-19']}>
         <DespesasProvider>
           <LoaderCSS>
             <Spinner />
@@ -28,8 +28,7 @@ ReactDOM.render(
           <DespesasCovidPage />
         </DespesasProvider>
       </Route>
-
-      <Route path="/bolsa-familia">
+      <Route path={['/bolsa-familia/:ano/:mes/:codigosIbge', '/bolsa-familia']}>
         <BolsaFamiliaProvider>
           <DespesasBolsaFamiliaPage />
         </BolsaFamiliaProvider>

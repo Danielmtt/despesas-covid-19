@@ -22,7 +22,7 @@ const HomeCards = () => {
     <Box>
       <PageTitle title={'Escolha o gastos públicos'}></PageTitle>
       <CardBox>
-        <Link style={{ textDecoration: 'none' }} to="/covid-19/0/0">
+        <Link style={{ textDecoration: 'none' }} to="/covid-19">
           <CardsPaginas icon={coronavirusIcon} titulo={'Gastos com COVID 19'} />
         </Link>
         <NavLink style={{ textDecoration: 'none' }} to="/bolsa-familia">
