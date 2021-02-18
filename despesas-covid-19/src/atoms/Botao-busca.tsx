@@ -25,21 +25,27 @@ export const BotaoBusca = () => {
     municipioSelecionado
   } = React.useContext<any>(BolsaFamiliaContext);
 
+
   const saveSpending = () => {
-    if (dataSelecionada && municipioSelecionado) {
-      getBolsaFamiliaSpendingByMonthYearAndIbge(
-        dataSelecionada,
-        municipioSelecionado.municipio.id
-      ).then((resultadoApi) => {
-        if(resultadoApi.length !== 0){
-          setDespesasBolsaFamilia(resultadoApi);
-          setAModalEstaAberta(true);
-        }
-        else {
-          notify();
-        }
-      });
-    } else {
+    const rotaAtual = window.location.pathname;
+    if(dataSelecionada && municipioSelecionado){
+      window.history.pushState(null, '', `${rotaAtual}?anoMes=${dataSelecionada}&&codigoIbge=${municipioSelecionado.municipio.id}`);
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramCodigoIbge = urlParams.get('codigoIbge');
+      const paramAnoMes = urlParams.get('anoMes');
+      if(paramAnoMes && paramCodigoIbge) {
+        getBolsaFamiliaSpendingByMonthYearAndIbge(paramAnoMes, paramCodigoIbge).then((resultadoApi) => {
+          if(resultadoApi.length !== 0){
+            setDespesasBolsaFamilia(resultadoApi);
+            setAModalEstaAberta(true);
+          }
+          else {
+            notify();
+          }
+        });
+      } 
+    }
+    else {
       toast.warning(
         `campo obrigatório (${
           !dataSelecionada ? 'data)' : 'município) '

@@ -28,7 +28,7 @@ const CampoMunicipio = () => {
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);
         }}
-        onChange={(event, value: any) => {(setValue(value), setMunicipioSelecionado(value))}}
+        onChange={(event, value: any) => {(setValue(value), setMunicipioSelecionado(value))}} 
         getOptionLabel={(option: Distrito) => option.municipio.nome}
         renderOption={(option) => (
           <React.Fragment>
