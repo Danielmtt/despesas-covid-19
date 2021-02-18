@@ -1,6 +1,6 @@
 import React from 'react';
 import DespesasCovid from '../templates/Despesas-covid';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { useLocation, useParams } from 'react-router-dom';
 import {
   getCovidSpendingByMonthYear,
@@ -13,25 +13,56 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const DespesasCovidPage = () => {
-  const { setDespesas, controlador, setControlador }: any = React.useContext(
-    DespesasContext
-  );
-  let query = Number(useQuery().get('page'));
-  let { ano, mes }: any = useParams();
+function validaURL(mes: string, ano: string): boolean {
+  if (
+    (ano?.length === 4 && mes.length === 2 && parseInt(mes, 10) <= 12) ||
+    (!ano && !mes)
+  ) {
+    return true;
+  } else if (parseInt(mes, 10) > 12) {
+    toast.warning('O signo da serpente não existe mais, use os doze zodiacos', {
+      position: 'top-right',
+      autoClose: 5000,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
+    return false;
+  } else {
+    toast.warning('grande fonte de poder são as URL, mas essa esta errada', {
+      position: 'top-right',
+      autoClose: 5000,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
+    return false;
+  }
+}
 
-  if (ano && mes && controlador === 0) {
-    getCovidSpendingByMonthYear(ano + mes, query > 0 ? query : 1).then(
-      (dados) => {
-        setControlador(1);
-        if (dados.length === 0) {
-          notify();
-          setDespesas([]);
-        } else if (typeof dados !== 'string') {
-          setDespesas(sortItemsByPago(dados));
+const DespesasCovidPage = () => {
+  const {
+    setDespesas,
+    controlador,
+    setControlador,
+    setPaginaAtual,
+  }: any = React.useContext(DespesasContext);
+  let query = Number(useQuery().get('page'));
+  let { ano, mes }: { ano: string; mes: string } = useParams();
+
+  if (controlador === 0) {
+    if (validaURL(mes, ano)) {
+      getCovidSpendingByMonthYear(ano + mes, query > 0 ? query : 1).then(
+        (dados) => {
+          setControlador(1);
+          setPaginaAtual(query || 1);
+          if (dados.length === 0) {
+            notify();
+            setDespesas([]);
+          } else if (typeof dados !== 'string') {
+            setDespesas(sortItemsByPago(dados));
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   return (

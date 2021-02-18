@@ -16,7 +16,7 @@ export const BotaoVoltar = () => {
       <Link
         key={`${paginaAtual + 1}`}
         style={{ textDecoration: 'none' }}
-        to={`?page=${paginaAtual + 1}`}
+        to={`?page=${paginaAtual - 1}`}
       >
         <Button
           variant="contained"
