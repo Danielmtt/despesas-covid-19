@@ -1,41 +1,34 @@
 import React from 'react';
-import {
-  getCovidSpendingByMonthYear,
-  notify,
-  sortItemsByPago,
-} from '../services/ServiceApi.js';
 import Button from '@material-ui/core/Button';
 import { DespesasContext } from '../providers/despesas-context.js';
+import { Link } from 'react-router-dom';
 
 export const BotaoVoltar = () => {
   const {
-    setDespesas,
     despesas,
     paginaAtual,
+    setControlador,
     setPaginaAtual,
   }: any = React.useContext(DespesasContext);
 
-  const getApiService = (valorAno: string, valor: number) => {
-    getCovidSpendingByMonthYear(valorAno, valor).then((dados) => {
-      if (dados.length === 0) {
-        notify();
-      }
-      setDespesas(sortItemsByPago(dados));
-    });
-  };
-
   if (despesas) {
     return (
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => {
-          setPaginaAtual(paginaAtual - 1);
-          getApiService(despesas[0]?.mesAno, paginaAtual - 1);
-        }}
+      <Link
+        key={`${paginaAtual + 1}`}
+        style={{ textDecoration: 'none' }}
+        to={`?page=${paginaAtual + 1}`}
       >
-        voltar
-      </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            setControlador(0);
+            setPaginaAtual(paginaAtual - 1);
+          }}
+        >
+          voltar
+        </Button>
+      </Link>
     );
   } else {
     return <></>;
