@@ -1,75 +1,61 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import TreeItem from '@material-ui/lab/TreeItem';
-import {
-  getCovidSpendingByMonthYear,
-  notify,
-  sortItemsByPago,
-} from '../services/ServiceApi.js';
-import { DespesasContext } from '../providers/despesas-context.js';
-import { Mes } from '../settings/Mes.js';
 import { makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import meses from '../settings/consts/arrayMeses';
+import { DespesasContext } from '../providers/despesas-context';
 
 const useStyles = makeStyles({
   root: {
     '& .MuiTreeItem-label': {
-      fontSize: 18
+      fontSize: 18,
     },
     paddingTop: 5,
     fontSize: 14,
   },
 });
 
-export const meses: Mes[] = 
-  [
-    {nome: 'Janeiro', valor: '01'},
-    {nome: 'Fevereiro', valor: '02'},
-    {nome: 'Março', valor: '03'},
-    {nome: 'Abril', valor: '04'},
-    {nome: 'Maio', valor: '05'},
-    {nome: 'Junho', valor: '06'},
-    {nome: 'Julho', valor: '07'},
-    {nome: 'Agosto', valor: '08'},
-    {nome: 'Setembro', valor: '09'},
-    {nome: 'Outubro', valor: '10'},
-    {nome: 'Novembro', valor: '11'},
-    {nome: 'Dezembro', valor: '12'},
-  ];
-
 export default function gerarLinhaMesAno(valorAno: number) {
-  const { setDespesas, setPaginaAtual, setMesAnoSelecionado } = useContext<any>(DespesasContext);
+  const { setControlador }: any = React.useContext(DespesasContext);
   const classes = useStyles();
-
-  const getApiService = (valorAno: string, valor: string) => {
-    setPaginaAtual(1);
-    getCovidSpendingByMonthYear(valorAno + valor, 1).then((dados) => {
-      if (dados.length === 0) {
-        notify();
-      }
-      setDespesas(sortItemsByPago(dados));
-    });
-  };
 
   if (valorAno < new Date().getFullYear()) {
     return meses.map((valor) => (
-      <TreeItem
-        onClick={() => {getApiService(valorAno.toString(), valor.valor); setMesAnoSelecionado(`${valor.nome}/${valorAno}`)}}
-        className={classes.root}
-        nodeId={`${valorAno}${valor.valor}`}
+      <Link
         key={`${valorAno}${valor.valor}`}
-        label={`${valor.nome}`}
-      />
+        style={{ textDecoration: 'none' }}
+        to={`/covid-19/${valorAno}/${valor.valor}`}
+      >
+        <TreeItem
+          className={classes.root}
+          nodeId={`${valorAno}${valor.valor}`}
+          key={`${valorAno}${valor.valor}`}
+          label={`${valor.nome}`}
+          onClick={() => {
+            setControlador(0);
+          }}
+        />
+      </Link>
     ));
   } else {
     return meses
       .filter((valor) => parseInt(valor.valor, 10) <= new Date().getMonth())
       .map((valor) => (
-        <TreeItem
-          onClick={() => {getApiService(valorAno.toString(), valor.valor); setMesAnoSelecionado(`${valor.nome}/${valorAno}`)}}
-          className={classes.root}
-          nodeId={`${valorAno}${valor.valor}`}
+        <Link
           key={`${valorAno}${valor.valor}`}
-          label={`${valor.nome}`}
-        />
+          style={{ textDecoration: 'none' }}
+          to={`/covid-19/${valorAno}/${valor.valor}`}
+        >
+          <TreeItem
+            className={classes.root}
+            nodeId={`${valorAno}${valor.valor}`}
+            key={`${valorAno}${valor.valor}`}
+            label={`${valor.nome}`}
+            onClick={() => {
+              setControlador(0);
+            }}
+          />
+        </Link>
       ));
   }
 }

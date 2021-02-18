@@ -1,19 +1,3 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import Home from './pages/Home.tsx';
-// import reportWebVitals from './pages/reportWebVitals';
-// import { ToastContainer } from 'react-toastify';
-// import App from './pages/App';
-// import { DespesasProvider } from './providers/despesas-context';
-
-// ReactDOM.render(
-//   <>
-//     <ToastContainer />
-//     <Home />
-//   </>,
-//   document.getElementById('root')
-// );
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import DespesasCovidPage from './pages/DespesasCovidPage.tsx';
 import DespesasBolsaFamiliaPage from './pages/DespesasBolsaFamiliaPage.tsx';
@@ -34,24 +18,17 @@ const LoaderCSS = styled.div`
 
 ReactDOM.render(
   <Router>
-    <LoaderCSS>
-      <Spinner />
-    </LoaderCSS>
-
     <Menu />
     <Switch>
-      <Route path="/despesas/covid-19">
+      <Route path={['/covid-19/:ano/:mes', '/covid-19']}>
         <DespesasProvider>
+          <LoaderCSS>
+            <Spinner />
+          </LoaderCSS>
           <DespesasCovidPage />
         </DespesasProvider>
       </Route>
-
-      <Route
-        path={[
-          '/despesas/bolsa-familia/:ano/:mes/:codigosIbge',
-          '/despesas/bolsa-familia',
-        ]}
-      >
+      <Route path={['/bolsa-familia/:ano/:mes/:codigosIbge', '/bolsa-familia']}>
         <BolsaFamiliaProvider>
           <DespesasBolsaFamiliaPage />
         </BolsaFamiliaProvider>
