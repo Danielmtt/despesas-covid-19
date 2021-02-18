@@ -18,17 +18,17 @@ const LoaderCSS = styled.div`
 
 ReactDOM.render(
   <Router>
+    <LoaderCSS>
+      <Spinner />
+    </LoaderCSS>
     <Menu />
     <Switch>
       <Route path={['/covid-19/:ano/:mes', '/covid-19']}>
         <DespesasProvider>
-          <LoaderCSS>
-            <Spinner />
-          </LoaderCSS>
           <DespesasCovidPage />
         </DespesasProvider>
       </Route>
-      <Route path={['/bolsa-familia/:ano/:mes/:codigosIbge', '/bolsa-familia']}>
+      <Route path={'/bolsa-familia'}>
         <BolsaFamiliaProvider>
           <DespesasBolsaFamiliaPage />
         </BolsaFamiliaProvider>

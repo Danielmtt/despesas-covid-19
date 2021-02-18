@@ -58,6 +58,6 @@ export const getCovidSpendingByMonthYear = async (mesAnoLancamento, pagina) => {
             .catch(() => notifyError())
         )
       );
-    });
-  }, 300);
+    }, 300);
+  });
 };

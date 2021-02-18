@@ -5,7 +5,6 @@ import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
 import { getMunicipios } from '../services/BolsaFamiliaService';
 import { Distrito } from '../settings/Municipio';
 import { useDebounce } from 'use-debounce';
-import { useParams } from 'react-router-dom';
 
 const CampoMunicipio = () => {
   const [listaMunicipios, setListaMunicipios] = useState<Distrito[]>([])
@@ -13,16 +12,6 @@ const CampoMunicipio = () => {
   const [inputValue, setInputValue] = useState('');
   const { setMunicipioSelecionado } = useContext<any>(BolsaFamiliaContext);
   const [debouncedValue] = useDebounce(inputValue, 500);
-  let { ano, mes, codigosIbge }: any = useParams();
-
-  const setMunicipioRota = (municipioSelecionado: Distrito) => {
-    console.log(ano, mes, codigosIbge);
-    if(municipioSelecionado){
-      let rotaAtual = window.location.pathname;
-      window.history.pushState(null, '', `${rotaAtual}/${municipioSelecionado.municipio.id}`);
-    }
-    
-  }
 
   useEffect(() => {
     getMunicipios()
@@ -39,7 +28,7 @@ const CampoMunicipio = () => {
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);
         }}
-        onChange={(event, value: any) => {(setValue(value), setMunicipioSelecionado(value), setMunicipioRota(value))}} 
+        onChange={(event, value: any) => {(setValue(value), setMunicipioSelecionado(value))}} 
         getOptionLabel={(option: Distrito) => option.municipio.nome}
         renderOption={(option) => (
           <React.Fragment>
