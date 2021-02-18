@@ -18,7 +18,7 @@ const MenuSuperior = () => {
   return (
     <Menu>
       <Lista>
-        <LinhaItemMenu texto="Home" caminho="/0/0" exact={true} />
+        <LinhaItemMenu texto="Home" caminho="/" exact={true} />
         <LinhaItemMenu texto="Despesas Covid-19" caminho="/covid-19" />
         <LinhaItemMenu
           texto="Despesas Bolsa Família"
