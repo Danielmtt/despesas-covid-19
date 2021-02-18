@@ -14,8 +14,6 @@ function useQuery() {
 }
 
 function validaURL(mes: string, ano: string): boolean {
-  console.log(mes, ano);
-
   if (ano?.length === 4 && mes.length === 2 && parseInt(mes, 10) <= 12) {
     return true;
   } else if (!ano && !mes) {

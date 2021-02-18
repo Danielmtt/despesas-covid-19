@@ -25,9 +25,6 @@ export default function LinhaAno(props: LinhaAnoInterface) {
   if (quantidadeAnos) {
     const elementAnos = quantidadeAnos.map((valor) => (
       <TreeItem
-        onChange={(change) => {
-          console.log(change);
-        }}
         className={classes.root}
         key={(dataAtual - valor).toString()}
         nodeId={(dataAtual - valor).toString()}
