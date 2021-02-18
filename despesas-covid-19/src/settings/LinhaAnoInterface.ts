@@ -1,4 +1,4 @@
 export interface LinhaAnoInterface {
-  linhaAno: Array<number>;
+  linhaAno: Array<any>;
   gerarLinhaMesAno: any;
 }

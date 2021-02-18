@@ -14,11 +14,10 @@ function useQuery() {
 }
 
 function validaURL(mes: string, ano: string): boolean {
-  if (
-    (ano?.length === 4 && mes.length === 2 && parseInt(mes, 10) <= 12) ||
-    (!ano && !mes)
-  ) {
+  if (ano?.length === 4 && mes.length === 2 && parseInt(mes, 10) <= 12) {
     return true;
+  } else if (!ano && !mes) {
+    return false;
   } else if (parseInt(mes, 10) > 12) {
     toast.warning('O signo da serpente não existe mais, use os doze zodiacos', {
       position: 'top-right',
