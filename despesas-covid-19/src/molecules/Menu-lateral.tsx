@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styled from 'styled-components';
 import { LinhaAnoInterface } from '../settings/LinhaAnoInterface';
+import { useParams } from 'react-router-dom';
 
 const TreeViewStyle = styled.div`
   margin-left: 20px;
@@ -13,19 +14,24 @@ const TreeViewStyle = styled.div`
 `;
 
 const MenuLateral = (props: LinhaAnoInterface) => {
+  let { ano, mes }: { ano: string; mes: string } = useParams();
+
   if (props.linhaAno) {
     return (
       <TreeViewStyle>
         <TreeView
+          onNodeToggle={(change) => {
+            console.log(change);
+          }}
+          defaultExpanded={[ano]}
+          selected={ano + mes}
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
         >
-          <>
-            {LinhaAno({
-              linhaAno: props.linhaAno,
-              gerarLinhaMesAno: props.gerarLinhaMesAno,
-            })}
-          </>
+          {LinhaAno({
+            linhaAno: props.linhaAno,
+            gerarLinhaMesAno: props.gerarLinhaMesAno,
+          })}
         </TreeView>
       </TreeViewStyle>
     );
