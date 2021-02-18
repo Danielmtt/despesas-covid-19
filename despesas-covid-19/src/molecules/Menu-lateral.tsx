@@ -20,11 +20,8 @@ const MenuLateral = (props: LinhaAnoInterface) => {
     return (
       <TreeViewStyle>
         <TreeView
-          onNodeToggle={(change) => {
-            console.log(change);
-          }}
           defaultExpanded={[ano]}
-          selected={ano + mes}
+          selected={ano + mes || undefined}
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
         >
