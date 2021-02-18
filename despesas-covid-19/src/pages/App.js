@@ -12,11 +12,11 @@ function App() {
 
       <header>
         <Switch>
-          <Route path="/despesas/covid-19">
+          <Route path="/covid-19/0/0">
             <DespesasCovidPage />
           </Route>
 
-          <Route path="/despesas/bolsa-familia">
+          <Route path="/bolsa-familia">
             <DespesasBolsaFamiliaPage />
           </Route>
 

@@ -4,18 +4,18 @@ export const DespesasContext = React.createContext([{}]);
 
 export const DespesasProvider = (props) => {
   const [despesas, setDespesas] = useState([]);
+  const [controlador, setControlador] = useState(0);
   const [paginaAtual, setPaginaAtual] = useState(1);
-  const [mesAnoSelecionado, setMesAnoSelecionado] = useState('');
 
   return (
     <DespesasContext.Provider
       value={{
+        controlador,
+        setControlador,
         despesas,
         setDespesas,
         paginaAtual,
         setPaginaAtual,
-        mesAnoSelecionado,
-        setMesAnoSelecionado,
       }}
     >
       {props.children}

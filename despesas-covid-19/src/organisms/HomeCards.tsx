@@ -4,7 +4,7 @@ import PageTitle from '../atoms/PageTitle';
 import CardsPaginas from '../molecules/CardsPaginas';
 import coronavirusIcon from '../settings/icons/coronavirusIcon.svg';
 import familyIcon from '../settings/icons/familyIcon.svg';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const Box = styled.div`
   padding: 15px 0;
@@ -22,13 +22,10 @@ const HomeCards = () => {
     <Box>
       <PageTitle title={'Escolha o gastos públicos'}></PageTitle>
       <CardBox>
-        <NavLink style={{ textDecoration: 'none' }} to="/despesas/covid-19">
+        <Link style={{ textDecoration: 'none' }} to="/covid-19/0/0">
           <CardsPaginas icon={coronavirusIcon} titulo={'Gastos com COVID 19'} />
-        </NavLink>
-        <NavLink
-          style={{ textDecoration: 'none' }}
-          to="/despesas/bolsa-familia"
-        >
+        </Link>
+        <NavLink style={{ textDecoration: 'none' }} to="/bolsa-familia">
           <CardsPaginas icon={familyIcon} titulo={'Gastos com bolsa familia'} />
         </NavLink>
       </CardBox>
