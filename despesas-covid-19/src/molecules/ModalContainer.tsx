@@ -7,13 +7,13 @@ const CardStyle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 400px;
+  width: 300px;
   border: solid #e4cc37 5px;
   background: #fffafa;
+  margin: 30px;
   height: auto;
   padding: 24px;
-  margin: 10px;
-  box-shadow: 3px 4px 10px 1px rgba(0,0,0,0.75);
+  box-shadow: 3px 4px 10px 1px rgba(0, 0, 0, 0.75);
 `;
 
 const ValueTitleStyle = styled.h2`
@@ -62,9 +62,7 @@ const ModalContainer = (props: DespesasBolsaFamilia) => {
           titulo={'Valor gasto com o Bolsa Família'}
         />
         <LinhaCard
-          conteudo={
-            props?.quantidadeBeneficiados?.toLocaleString()
-          }
+          conteudo={props?.quantidadeBeneficiados?.toLocaleString()}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
           titulo={'quantidade de Beneficiados'}

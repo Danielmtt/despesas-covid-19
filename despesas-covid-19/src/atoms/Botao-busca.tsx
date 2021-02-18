@@ -22,30 +22,34 @@ export const BotaoBusca = () => {
     dataSelecionada,
     setDespesasBolsaFamilia,
     setAModalEstaAberta,
-    municipioSelecionado
+    municipioSelecionado,
   } = React.useContext<any>(BolsaFamiliaContext);
-
 
   const saveSpending = () => {
     const rotaAtual = window.location.pathname;
-    if(dataSelecionada && municipioSelecionado){
-      window.history.pushState(null, '', `${rotaAtual}?anoMes=${dataSelecionada}&&codigoIbge=${municipioSelecionado.municipio.id}`);
+    if (dataSelecionada && municipioSelecionado) {
+      window.history.pushState(
+        null,
+        '',
+        `${rotaAtual}?anoMes=${dataSelecionada}&&codigoIbge=${municipioSelecionado.municipio.id}`
+      );
       const urlParams = new URLSearchParams(window.location.search);
       const paramCodigoIbge = urlParams.get('codigoIbge');
       const paramAnoMes = urlParams.get('anoMes');
-      if(paramAnoMes && paramCodigoIbge) {
-        getBolsaFamiliaSpendingByMonthYearAndIbge(paramAnoMes, paramCodigoIbge).then((resultadoApi) => {
-          if(resultadoApi.length !== 0){
+      if (paramAnoMes && paramCodigoIbge) {
+        getBolsaFamiliaSpendingByMonthYearAndIbge(
+          paramAnoMes,
+          paramCodigoIbge
+        ).then((resultadoApi) => {
+          if (resultadoApi.length !== 0) {
             setDespesasBolsaFamilia(resultadoApi);
             setAModalEstaAberta(true);
-          }
-          else {
+          } else {
             notify();
           }
         });
-      } 
-    }
-    else {
+      }
+    } else {
       toast.warning(
         `campo obrigatório (${
           !dataSelecionada ? 'data)' : 'município) '
