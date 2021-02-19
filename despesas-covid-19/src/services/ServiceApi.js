@@ -40,19 +40,13 @@ export let sortItemsByPago = (arrayList) => {
   }
 };
 
-export const getCovidSpendingByMonthYear = async (mesAnoLancamento, pagina) => {
+export const getCovidSpendingByMonthYear = async (ano, mes, pagina) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(
         trackPromise(
           fetch(
-            `https://cors-anywhere.herokuapp.com/http://www.portaltransparencia.gov.br/api-de-dados/coronavirus/movimento-liquido-despesa?mesAnoLancamento=${mesAnoLancamento}&pagina=${pagina}`,
-            {
-              headers: {
-                Accept: '*/*',
-                'chave-api-dados': '85260d138512b44976de13aaf7766f89',
-              },
-            }
+            `http://localhost:8080/despesas/covid/${ano}/${mes}?pagina=${pagina}`
           )
             .then((response) => response.json())
             .catch(() => notifyError())
