@@ -10,7 +10,7 @@ export const getBolsaFamiliaSpendingByMonthYearAndIbge = async (
     resolve(
       trackPromise(
         fetch(
-          `https://cors-anywhere.herokuapp.com/http://www.portaltransparencia.gov.br/api-de-dados/bolsa-familia-por-municipio?mesAno=${mesAno}&codigoIbge=${codigoIbge}`,
+          `http://localhost:8080/despesas/BolsaFamilia/${mesAno}/${codigoIbge}`,
           {
             headers: {
               Accept: '*/*',
