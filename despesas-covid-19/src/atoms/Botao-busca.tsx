@@ -29,7 +29,7 @@ export const BotaoBusca = () => {
 
   const saveSpending = () => {
     const rotaAtual = window.location.pathname;
-    console.log(municipioSelecionado);
+    console.log(typeof municipioSelecionado);
     const municipio: Distrito = municipioSelecionado;
     if (dataSelecionada && municipioSelecionado) {
       window.history.pushState(

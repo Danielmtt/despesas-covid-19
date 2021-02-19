@@ -8,7 +8,6 @@ import { useDebounce } from 'use-debounce';
 
 const CampoMunicipio = () => {
   const [listaMunicipios, setListaMunicipios] = useState<Distrito[]>([])
-  // const [value, setValue] = useState<Distrito>()
   const [inputValue, setInputValue] = useState('');
   const { setMunicipioSelecionado } = useContext<any>(BolsaFamiliaContext);
   const [debouncedValue] = useDebounce(inputValue, 500);
@@ -16,8 +15,7 @@ const CampoMunicipio = () => {
   const paramIbge = new URLSearchParams(window.location.search).get('codigoIbge');
   const [erros, setErros] = useState({municipio: {valido: true}});
 
-  function validarMunicipio(municipio: any){
-    console.log(municipio)
+  function validarMunicipio(){
     if(valorSelecionado?.length === 0){
       setErros({municipio: {valido: false}});
     } else{
@@ -27,15 +25,13 @@ const CampoMunicipio = () => {
 
   function tranformarParamsEmArray(municipiosSemDuplicatas: Distrito[]): Distrito[]|any{
     if(paramIbge){
-      const ibgeFiltrado = paramIbge?.split(',').map((item) => {
+      const ibgeFiltrado = paramIbge.split(',').map((item) => {
         const findX =  municipiosSemDuplicatas.find(x => x.municipio.id === Number(item))
         if(findX){
           const teste = findX;
           return teste
         }
-      }
-       
-      )
+      });
       return ibgeFiltrado
     } 
   }
@@ -44,10 +40,9 @@ const CampoMunicipio = () => {
     getMunicipios()
       .then((municipios) => municipios.filter((v, i, a)=> a.findIndex(t=>(t.municipio.nome === v.municipio.nome))===i))
       .then((municipiosSemDuplicatas) => {
-        setListaMunicipios(municipiosSemDuplicatas),
-        // setValue(municipiosSemDuplicatas.find(x => x.municipio.id === Number(paramIbge)))
-        setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas))
-        setMunicipioSelecionado(municipiosSemDuplicatas.find(x => x.municipio.id === Number(paramIbge)))
+        setListaMunicipios(municipiosSemDuplicatas);
+        setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas));
+        setMunicipioSelecionado(municipiosSemDuplicatas.find(x => x.municipio.id === Number(paramIbge)));
       })
   }, [])
 
@@ -74,15 +69,15 @@ const CampoMunicipio = () => {
         disableCloseOnSelect
         getOptionSelected={(option, value) => option.municipio.id === value.municipio.id}
         popupIcon={false}
-        open={inputValue.length >= 3 && debouncedValue === inputValue}
+        open={inputValue?.length >= 3 && debouncedValue === inputValue}
         renderInput={(params) => (
           <TextField
             error={!erros.municipio.valido}
             {...params}
             label="Digite um município"
             variant="standard"
-            onBlur={(event) => {
-              validarMunicipio(event.target.value)
+            onBlur={() => {
+              validarMunicipio()
             }}
           />
         )}
