@@ -35,12 +35,14 @@ const ModalContainer = (props: DespesasBolsaFamilia) => {
   if (props) {
     return (
       <CardStyle>
+        {/* 
+        //TODO implementar data referencia na nova API
         <LinhaCard
           conteudo={props?.dataReferencia}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
           titulo={'Data referência'}
-        />
+        /> */}
         <LinhaCard
           conteudo={
             props?.municipio?.nomeIBGE + ' / ' + props?.municipio?.nomeRegiao
@@ -50,7 +52,7 @@ const ModalContainer = (props: DespesasBolsaFamilia) => {
           titulo={'Região'}
         />
         <LinhaCard
-          conteudo={props?.municipio?.uf?.sigla}
+          conteudo={props?.municipio?.uf}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
           titulo={'Sigla Região'}
