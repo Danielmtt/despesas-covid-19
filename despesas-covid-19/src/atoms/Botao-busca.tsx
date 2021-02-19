@@ -15,6 +15,7 @@ const CaixaBusca = styled.div`
   width: max-content;
   border-radius: 5px;
   background-color: #fffafa;
+  margin-left:400px;
 `;
 
 export const BotaoBusca = () => {
