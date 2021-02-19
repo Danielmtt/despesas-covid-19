@@ -29,13 +29,20 @@ export const BotaoBusca = () => {
 
   const saveSpending = () => {
     const rotaAtual = window.location.pathname;
-    console.log(typeof municipioSelecionado);
-    const municipio: Distrito = municipioSelecionado;
+    let codigosMunicipiosConcatenados = '';
+    if(!municipioSelecionado?.length){
+      codigosMunicipiosConcatenados = municipioSelecionado.municipio.id;
+    } else{
+      municipioSelecionado.map((municipio: Distrito, index: number) => {
+        codigosMunicipiosConcatenados += (index === 0 ? municipio.municipio.id : `,${municipio.municipio.id}`)
+      })
+    }
+
     if (dataSelecionada && municipioSelecionado) {
       window.history.pushState(
         null,
         '',
-        `${rotaAtual}?anoMes=${dataSelecionada}&&codigoIbge=${municipio.municipio.id}`
+        `${rotaAtual}?anoMes=${dataSelecionada}&&codigoIbge=${codigosMunicipiosConcatenados}`
       );
       const urlParams = new URLSearchParams(window.location.search);
       const paramCodigoIbge = urlParams.get('codigoIbge');

@@ -41,7 +41,9 @@ const CampoMunicipio = () => {
       .then((municipios) => municipios.filter((v, i, a)=> a.findIndex(t=>(t.municipio.nome === v.municipio.nome))===i))
       .then((municipiosSemDuplicatas) => {
         setListaMunicipios(municipiosSemDuplicatas);
-        setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas));
+        if(paramIbge){
+          setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas));
+        }
         setMunicipioSelecionado(municipiosSemDuplicatas.find(x => x.municipio.id === Number(paramIbge)));
       })
   }, [])
