@@ -49,7 +49,7 @@ const DespesasCovidPage = () => {
 
   if (controlador === 0) {
     if (validaURL(mes, ano)) {
-      getCovidSpendingByMonthYear(ano + mes, query > 0 ? query : 1).then(
+      getCovidSpendingByMonthYear(ano, mes, query > 0 ? query : 1).then(
         (dados) => {
           setControlador(1);
           setPaginaAtual(query || 1);
