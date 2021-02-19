@@ -7,6 +7,7 @@ import { getBolsaFamiliaSpendingByMonthYearAndIbge } from '../services/BolsaFami
 import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
 import { toast } from 'react-toastify';
 import { notify } from '../services/ServiceApi';
+import { Distrito } from '../settings/Municipio';
 
 const CaixaBusca = styled.div`
   font-size: 10px;
@@ -15,6 +16,7 @@ const CaixaBusca = styled.div`
   width: max-content;
   border-radius: 5px;
   background-color: #fffafa;
+  margin-left: 400px;
 `;
 
 export const BotaoBusca = () => {
@@ -27,11 +29,13 @@ export const BotaoBusca = () => {
 
   const saveSpending = () => {
     const rotaAtual = window.location.pathname;
+    console.log(municipioSelecionado);
+    const municipio: Distrito = municipioSelecionado;
     if (dataSelecionada && municipioSelecionado) {
       window.history.pushState(
         null,
         '',
-        `${rotaAtual}?anoMes=${dataSelecionada}&&codigoIbge=${municipioSelecionado.municipio.id}`
+        `${rotaAtual}?anoMes=${dataSelecionada}&&codigoIbge=${municipio.municipio.id}`
       );
       const urlParams = new URLSearchParams(window.location.search);
       const paramCodigoIbge = urlParams.get('codigoIbge');
@@ -41,7 +45,7 @@ export const BotaoBusca = () => {
           paramAnoMes,
           paramCodigoIbge
         ).then((resultadoApi) => {
-          if (resultadoApi.length !== 0) {
+          if (resultadoApi?.length !== 0) {
             setDespesasBolsaFamilia(resultadoApi);
             setAModalEstaAberta(true);
           } else {
