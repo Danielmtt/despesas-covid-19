@@ -7,7 +7,7 @@ import { getBolsaFamiliaSpendingByMonthYearAndIbge } from '../services/BolsaFami
 import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
 import { toast } from 'react-toastify';
 import { notify } from '../services/ServiceApi';
-import { Distrito } from '../settings/Municipio';
+import { Municipio } from '../settings/Municipio';
 
 const CaixaBusca = styled.div`
   font-size: 10px;
@@ -33,8 +33,8 @@ export const BotaoBusca = () => {
     if(!municipioSelecionado?.length){
       codigosMunicipiosConcatenados = municipioSelecionado.municipio.id;
     } else{
-      municipioSelecionado.map((municipio: Distrito, index: number) => {
-        codigosMunicipiosConcatenados += (index === 0 ? municipio.municipio.id : `,${municipio.municipio.id}`)
+      municipioSelecionado.map((municipio: Municipio, index: number) => {
+        codigosMunicipiosConcatenados += (index === 0 ? municipio.id : `,${municipio.id}`)
       })
     }
 
