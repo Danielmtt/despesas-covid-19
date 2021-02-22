@@ -11,10 +11,7 @@ export interface DespesasBolsaFamilia {
     pais: string;
     nomeRegiao: string;
     codigoRegiao: string;
-    uf: {
-      sigla: string;
-      nome: string;
-    };
+    uf: string;
   };
   tipo: {
     id: number;

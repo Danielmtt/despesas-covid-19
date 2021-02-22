@@ -34,14 +34,16 @@ const ValueStyle = styled.p`
 const ModalContainer = (props: DespesasBolsaFamilia) => {
   if (props) {
     return (
-      <CardStyle>
+      <CardStyle key={props.valor}>
         <LinhaCard
+          key={props?.dataReferencia}
           conteudo={props?.dataReferencia}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
           titulo={'Data referência'}
         />
         <LinhaCard
+          key={props?.municipio?.nomeIBGE}
           conteudo={
             props?.municipio?.nomeIBGE + ' / ' + props?.municipio?.nomeRegiao
           }
@@ -50,18 +52,21 @@ const ModalContainer = (props: DespesasBolsaFamilia) => {
           titulo={'Região'}
         />
         <LinhaCard
-          conteudo={props?.municipio?.uf?.sigla}
+          key={props?.municipio?.uf}
+          conteudo={props?.municipio?.uf}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
           titulo={'Sigla Região'}
         />
         <LinhaCard
+          key={props?.valor?.toLocaleString()}
           conteudo={'R$ ' + props?.valor?.toLocaleString() + ',00'}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
           titulo={'Valor gasto com o Bolsa Família'}
         />
         <LinhaCard
+          key={props?.quantidadeBeneficiados?.toLocaleString()}
           conteudo={props?.quantidadeBeneficiados?.toLocaleString()}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
