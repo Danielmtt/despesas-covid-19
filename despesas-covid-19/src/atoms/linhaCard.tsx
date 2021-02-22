@@ -10,8 +10,12 @@ export default function LinhaCard(props: {
   if (props) {
     return (
       <>
-        <props.estiloTitulo>{props.titulo}</props.estiloTitulo>
-        <props.estiloConteudo>{props.conteudo}</props.estiloConteudo>
+        <props.estiloTitulo key={props.titulo}>
+          {props.titulo}
+        </props.estiloTitulo>
+        <props.estiloConteudo key={props.conteudo}>
+          {props.conteudo}
+        </props.estiloConteudo>
       </>
     );
   } else {

@@ -24,6 +24,7 @@ export const BotaoAvancar = () => {
           onClick={() => {
             setControlador(0);
             setPaginaAtual(paginaAtual + 1);
+            document.querySelector('#cards-covid')?.scroll({ top: 0 });
           }}
         >
           avançar

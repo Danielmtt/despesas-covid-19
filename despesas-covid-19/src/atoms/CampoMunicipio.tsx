@@ -1,51 +1,58 @@
 import { TextField } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
-import React, {  useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
 import { getMunicipios } from '../services/BolsaFamiliaService';
 import { Municipio } from '../settings/Municipio';
 import { useDebounce } from 'use-debounce';
 
 const CampoMunicipio = () => {
-  const [listaMunicipios, setListaMunicipios] = useState<Municipio[]>([])
+  const [listaMunicipios, setListaMunicipios] = useState<Municipio[]>([]);
   const [inputValue, setInputValue] = useState('');
   const { setMunicipioSelecionado } = useContext<any>(BolsaFamiliaContext);
   const [debouncedValue] = useDebounce(inputValue, 500);
   const [valorSelecionado, setValorSelecionado] = useState<Municipio[]>([]);
-  const paramIbge = new URLSearchParams(window.location.search).get('codigoIbge');
-  const [erros, setErros] = useState({municipio: {valido: true}});
+  const paramIbge = new URLSearchParams(window.location.search).get(
+    'codigoIbge'
+  );
+  const [erros, setErros] = useState({ municipio: { valido: true } });
 
-  function validarMunicipio(){
-    if(valorSelecionado?.length === 0){
-      setErros({municipio: {valido: false}});
-    } else{
-      setErros({municipio: {valido: true}});
+  function validarMunicipio() {
+    if (valorSelecionado?.length === 0) {
+      setErros({ municipio: { valido: false } });
+    } else {
+      setErros({ municipio: { valido: true } });
     }
   }
 
-  function tranformarParamsEmArray(municipiosSemDuplicatas: Municipio[]): Municipio[]|any{
-    if(paramIbge){
+  function tranformarParamsEmArray(
+    municipiosSemDuplicatas: Municipio[]
+  ): Municipio[] | any {
+    if (paramIbge) {
       const ibgeFiltrado = paramIbge.split(',').map((item) => {
-        const findX =  municipiosSemDuplicatas.find(x => x.id === Number(item))
-        if(findX){
+        const findX = municipiosSemDuplicatas.find(
+          (x) => x.id === Number(item)
+        );
+        if (findX) {
           const teste = findX;
-          return teste
+          return teste;
         }
       });
-      return ibgeFiltrado
-    } 
+      return ibgeFiltrado;
+    }
   }
 
   useEffect(() => {
-    getMunicipios()
-      .then((municipiosSemDuplicatas) => {
-        setListaMunicipios(municipiosSemDuplicatas);
-        if(paramIbge){
-          setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas));
-        }
-        setMunicipioSelecionado(municipiosSemDuplicatas.find(x => x.id === Number(paramIbge)));
-      })
-  }, [])
+    getMunicipios().then((municipiosSemDuplicatas) => {
+      setListaMunicipios(municipiosSemDuplicatas);
+      if (paramIbge) {
+        setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas));
+      }
+      setMunicipioSelecionado(
+        municipiosSemDuplicatas.find((x) => x.id === Number(paramIbge))
+      );
+    });
+  }, []);
 
   return (
     <>
@@ -55,16 +62,16 @@ const CampoMunicipio = () => {
         limitTags={2}
         options={listaMunicipios}
         value={valorSelecionado || null}
-        style={{width: 300}}
+        style={{ width: 300 }}
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);
         }}
-        onChange={(event, value: any | null) => {setMunicipioSelecionado(value), setValorSelecionado(value)}} 
+        onChange={(event, value: any | null) => {
+          setMunicipioSelecionado(value), setValorSelecionado(value);
+        }}
         getOptionLabel={(option: Municipio) => option.nome}
         renderOption={(option) => (
-          <React.Fragment>
-            {option.nome}
-          </React.Fragment>
+          <React.Fragment>{option.nome}</React.Fragment>
         )}
         clearOnEscape
         disableCloseOnSelect
@@ -78,14 +85,13 @@ const CampoMunicipio = () => {
             label="Digite um município"
             variant="standard"
             onBlur={() => {
-              validarMunicipio()
+              validarMunicipio();
             }}
           />
         )}
       />
-
     </>
-  )
-}
+  );
+};
 
 export default CampoMunicipio;

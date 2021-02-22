@@ -2,6 +2,7 @@ import React from 'react';
 import TreeItem from '@material-ui/lab/TreeItem';
 import { makeStyles } from '@material-ui/core';
 import { LinhaAnoInterface } from '../settings/LinhaAnoInterface';
+import { DespesasContext } from '../providers/despesas-context';
 
 const useStyles = makeStyles({
   root: {
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
 });
 
 export default function LinhaAno(props: LinhaAnoInterface) {
+  const { setAnoSelecionado }: any = React.useContext(DespesasContext);
   const quantidadeAnos = props.linhaAno;
   const dataAtual = new Date().getFullYear();
   const classes = useStyles();
@@ -29,6 +31,7 @@ export default function LinhaAno(props: LinhaAnoInterface) {
         key={(dataAtual - valor).toString()}
         nodeId={(dataAtual - valor).toString()}
         label={dataAtual - valor}
+        onClick={() => setAnoSelecionado((dataAtual - valor).toString())}
       >
         <>{props.gerarLinhaMesAno(dataAtual - valor)}</>
       </TreeItem>
