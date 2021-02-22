@@ -1,5 +1,5 @@
 import { trackPromise } from 'react-promise-tracker';
-import { Distrito } from '../settings/Municipio';
+import { Municipio } from '../settings/Municipio';
 import { notifyError } from './ServiceApi';
 
 export const getBolsaFamiliaSpendingByMonthYearAndIbge = async (
@@ -26,12 +26,10 @@ export const getBolsaFamiliaSpendingByMonthYearAndIbge = async (
 };
 
 export const getMunicipios = async () => {
-  return new Promise<Distrito[]>((resolve) => {
+  return new Promise<Municipio[]>((resolve) => {
     resolve(
       trackPromise(
-        fetch(
-          'https://servicodados.ibge.gov.br/api/v1/localidades/distritos?orderBy=nome'
-        )
+        fetch('http://localhost:8080/municipios')
           .then((response) => response.json())
           .catch(() => notifyError())
       )

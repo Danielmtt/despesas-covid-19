@@ -3,15 +3,15 @@ import { Autocomplete } from '@material-ui/lab';
 import React, { useState, useContext, useEffect } from 'react';
 import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
 import { getMunicipios } from '../services/BolsaFamiliaService';
-import { Distrito } from '../settings/Municipio';
+import { Municipio } from '../settings/Municipio';
 import { useDebounce } from 'use-debounce';
 
 const CampoMunicipio = () => {
-  const [listaMunicipios, setListaMunicipios] = useState<Distrito[]>([]);
+  const [listaMunicipios, setListaMunicipios] = useState<Municipio[]>([]);
   const [inputValue, setInputValue] = useState('');
   const { setMunicipioSelecionado } = useContext<any>(BolsaFamiliaContext);
   const [debouncedValue] = useDebounce(inputValue, 500);
-  const [valorSelecionado, setValorSelecionado] = useState<Distrito[]>([]);
+  const [valorSelecionado, setValorSelecionado] = useState<Municipio[]>([]);
   const paramIbge = new URLSearchParams(window.location.search).get(
     'codigoIbge'
   );
@@ -26,12 +26,12 @@ const CampoMunicipio = () => {
   }
 
   function tranformarParamsEmArray(
-    municipiosSemDuplicatas: Distrito[]
-  ): Distrito[] | any {
+    municipiosSemDuplicatas: Municipio[]
+  ): Municipio[] | any {
     if (paramIbge) {
       const ibgeFiltrado = paramIbge.split(',').map((item) => {
         const findX = municipiosSemDuplicatas.find(
-          (x) => x.municipio.id === Number(item)
+          (x) => x.id === Number(item)
         );
         if (findX) {
           const teste = findX;
@@ -43,24 +43,15 @@ const CampoMunicipio = () => {
   }
 
   useEffect(() => {
-    getMunicipios()
-      .then((municipios) =>
-        municipios.filter(
-          (v, i, a) =>
-            a.findIndex((t) => t.municipio.nome === v.municipio.nome) === i
-        )
-      )
-      .then((municipiosSemDuplicatas) => {
-        setListaMunicipios(municipiosSemDuplicatas);
-        if (paramIbge) {
-          setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas));
-        }
-        setMunicipioSelecionado(
-          municipiosSemDuplicatas.find(
-            (x) => x.municipio.id === Number(paramIbge)
-          )
-        );
-      });
+    getMunicipios().then((municipiosSemDuplicatas) => {
+      setListaMunicipios(municipiosSemDuplicatas);
+      if (paramIbge) {
+        setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas));
+      }
+      setMunicipioSelecionado(
+        municipiosSemDuplicatas.find((x) => x.id === Number(paramIbge))
+      );
+    });
   }, []);
 
   return (
@@ -78,15 +69,13 @@ const CampoMunicipio = () => {
         onChange={(event, value: any | null) => {
           setMunicipioSelecionado(value), setValorSelecionado(value);
         }}
-        getOptionLabel={(option: Distrito) => option.municipio.nome}
+        getOptionLabel={(option: Municipio) => option.nome}
         renderOption={(option) => (
-          <React.Fragment>{option?.municipio?.nome}</React.Fragment>
+          <React.Fragment>{option.nome}</React.Fragment>
         )}
         clearOnEscape
         disableCloseOnSelect
-        getOptionSelected={(option, value) =>
-          option.municipio.id === value.municipio.id
-        }
+        getOptionSelected={(option, value) => option.id === value.id}
         popupIcon={false}
         open={inputValue?.length >= 3 && debouncedValue === inputValue}
         renderInput={(params) => (
