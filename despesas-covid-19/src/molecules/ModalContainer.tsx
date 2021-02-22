@@ -35,15 +35,14 @@ const ModalContainer = (props: DespesasBolsaFamilia) => {
   if (props) {
     return (
       <CardStyle key={props.valor}>
-        {/* 
-        //TODO implementar data referencia na nova API
+        
         <LinhaCard
           key={props?.dataReferencia}
           conteudo={props?.dataReferencia}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
           titulo={'Data referência'}
-        /> */}
+        />
         <LinhaCard
           key={props?.municipio?.nomeIBGE}
           conteudo={
