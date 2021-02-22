@@ -18,8 +18,18 @@ const useStyles = makeStyles({
   },
 });
 
+function abrirOuFechar(anoSelecionado: string[], valorClicado: string) {
+  if (anoSelecionado.findIndex((valor) => valor === valorClicado) >= 0) {
+    return anoSelecionado.filter((valor) => valor !== valorClicado);
+  } else {
+    return anoSelecionado.concat(valorClicado);
+  }
+}
+
 export default function LinhaAno(props: LinhaAnoInterface) {
-  const { setAnoSelecionado }: any = React.useContext(DespesasContext);
+  const { anoSelecionado, setAnoSelecionado }: any = React.useContext(
+    DespesasContext
+  );
   const quantidadeAnos = props.linhaAno;
   const dataAtual = new Date().getFullYear();
   const classes = useStyles();
@@ -31,7 +41,11 @@ export default function LinhaAno(props: LinhaAnoInterface) {
         key={(dataAtual - valor).toString()}
         nodeId={(dataAtual - valor).toString()}
         label={dataAtual - valor}
-        onClick={() => setAnoSelecionado((dataAtual - valor).toString())}
+        onClick={() =>
+          setAnoSelecionado(
+            abrirOuFechar(anoSelecionado, (dataAtual - valor).toString())
+          )
+        }
       >
         <>{props.gerarLinhaMesAno(dataAtual - valor)}</>
       </TreeItem>
