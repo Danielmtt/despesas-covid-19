@@ -14,7 +14,6 @@ const CardStyle = styled.div`
   padding: 24px;
   margin: 10px;
   box-shadow: 3px 4px 10px 1px rgba(0,0,0,0.75);
-  font- family: "Roboto";
 `;
 
 const DescriptionCard = styled.p`
@@ -39,7 +38,6 @@ const ValueStyle = styled.p`
   margin: 0;
   text-align: left;
   padding-left: 15px;
-  font- family: "Roboto";
 `;
 
 function Card(props: DespesasCard) {
