@@ -56,6 +56,7 @@ export const BotaoBusca = () => {
             setDespesasBolsaFamilia(resultadoApi);
             setAModalEstaAberta(true);
           } else {
+            setDespesasBolsaFamilia([]);
             notify();
           }
         });

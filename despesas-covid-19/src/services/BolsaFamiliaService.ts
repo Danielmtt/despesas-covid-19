@@ -6,7 +6,7 @@ export const getBolsaFamiliaSpendingByMonthYearAndIbge = async (
   mesAno: string,
   codigoIbge: string
 ) => {
-  return new Promise<any[]>((resolve) => {
+  return new Promise<any>((resolve) => {
     resolve(
       trackPromise(
         fetch(
@@ -18,7 +18,15 @@ export const getBolsaFamiliaSpendingByMonthYearAndIbge = async (
             },
           }
         )
-          .then((response) => response.json())
+          .then((response) => {
+            if (response.status === 500) {
+              // response.json();
+              throw new Error('erro 400');
+            } else {
+              response.json();
+            }
+          })
+          .then((response) => console.log(response))
           .catch(() => notifyError())
       )
     );

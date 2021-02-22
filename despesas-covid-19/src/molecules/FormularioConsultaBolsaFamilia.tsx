@@ -65,7 +65,7 @@ const FormularioConsultaBolsaFamilia = () => {
         </Campos>
         <BotaoBusca />
       </Card>
-      <Array>{despesasBolsaFamilia.map((iten) => ModalContainer(iten))}</Array>
+      <Array>{despesasBolsaFamilia.length && despesasBolsaFamilia.length !== 0 && despesasBolsaFamilia.map((iten) => ModalContainer(iten))}</Array>
     </>
   );
 };

@@ -24,10 +24,17 @@ const DespesasBolsaFamiliaPage = () => {
         paramAnoMes,
         paramCodigoIbge
       ).then((resultadoApi) => {
-        if (resultadoApi.length !== 0) {
+        if(!resultadoApi.length){
+          console.log(resultadoApi);
+          setDespesasBolsaFamilia([]);
+          notify();
+        }
+        else if (resultadoApi.length !== 0) {
+          console.log('resultado api ok');
           setDespesasBolsaFamilia(resultadoApi);
           setAModalEstaAberta(true);
         } else {
+          setDespesasBolsaFamilia([]);
           notify();
         }
       });
