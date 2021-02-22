@@ -30,7 +30,8 @@ export const BotaoBusca = () => {
   const saveSpending = () => {
     const rotaAtual = window.location.pathname;
     let codigosMunicipiosConcatenados = '';
-    if (dataSelecionada && municipioSelecionado && municipioSelecionado.length) {
+    console.log(municipioSelecionado);
+    if (dataSelecionada && (municipioSelecionado || municipioSelecionado.length)) {
       if(!municipioSelecionado?.length){
         codigosMunicipiosConcatenados = municipioSelecionado.id;
       } else{
