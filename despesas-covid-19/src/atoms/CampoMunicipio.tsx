@@ -38,7 +38,6 @@ const CampoMunicipio = () => {
 
   useEffect(() => {
     getMunicipios()
-      .then((municipios) => municipios.filter((v, i, a)=> a.findIndex(t=>(t.nome === v.nome))===i))
       .then((municipiosSemDuplicatas) => {
         setListaMunicipios(municipiosSemDuplicatas);
         if(paramIbge){
