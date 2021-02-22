@@ -8,14 +8,39 @@ import { useDebounce } from 'use-debounce';
 
 const CampoMunicipio = () => {
   const [listaMunicipios, setListaMunicipios] = useState<Distrito[]>([]);
-  const [value, setValue] = useState<Distrito>();
   const [inputValue, setInputValue] = useState('');
   const { setMunicipioSelecionado } = useContext<any>(BolsaFamiliaContext);
   const [debouncedValue] = useDebounce(inputValue, 500);
-  const [valorSelecionado, setValorSelecionado] = useState<Distrito>();
+  const [valorSelecionado, setValorSelecionado] = useState<Distrito[]>([]);
   const paramIbge = new URLSearchParams(window.location.search).get(
     'codigoIbge'
   );
+  const [erros, setErros] = useState({ municipio: { valido: true } });
+
+  function validarMunicipio() {
+    if (valorSelecionado?.length === 0) {
+      setErros({ municipio: { valido: false } });
+    } else {
+      setErros({ municipio: { valido: true } });
+    }
+  }
+
+  function tranformarParamsEmArray(
+    municipiosSemDuplicatas: Distrito[]
+  ): Distrito[] | any {
+    if (paramIbge) {
+      const ibgeFiltrado = paramIbge.split(',').map((item) => {
+        const findX = municipiosSemDuplicatas.find(
+          (x) => x.municipio.id === Number(item)
+        );
+        if (findX) {
+          const teste = findX;
+          return teste;
+        }
+      });
+      return ibgeFiltrado;
+    }
+  }
 
   useEffect(() => {
     getMunicipios()
@@ -27,16 +52,9 @@ const CampoMunicipio = () => {
       )
       .then((municipiosSemDuplicatas) => {
         setListaMunicipios(municipiosSemDuplicatas);
-        setValue(
-          municipiosSemDuplicatas.find(
-            (x) => x.municipio.id === Number(paramIbge)
-          )
-        );
-        setValorSelecionado(
-          municipiosSemDuplicatas.find(
-            (x) => x.municipio.id === Number(paramIbge)
-          )
-        );
+        if (paramIbge) {
+          setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas));
+        }
         setMunicipioSelecionado(
           municipiosSemDuplicatas.find(
             (x) => x.municipio.id === Number(paramIbge)
@@ -48,8 +66,9 @@ const CampoMunicipio = () => {
   return (
     <>
       <Autocomplete
-        key={'campo select'}
+        multiple
         id="municipios"
+        limitTags={2}
         options={listaMunicipios}
         value={valorSelecionado || null}
         style={{ width: 300 }}
@@ -57,8 +76,7 @@ const CampoMunicipio = () => {
           setInputValue(newInputValue);
         }}
         onChange={(event, value: any | null) => {
-          setValue(value), setMunicipioSelecionado(value);
-          setValorSelecionado(value);
+          setMunicipioSelecionado(value), setValorSelecionado(value);
         }}
         getOptionLabel={(option: Distrito) => option.municipio.nome}
         renderOption={(option) => (
@@ -70,16 +88,16 @@ const CampoMunicipio = () => {
           option.municipio.id === value.municipio.id
         }
         popupIcon={false}
-        open={
-          inputValue.length >= 3 &&
-          value?.municipio.nome !== inputValue &&
-          debouncedValue === inputValue
-        }
+        open={inputValue?.length >= 3 && debouncedValue === inputValue}
         renderInput={(params) => (
           <TextField
+            error={!erros.municipio.valido}
             {...params}
             label="Digite um município"
             variant="standard"
+            onBlur={() => {
+              validarMunicipio();
+            }}
           />
         )}
       />

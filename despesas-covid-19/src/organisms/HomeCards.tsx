@@ -20,7 +20,7 @@ const CardBox = styled.div`
 const HomeCards = () => {
   return (
     <Box>
-      <PageTitle title={'Escolha o gastos públicos'}></PageTitle>
+      <PageTitle title={'Escolha os gastos públicos'}></PageTitle>
       <CardBox>
         <Link style={{ textDecoration: 'none' }} to="/covid-19">
           <CardsPaginas icon={coronavirusIcon} titulo={'Gastos com COVID 19'} />
