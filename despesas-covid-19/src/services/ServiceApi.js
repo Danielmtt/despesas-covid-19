@@ -3,8 +3,10 @@ export let dataCOVID19 = [];
 import { toast } from 'react-toastify';
 import { trackPromise } from 'react-promise-tracker';
 
-export const notifyError = () =>
-  toast.error('Acabou a mana, por favor tente mais tarde', {
+export const notifyError = (
+  mensagem = 'Acabou a mana, por favor tente mais tarde'
+) =>
+  toast.error(mensagem, {
     position: 'top-right',
     autoClose: 5000,
     closeOnClick: true,
