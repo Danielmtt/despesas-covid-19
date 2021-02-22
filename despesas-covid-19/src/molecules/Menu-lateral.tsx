@@ -22,7 +22,7 @@ const MenuLateral = (props: LinhaAnoInterface) => {
     return (
       <TreeViewStyle>
         <TreeView
-          expanded={ano ? [ano] : [anoSelecionado]}
+          expanded={anoSelecionado}
           selected={ano ? ano + mes : ''}
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
