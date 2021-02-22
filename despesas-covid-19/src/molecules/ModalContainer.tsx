@@ -61,15 +61,15 @@ const ModalContainer = (props: DespesasBolsaFamilia) => {
           titulo={'Sigla Região'}
         />
         <LinhaCard
-          key={props?.valor?.toLocaleString()}
-          conteudo={'R$ ' + props?.valor?.toLocaleString() + ',00'}
+          key={props?.valor}
+          conteudo={props?.valor}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
           titulo={'Valor gasto com o Bolsa Família'}
         />
         <LinhaCard
-          key={props?.quantidadeBeneficiados?.toLocaleString()}
-          conteudo={props?.quantidadeBeneficiados?.toLocaleString()}
+          key={props?.quantidadeBeneficiados}
+          conteudo={props?.quantidadeBeneficiados}
           estiloConteudo={ValueStyle}
           estiloTitulo={ValueTitleStyle}
           titulo={'quantidade de Beneficiados'}
