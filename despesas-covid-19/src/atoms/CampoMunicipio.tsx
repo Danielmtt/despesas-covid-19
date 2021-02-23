@@ -59,9 +59,6 @@ const CampoMunicipio = () => {
           tranformarParamsEmArray(municipiosSemDuplicatas)
         );
       }
-      // setMunicipioSelecionado(
-      //   municipiosSemDuplicatas.find((x) => x.id === Number(paramIbge))
-      // );
     });
   }, []);
 
