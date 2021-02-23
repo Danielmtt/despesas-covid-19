@@ -30,16 +30,15 @@ export const BotaoBusca = () => {
   const saveSpending = () => {
     const rotaAtual = window.location.pathname;
     let codigosMunicipiosConcatenados = '';
-    if (!municipioSelecionado?.length) {
-      codigosMunicipiosConcatenados = municipioSelecionado.municipio.id;
-    } else {
-      municipioSelecionado.map((municipio: Municipio, index: number) => {
-        codigosMunicipiosConcatenados +=
-          index === 0 ? municipio.id : `,${municipio.id}`;
-      });
-    }
-
-    if (dataSelecionada && municipioSelecionado) {
+    console.log(municipioSelecionado);
+    if (dataSelecionada && (municipioSelecionado || municipioSelecionado.length)) {
+      if(!municipioSelecionado?.length){
+        codigosMunicipiosConcatenados = municipioSelecionado.id;
+      } else{
+        municipioSelecionado.map((municipio: Municipio, index: number) => {
+          codigosMunicipiosConcatenados += (index === 0 ? municipio.id : `,${municipio.id}`)
+        })
+      }
       window.history.pushState(
         null,
         '',

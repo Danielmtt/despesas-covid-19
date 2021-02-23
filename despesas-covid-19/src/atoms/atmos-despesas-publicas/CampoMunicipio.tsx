@@ -25,6 +25,14 @@ const CampoMunicipio = () => {
     }
   }
 
+  function validarMunicipioOnChange(valor: any) {
+    if(valor) {
+      setErros({ municipio: { valido: false } });
+    } else {
+      setErros({ municipio: { valido: true } });
+    }
+  }
+
   function tranformarParamsEmArray(
     municipiosSemDuplicatas: Municipio[]
   ): Municipio[] | any {
@@ -47,10 +55,10 @@ const CampoMunicipio = () => {
       setListaMunicipios(municipiosSemDuplicatas);
       if (paramIbge) {
         setValorSelecionado(tranformarParamsEmArray(municipiosSemDuplicatas));
+        setMunicipioSelecionado(
+          tranformarParamsEmArray(municipiosSemDuplicatas)
+        );
       }
-      setMunicipioSelecionado(
-        municipiosSemDuplicatas.find((x) => x.id === Number(paramIbge))
-      );
     });
   }, []);
 
@@ -68,6 +76,7 @@ const CampoMunicipio = () => {
         }}
         onChange={(event, value: any | null) => {
           setMunicipioSelecionado(value), setValorSelecionado(value);
+          validarMunicipioOnChange(value);
         }}
         getOptionLabel={(option: Municipio) => option.nome}
         renderOption={(option) => (
@@ -78,15 +87,16 @@ const CampoMunicipio = () => {
         getOptionSelected={(option, value) => option.id === value.id}
         popupIcon={false}
         open={inputValue?.length >= 3 && debouncedValue === inputValue}
+        onBlur={() => {
+          setTimeout(() => validarMunicipio(), 300)
+        }}
+        onSelect={() => setTimeout(() => validarMunicipio(), 300)}
         renderInput={(params) => (
           <TextField
             error={!erros.municipio.valido}
             {...params}
             label="Digite um município"
             variant="standard"
-            onBlur={() => {
-              validarMunicipio();
-            }}
           />
         )}
       />
