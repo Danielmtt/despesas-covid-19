@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { MoleculeFormulario } from '../../molecules/molecules-desempenho/Molecule-Formulario';
+import { salvarColaborador } from '../../services/Service-desempenho';
 
 const FlexContainer = styled.div`
   justify-content: space-evenly;
@@ -12,7 +13,10 @@ const FlexContainer = styled.div`
 
 export const AtomFormularioColaborador = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: {
+    nomeColaborador: string;
+    siglaColaborador: string;
+  }) => salvarColaborador(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
