@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { ToastContainer } from 'react-toastify';
-import BoxPageTitleBolsaFamilia from '../organisms/BoxPageTitleBolsaFamilia';
-import CardFormulario from '../organisms/CardFormulario';
+import BoxPageTitleBolsaFamilia from '../organisms/orgamismes-despesas-publicas/BoxPageTitleBolsaFamilia';
+import CardFormulario from '../organisms/orgamismes-despesas-publicas/CardFormulario';
 
 const DespesasBolsaFamilia = () => {
-    return(
-        <>
-            <BoxPageTitleBolsaFamilia />
-            <CardFormulario />
-            <ToastContainer />
-        </>
-    )
-}
+  return (
+    <>
+      <BoxPageTitleBolsaFamilia />
+      <CardFormulario />
+      <ToastContainer />
+    </>
+  );
+};
 
 export default DespesasBolsaFamilia;

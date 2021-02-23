@@ -1,20 +1,22 @@
 import React, { useContext, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
-import FormularioConsultaBolsaFamilia from '../molecules/FormularioConsultaBolsaFamilia';
-import BoxPageTitleBolsaFamilia from '../organisms/BoxPageTitleBolsaFamilia';
+import FormularioConsultaBolsaFamilia from '../molecules/molecules-despesas-publicas/FormularioConsultaBolsaFamilia';
+import BoxPageTitleBolsaFamilia from '../organisms/orgamismes-despesas-publicas/BoxPageTitleBolsaFamilia';
 import { BolsaFamiliaContext } from '../providers/bolsa-familia-context';
 import { getBolsaFamiliaSpendingByMonthYearAndIbge } from '../services/BolsaFamiliaService';
 import { notify } from '../services/ServiceApi';
 
 const DespesasBolsaFamiliaPage = () => {
-  const { setDespesasBolsaFamilia, setAModalEstaAberta } = useContext<any>(BolsaFamiliaContext);
+  const { setDespesasBolsaFamilia, setAModalEstaAberta } = useContext<any>(
+    BolsaFamiliaContext
+  );
   const paramsUrl = new URLSearchParams(window.location.search);
 
   const verificarPossuiParametrosUrl = () => {
-    if(!!paramsUrl.get('codigoIbge') && !!paramsUrl.get('anoMes')){
+    if (!!paramsUrl.get('codigoIbge') && !!paramsUrl.get('anoMes')) {
       mostrarCardsAoCarregar();
     }
-  }
+  };
 
   const mostrarCardsAoCarregar = () => {
     const paramCodigoIbge = paramsUrl.get('codigoIbge');
@@ -32,11 +34,11 @@ const DespesasBolsaFamiliaPage = () => {
         }
       });
     }
-  }
+  };
 
   useEffect(() => {
     verificarPossuiParametrosUrl();
-  }, [])
+  }, []);
 
   return (
     <>

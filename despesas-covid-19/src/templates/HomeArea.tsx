@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeCards from '../organisms/HomeCards';
+import HomeCards from '../organisms/orgamismes-despesas-publicas/HomeCards';
 export const HomeArea = () => {
   return (
     <>
