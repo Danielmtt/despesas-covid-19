@@ -8,8 +8,9 @@ import './index.css';
 import Home from './pages/Home.tsx';
 import { DespesasProvider } from './providers/despesas-context';
 import Menu from './templates/Menu';
+import Desempenho from './templates/Desempenho.tsx';
 import { BolsaFamiliaProvider } from './providers/bolsa-familia-context';
-import Spinner from './atoms/Spinner';
+import Spinner from './atoms/atmos-despesas-publicas/Spinner';
 import styled from 'styled-components';
 
 const LoaderCSS = styled.div`
@@ -32,6 +33,9 @@ ReactDOM.render(
         <BolsaFamiliaProvider>
           <DespesasBolsaFamiliaPage />
         </BolsaFamiliaProvider>
+      </Route>
+      <Route path={'/desempenho'}>
+        <Desempenho />
       </Route>
 
       <Route path="/">

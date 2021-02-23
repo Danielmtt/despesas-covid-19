@@ -1,10 +1,10 @@
 import React from 'react';
-import CaixaMenu from '../organisms/CaixaMenu';
-import BoxPageTitle from '../organisms/BoxPageTitle';
-import CaixaPaginador from '../organisms/CaixaPaginador';
+import CaixaMenu from '../organisms/orgamismes-despesas-publicas/CaixaMenu';
+import BoxPageTitle from '../organisms/orgamismes-despesas-publicas/BoxPageTitle';
+import CaixaPaginador from '../organisms/orgamismes-despesas-publicas/CaixaPaginador';
 import styled from 'styled-components';
-import CardsContainer from '../organisms/CardsContainer';
-import BoxMensagemBoasVindas from '../organisms/BoxMensagemBoasVindas';
+import CardsContainer from '../organisms/orgamismes-despesas-publicas/CardsContainer';
+import BoxMensagemBoasVindas from '../organisms/orgamismes-despesas-publicas/BoxMensagemBoasVindas';
 
 const DespesasCovidDiv = styled.div`
   width: 100%;
