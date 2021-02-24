@@ -11,7 +11,7 @@ const FlexContainer = styled.div`
   width: 700px;
 `;
 
-export const AtomFormularioColaborador = () => {
+export const OrganismeFormularioColaborador = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data: {
     nomeColaborador: string;
@@ -25,4 +25,4 @@ export const AtomFormularioColaborador = () => {
   );
 };
 
-export default AtomFormularioColaborador;
+export default OrganismeFormularioColaborador;

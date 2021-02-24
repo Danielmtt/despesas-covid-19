@@ -1,7 +1,7 @@
 import React from 'react';
 import OrganismeTabPanel from '../organisms/organisms-desempenho/Organisme-Tab-Panel';
-import AtomFormularioColaborador from '../organisms/organisms-desempenho/Atom-Fomulario-Colaborador';
-import AtomAutocompleteColaborador from '../atoms/atoms-desempenho/Atom-Autocomplete-colaborador';
+import OrganismeFormularioColaborador from '../organisms/organisms-desempenho/Organisme-Fomulario-Colaborador';
+import OrganismeFormularioAvaliacao from '../organisms/organisms-desempenho/Organisme-Formulario-Avaliacao';
 
 export const Desempenho = () => {
   return (
@@ -9,11 +9,11 @@ export const Desempenho = () => {
       <OrganismeTabPanel arrayOpcoes={[
         {
           nomeTab: 'Colaborador',
-          componente: [AtomFormularioColaborador()]
+          componente: [OrganismeFormularioColaborador()]
         },
         {
           nomeTab: 'Avaliação',
-          componente: [AtomAutocompleteColaborador()]
+          componente: [OrganismeFormularioAvaliacao()]
         }
       ]}/>
     </>

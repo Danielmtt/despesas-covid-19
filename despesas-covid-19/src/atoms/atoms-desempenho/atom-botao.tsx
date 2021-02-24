@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
 
-export const AtomBotao = () => {
+export const AtomBotao = (props: {textoBotao: string}) => {
   return (
     <Button variant="contained" type="submit" color="primary">
-      gravar
+      {props.textoBotao}
     </Button>
   );
 };

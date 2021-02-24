@@ -21,7 +21,7 @@ export const MoleculeFormulario = (props: {
         name="siglaColaborador"
         register={props.register}
       />
-      <AtomBotao />
+      <AtomBotao textoBotao={'Salvar'}/>
     </props.style>
   );
 };
