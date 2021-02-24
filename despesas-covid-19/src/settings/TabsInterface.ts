@@ -5,5 +5,5 @@ export interface TabsInterface {
 
 export interface Opcao {
   nomeTab: string;
-  componente: any;
+  componente: any[];
 }
