@@ -18,11 +18,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    height: 224,
+    height: 180,
   },
   tabs: {
-    borderRight: `1px solid ${theme.palette.divider}`,
+    borderRight: '1px solid #002776',
   },
+  indicator: {
+    backgroundColor: '#002776'
+  }
 }));
 
 export default function AtomTabs(props: TabsInterface) {
@@ -39,6 +42,10 @@ export default function AtomTabs(props: TabsInterface) {
         orientation="vertical"
         variant="scrollable"
         value={value}
+        indicatorColor={'secondary'}
+        classes={{
+          indicator: classes.indicator,
+        }}
         onChange={handleChange}
         aria-label="Vertical tabs example"
         className={classes.tabs}
@@ -46,24 +53,12 @@ export default function AtomTabs(props: TabsInterface) {
         {props.arrayOpcoes.map((item, index) => {
           return <Tab label={item.nomeTab} key={index} {...a11yProps(index)} />
         })}
-        {/* <Tab label="Item One" {...a11yProps(0)} />
-        <Tab label="Item Two" {...a11yProps(1)} />
-        <Tab label="Item Three" {...a11yProps(2)} /> */}
       </Tabs>
       {
         props.arrayOpcoes.map((item, index) => {
           return <AtomTabPanel key={index} value={value} index={index} componente={item.componente}/>
         })
       }
-      {/* <TabPanel value={value} index={0}>
-
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel> */}
     </div>
   );
 }

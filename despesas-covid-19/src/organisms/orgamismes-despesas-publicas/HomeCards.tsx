@@ -4,6 +4,7 @@ import PageTitle from '../../atoms/atmos-despesas-publicas/PageTitle';
 import CardsPaginas from '../../molecules/molecules-despesas-publicas/CardsPaginas';
 import coronavirusIcon from '../../settings/icons/coronavirusIcon.svg';
 import familyIcon from '../../settings/icons/familyIcon.svg';
+import pieChart from '../../settings/icons/pie-chart.svg';
 import { NavLink, Link } from 'react-router-dom';
 
 const Box = styled.div`
@@ -27,6 +28,9 @@ const HomeCards = () => {
         </Link>
         <NavLink style={{ textDecoration: 'none' }} to="/bolsa-familia">
           <CardsPaginas icon={familyIcon} titulo={'Gastos com bolsa familia'} />
+        </NavLink>
+        <NavLink style={{ textDecoration: 'none' }} to="/desempenho">
+          <CardsPaginas icon={pieChart} titulo={'Avaliações de desempenho'} />
         </NavLink>
       </CardBox>
     </Box>
