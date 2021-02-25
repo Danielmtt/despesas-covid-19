@@ -41,13 +41,12 @@ export const AtomAutocompleteColaborador = (props: {register: any; name: string;
       )}
       renderInput={(params) => (
         <TextField
-          {...inputValue}
           {...params}
           label="Insira um colaborador"
           variant="outlined"
           name={props.name}
-          required
-          inputRef={props.register}
+          // required
+          inputRef={props.register({required: true})}
         />
       )}
     />
