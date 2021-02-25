@@ -8,7 +8,8 @@ import styled from 'styled-components';
 const Campo = styled.div`
   display: flex;
   flex-direction: column;
-`
+  width: 150px;
+`;
 
 export const AtomCampoNota = (props: {
   register: any;
@@ -36,6 +37,7 @@ export const AtomCampoNota = (props: {
             inputRef={props.register({required: true, min:0.00, max:3.00})}
             error={erros.nota.valido}
             required
+            style={{width: 115}}
             label={'Nota'}
             variant="outlined"
           />
