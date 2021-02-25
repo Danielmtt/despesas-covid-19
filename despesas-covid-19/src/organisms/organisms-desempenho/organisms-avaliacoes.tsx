@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { MoleculeGridAvaliacao } from '../../molecules/molecules-desempenho/molecule-grid-avaliacao';
+import { getAll } from '../../services/AvaliacaoService';
 import { AvaliacaoInteface } from '../../settings/AvaliacaoInterface';
 
 const mock: AvaliacaoInteface[] = [
@@ -31,6 +32,12 @@ const mock: AvaliacaoInteface[] = [
   }
 ]
 
+export async function OrganismerAvaliacoes() {
+  const data = await getAll();
+  console.log(data);
+}
+
 export const OrganismeGridAvaliacoes = () => {
+  OrganismerAvaliacoes();
   return <MoleculeGridAvaliacao data={mock} />
 }
