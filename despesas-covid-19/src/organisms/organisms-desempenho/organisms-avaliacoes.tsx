@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { MoleculeGridAvaliacao } from '../../molecules/molecules-desempenho/molecule-grid-avaliacao';
-import { getAll } from '../../services/AvaliacaoService';
+import { getAllAvaliacoes } from '../../services/Service-desempenho';
 import { AvaliacaoInteface } from '../../settings/AvaliacaoInterface';
 
 export function OrganismeGridAvaliacoes() {
   const [avaliacoes, setAvaliacoes] = React.useState<AvaliacaoInteface[]>([]);
   React.useEffect(() => {
-    getAll().then((itens: AvaliacaoInteface[]) => {
+    getAllAvaliacoes().then((itens: AvaliacaoInteface[]) => {
       if (itens.length > 0) {
         setAvaliacoes(itens);
       }
