@@ -2,18 +2,7 @@ import { ColDef, RowsProp } from '@material-ui/data-grid';
 import React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import { AvaliacaoInteface } from '../../settings/AvaliacaoInterface';
-import { AtomGridAvaliacaoColumnColaborador } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-column-colaborador';
-import { AtomGridAvaliacaoColumnTipoAvaliacao } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-column-tipo-avaliacao';
-import { AtomGridAvaliacaoColumnResultado } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-column-resultado';
-import { AtomGridAvaliacaoColumnData } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-column-datas';
-import { AtomGridAvaliacaoColumnStatus } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-column-status';
-import { AtomGridAvaliacaoRowCellColaborador } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-row-cell-colaborador';
-import { AtomGridAvaliacaoRowCellId } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-row-cell-id';
-import { AtomGridAvaliacaoRowCellTipoAvaliacao } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-row-cell-tipo-avaliacao';
-import { AtomGridAvaliacaoRowCellData } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-row-cell-data';
-import { AtomGridAvaliacaoRowCellStatus } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-row-cell-status';
-import { AtomGridAvaliacaoRowCellResultado } from '../../atoms/atoms-desempenho/atom-grid-avaliacao-row-cell-resultado';
-
+import { AtomGridAvaliacaoColumnColaborador, AtomGridAvaliacaoColumnData, AtomGridAvaliacaoColumnResultado, AtomGridAvaliacaoColumnStatus, AtomGridAvaliacaoColumnTipoAvaliacao, AtomGridAvaliacaoRowCellColaborador, AtomGridAvaliacaoRowCellData, AtomGridAvaliacaoRowCellId, AtomGridAvaliacaoRowCellResultado, AtomGridAvaliacaoRowCellStatus, AtomGridAvaliacaoRowCellTipoAvaliacao } from '../../settings/functions/celulasEColunasGridAvaliacoes';
 
 function montarRow(obj: AvaliacaoInteface) {
   const keys: any = Object.keys(obj);
