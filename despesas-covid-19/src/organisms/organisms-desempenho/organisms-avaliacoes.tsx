@@ -1,36 +1,20 @@
 import * as React from 'react';
 import { MoleculeGridAvaliacao } from '../../molecules/molecules-desempenho/molecule-grid-avaliacao';
+import { getAllAvaliacoes } from '../../services/Service-desempenho';
 import { AvaliacaoInteface } from '../../settings/AvaliacaoInterface';
 
-const mock: AvaliacaoInteface[] = [
-  {
-    id: 1,
-    tipoAvaliacao: 'Informal',
-    resultado: 'Mérito',
-    status: 'Em aprovação',
-    data: '2020-02-24',
-    nota: 3.00,
-    colaborador: {
-      id: 1,
-      nome: 'Victor Alves Farias',
-      sigla: 'VAL'
-    }
-  },
-  {
-    id: 2,
-    tipoAvaliacao: 'Informal',
-    resultado: 'Mérito',
-    status: 'Em aprovação',
-    data: '2020-02-24',
-    nota: 3.00,
-    colaborador: {
-      id: 2,
-      nome: 'Vitor',
-      sigla: 'VTR'
-    }
-  }
-]
-
-export const OrganismeGridAvaliacoes = () => {
-  return <MoleculeGridAvaliacao data={mock} />
+export function OrganismeGridAvaliacoes() {
+  const [avaliacoes, setAvaliacoes] = React.useState<AvaliacaoInteface[]>([]);
+  React.useEffect(() => {
+    getAllAvaliacoes().then((itens: AvaliacaoInteface[]) => {
+      if (itens.length > 0) {
+        setAvaliacoes(itens);
+      }
+    })
+  }, []);
+  return (
+    <>
+      {avaliacoes.length > 0 && <MoleculeGridAvaliacao data={avaliacoes} />}
+    </>
+  )
 }
