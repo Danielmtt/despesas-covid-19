@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const Campo = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 45px;
+  margin: 5px;
 `;
 
 export const AtomCampoNota = (props: {
@@ -18,7 +18,7 @@ export const AtomCampoNota = (props: {
 }) => {
   const [erros, setErros] = useState({ nota: { valido: false } });
 
-  function validarMunicipioOnChange(event: any) {
+  function validarNotaOnChange(event: any) {
     let valor = Number(event.target.value);
 
     if(valor >= 0.00 && valor <= 3.00) {
@@ -30,20 +30,20 @@ export const AtomCampoNota = (props: {
 
   return(
     <Campo>
-      <InputMask onChange={(event) => {validarMunicipioOnChange(event)}} mask={props.mask} disabled={false}>
+      <InputMask onChange={(event) => {validarNotaOnChange(event)}} mask={props.mask} disabled={false}>
         {() => (
           <TextField
             name={props.name}
             inputRef={props.register({required: true, min:0.00, max:3.00})}
             error={erros.nota.valido}
             required
-            style={{width: 115}}
+            style={{width: 140}}
             label={'Nota'}
             variant="outlined"
           />
         )}
       </InputMask>
-      <AtomErroCampo validacao={erros.nota.valido} mensagem={'Insira uma nota entre 0.00 e 3.00'}></AtomErroCampo>
+      <AtomErroCampo validacao={erros.nota.valido} width={'140px'} mensagem={'Insira uma nota entre 0.00 e 3.00'}></AtomErroCampo>
     </Campo>
   );
 }

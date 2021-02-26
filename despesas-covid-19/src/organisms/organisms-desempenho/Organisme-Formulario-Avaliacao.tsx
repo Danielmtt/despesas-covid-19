@@ -6,10 +6,11 @@ import { salvarAvaliacao } from '../../services/Service-desempenho';
 import { SalvarAvaliacaoRequest } from '../../settings/SalvarAvaliacaoRequest';
 
 const FlexContainer = styled.div`
-    justify-content: space-evenly;
+    justify-content: flex-start;
     margin: 10px 20px;
     display: flex;
-    width: auto;
+    flex-wrap: wrap;
+    max-width: 800px;
     padding: 0 20px;
   `;
 

@@ -11,6 +11,7 @@ import AtomErroCampo from './Atom-Erro-Campo';
 const Campo = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 5px;
 `
 
 export const AtomAutocompleteColaborador = (props: {register: any; name: string;}) => {
@@ -64,7 +65,7 @@ export const AtomAutocompleteColaborador = (props: {register: any; name: string;
           />
         )}
       />
-      <AtomErroCampo validacao={erros.colaborador.preenchido} mensagem={'Campo obrigatório'}></AtomErroCampo>
+      <AtomErroCampo validacao={erros.colaborador.preenchido} width={'auto'} mensagem={'Campo obrigatório'}></AtomErroCampo>
     </Campo>
       
   )

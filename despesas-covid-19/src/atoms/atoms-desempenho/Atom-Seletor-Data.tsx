@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const Campo = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 5px;
 `;
 
 export const AtomSeletorData = (props: {register: any; name: string}) => {
@@ -35,7 +36,7 @@ export const AtomSeletorData = (props: {register: any; name: string}) => {
         name={props.name}
         variant="outlined"
       />
-      <AtomErroCampo validacao={erros.colaborador.preenchido} mensagem={'Campo obrigatório'}></AtomErroCampo>
+      <AtomErroCampo validacao={erros.colaborador.preenchido} width={'auto'} mensagem={'Campo obrigatório'}></AtomErroCampo>
     </Campo>
   )
 }
