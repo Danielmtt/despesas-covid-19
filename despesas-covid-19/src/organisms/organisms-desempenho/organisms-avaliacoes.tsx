@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ToastContainer } from 'react-toastify';
 import { MoleculeGridAvaliacao } from '../../molecules/molecules-desempenho/molecule-grid-avaliacao';
 import { getAllAvaliacoes } from '../../services/Service-desempenho';
 import { AvaliacaoInteface } from '../../settings/AvaliacaoInterface';
@@ -14,7 +15,8 @@ export function OrganismeGridAvaliacoes() {
   }, []);
   return (
     <>
-      {avaliacoes.length > 0 && <MoleculeGridAvaliacao data={avaliacoes} />}
+      {avaliacoes.length > 0 && <MoleculeGridAvaliacao data={avaliacoes} updateStateAtualizacao={setAvaliacoes} />}
+      <ToastContainer />
     </>
   )
 }
