@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
 const MySwal = withReactContent(Swal);
-export const AtomSweetAlert = (mensagem: string, id: number, handleSweetAlert: Function) => {
+export const AtomSweetAlert = (mensagem: string, handleSweetAlert: Function) => {
   MySwal.fire({
     title: <span>{mensagem}</span>,
     footer: 'Iteris 2020',

@@ -39,7 +39,7 @@ export function MoleculeGridAvaliacao(props: {
   
   function handleActionDeleteAvaliacao(parametros: CellParams) {
     const avalicaoRow:any = parametros.row;
-    AtomSweetAlert(desejaDeletarAvaliacao(avalicaoRow.tipoAvaliacao, avalicaoRow.colaborador), avalicaoRow.id, ()=> handleDeleteAvalicao(avalicaoRow)); 
+    AtomSweetAlert(desejaDeletarAvaliacao(avalicaoRow.tipoAvaliacao, avalicaoRow.colaborador), ()=> handleDeleteAvalicao(avalicaoRow)); 
   }
   
   
