@@ -21,8 +21,19 @@ export const getAllAvaliacoes = async () => {
   return new Promise<AvaliacaoInteface[]>((resolve) => {
     resolve(
       trackPromise(
-        fetch(`${baseUrlDev}/avaliacao`)
+        fetch(`${baseUrlDev}/avaliacoes`)
           .then((response) => response.json())
+          .catch(() => notifyError())
+      )
+    );
+  });
+};
+
+export const deleteAvaliacao = async (avaliacaoId: number) => {
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(`${baseUrlDev}/avaliacoes/${avaliacaoId}`, { method: 'DELETE' } )
           .catch(() => notifyError())
       )
     );
