@@ -16,8 +16,8 @@ export function MoleculeGridAvaliacao(props: {
   function handleDeleteAvalicao(avaliacao: any) {
     deleteAvaliacao(avaliacao.id)
       .then((response) => {
-        props.updateStateAtualizacao(props.data.filter((av: AvaliacaoInteface)=> av.id != avaliacao.id));
         if (response.status === 204) {
+          props.updateStateAtualizacao(props.data.filter((av: AvaliacaoInteface)=> av.id != avaliacao.id));
           toast.success(`A avaliação ${avaliacao.tipoAvaliacao} do colaborador ${avaliacao.colaborador} foi deletada com sucesso`, {
             position: 'top-right',
             autoClose: 5000,
