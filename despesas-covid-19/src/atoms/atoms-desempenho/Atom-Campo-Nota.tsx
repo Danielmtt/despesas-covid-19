@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const Campo = styled.div`
   display: flex;
   flex-direction: column;
-  width: 150px;
+  margin: 0 45px;
 `;
 
 export const AtomCampoNota = (props: {

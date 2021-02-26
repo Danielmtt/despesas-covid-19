@@ -9,7 +9,8 @@ const FlexContainer = styled.div`
     justify-content: space-evenly;
     margin: 10px 20px;
     display: flex;
-    width: 700px;
+    width: auto;
+    padding: 0 20px;
   `;
 
 export const OrganismeFormularioAvaliacao = () => {
