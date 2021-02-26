@@ -1,13 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 
-export const AtomSelectEnum = (props: {register: any; name: string; valoresEnum: string[]; placeholder: string; width: number}) =>{
-
-  const [value, setValue] = useState('');
-
-  function handle(event: any) {
-    setValue(event.target.value);
-  }
+export const AtomSelectEnum = (props: {register: any; name: string; valoresEnum: string[]; placeholder: string;}) =>{
 
   return(
     <FormControl variant="outlined" style={{margin: '5px'}}>
@@ -15,17 +9,16 @@ export const AtomSelectEnum = (props: {register: any; name: string; valoresEnum:
       <Select
         labelId="demo-simple-select-required-label"
         label={props.placeholder}
-        id="demo-simple-select-required"
         name={props.name}
         required
-        value={value}
-        onChange={(event) => handle(event)}
+        defaultValue={''}
+        onChange={(event: any) => props.register({name: props.name, value: event.target.value})}
         style={{
-          width: props.width,
+          width: 200
         }}
       >
         {props.valoresEnum.length && props.valoresEnum.map((item: string, index: number) => {
-          return <MenuItem value={index} key={index}>{item}</MenuItem>
+          return <MenuItem value={index+1} key={index+1}>{item}</MenuItem>
         })}
       </Select>
     </FormControl>

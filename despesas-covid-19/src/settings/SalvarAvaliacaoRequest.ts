@@ -1,5 +1,5 @@
 export interface SalvarAvaliacaoRequest {
-  idColaborador: number;
+  colaborador: number;
   tipoAvaliacao: number;
   resultado: number;
   status: number;

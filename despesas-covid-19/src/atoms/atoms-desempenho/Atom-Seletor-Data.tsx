@@ -28,6 +28,7 @@ export const AtomSeletorData = (props: {register: any; name: string}) => {
     <Campo>
       <TextField
         type="date"
+        label={'Data da avaliação'}
         error={erros.colaborador.preenchido}
         onChange={(event) =>{setValue(event.target.value); setTimeout(() => validarPreenchido(), 500)}}
         defaultValue={dataAtual()}

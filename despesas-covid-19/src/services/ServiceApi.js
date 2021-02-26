@@ -21,6 +21,15 @@ export const notify = () =>
     pauseOnHover: true,
   });
 
+export const notificacaoSucesso = () => {
+  toast.success('Sucesso!', {
+    position: 'top-right',
+    autoClose: 10000,
+    closeOnClick: true,
+    pauseOnHover: true,
+  });
+};
+
 export let sortItemsByPago = (arrayList) => {
   if (arrayList && typeof arrayList[0] === 'object') {
     return arrayList?.sort(function (a, b) {

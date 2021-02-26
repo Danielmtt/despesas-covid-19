@@ -1,5 +1,6 @@
 import { trackPromise } from 'react-promise-tracker';
 import { SalvarAvaliacaoRequest } from '../settings/SalvarAvaliacaoRequest';
+import { notifyError } from './ServiceApi';
 
 const baseUrl = 'http://localhost:8080';
 
@@ -28,10 +29,12 @@ export const listarColaboradores = async () => {
 };
 
 export const salvarAvaliacao = async (avaliacao: SalvarAvaliacaoRequest) => {
+  console.log(avaliacao);
   const options = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
+      colaborador: avaliacao.colaborador,
       tipoAvaliacao: avaliacao.tipoAvaliacao,
       resultado: avaliacao.resultado,
       status: avaliacao.status,
@@ -40,25 +43,10 @@ export const salvarAvaliacao = async (avaliacao: SalvarAvaliacaoRequest) => {
     }),
   };
   return new Promise((resolve) => {
-    //TODO implementar endpoint para salvar nova avaliação
     resolve(
-      console.log(options, avaliacao.idColaborador)
-
-      // trackPromise(
-      //   fetch(`TODO_URL_ENDPOINT/${avaliacao.idColaborador}`, options)
-      //     .then((response) => {
-      //       if (response.status === 200) {
-      //         //TODO integração mensagem sucesso
-      //         return true;
-      //       } else {
-      //         console.log(response.json());
-      //         //TODO integração mensagem erro
-      //       }
-      //     })
-      //     .catch((error) => {
-      //       console.log(error);
-      //     })
-      // )
+      trackPromise(
+        fetch(`${baseUrl}/avaliacoes`, options).catch(() => notifyError())
+      )
     );
   });
 };

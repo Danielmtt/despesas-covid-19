@@ -16,7 +16,7 @@ export const MoleculeFormularioAvaliacao = (props: {
   return (
     <props.style>
       <AtomAutocompleteColaborador
-        name="idColaborador"
+        name="colaborador"
         register={props.register}
       />
       <AtomCampoNota 
@@ -33,21 +33,18 @@ export const MoleculeFormularioAvaliacao = (props: {
         register={props.register}
         valoresEnum={ArrayResultado}
         placeholder={'Resultado'}
-        width={150}
       />
       <AtomSelectEnum
         name="tipoAvaliacao"
         register={props.register}
         valoresEnum={ArrayTipoAvaliacoes}
         placeholder={'Tipo de avaliação'}
-        width={200}
       />
       <AtomSelectEnum
         name="status"
         register={props.register}
         valoresEnum={ArrayStatus}
         placeholder={'Status'}
-        width={150}
       />
       <AtomBotao textoBotao={'Salvar'}/>
     </props.style>

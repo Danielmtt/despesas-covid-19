@@ -1,12 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+const MensagemErro = styled.span`
+color: #F44336;
+font-size: 14px;
+width: auto;
+`;
+
 export const AtomErroCampo = (props: {validacao: boolean, mensagem: string, width: string|number}) =>{
-  const MensagemErro = styled.span`
-    color: #F44336;
-    font-size: 14px;
-    width: ${props.width};
-  `;
+
   if(props.validacao){
     return(
       <MensagemErro>

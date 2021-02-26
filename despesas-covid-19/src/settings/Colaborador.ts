@@ -1,9 +1,5 @@
 export interface Colaborador {
-  avaliacoes: [
-    {
-      id: number;
-    }
-  ];
+  temAvaliacao: boolean;
   id: number;
   nome: string;
   sigla: string;
