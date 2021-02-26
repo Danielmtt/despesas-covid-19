@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
@@ -15,11 +16,11 @@ const useStyles = makeStyles((theme: Theme) =>
       minWidth: 120,
       maxWidth: 300,
     },
-
+   
     noLabel: {
       marginTop: theme.spacing(3),
     },
-  })
+  }),
 );
 
 const ITEM_HEIGHT = 48;
@@ -35,23 +36,23 @@ const MenuProps = {
 
 const names = [
   {
-    id: 1,
-    nome: 'Juliana',
-    sigla: 'JLA',
-    temAvaliacao: false,
+    'id': 1,
+    'nome': 'Juliana',
+    'sigla': 'JLA',
+    'temAvaliacao': false
   },
   {
-    id: 2,
-    nome: 'Pedro',
-    sigla: 'PDO',
-    temAvaliacao: false,
+    'id': 2,
+    'nome': 'Pedro',
+    'sigla': 'PDO',
+    'temAvaliacao': false
   },
   {
-    id: 3,
-    nome: 'Ander',
-    sigla: 'ADR',
-    temAvaliacao: false,
-  },
+    'id': 3,
+    'nome': 'Ander',
+    'sigla': 'ADR',
+    'temAvaliacao': false
+  }
 ];
 
 export default function MultipleSelect() {
@@ -64,6 +65,7 @@ export default function MultipleSelect() {
 
   return (
     <div>
+      
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-mutiple-checkbox-label">Tag</InputLabel>
         <Select
@@ -73,13 +75,13 @@ export default function MultipleSelect() {
           value={personName}
           onChange={handleChange}
           input={<Input />}
-          renderValue={(selected: any) => selected.join(', ')}
+          renderValue={(selected: any) => (selected).join(', ')}
           MenuProps={MenuProps}
         >
           {names.map((name) => (
-            <MenuItem key={name.id} value={name.id}>
-              <Checkbox checked={personName.indexOf(name.id) > -1} />
-              <ListItemText primary={name.id} />
+            <MenuItem key={name.id} value={name.nome}>
+              <Checkbox checked={personName.indexOf(name.nome) > -1} />
+              <ListItemText primary={name.nome} />
             </MenuItem>
           ))}
         </Select>
