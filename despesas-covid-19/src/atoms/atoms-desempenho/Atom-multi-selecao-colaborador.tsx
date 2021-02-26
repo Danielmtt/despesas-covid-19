@@ -8,7 +8,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
@@ -65,7 +64,6 @@ export default function MultipleSelect() {
 
   return (
     <div>
-      
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-mutiple-checkbox-label">Tag</InputLabel>
         <Select
