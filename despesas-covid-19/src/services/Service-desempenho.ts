@@ -1,5 +1,7 @@
 import { trackPromise } from 'react-promise-tracker';
 import { SalvarAvaliacaoRequest } from '../settings/SalvarAvaliacaoRequest';
+import { AvaliacaoInteface } from '../settings/AvaliacaoInterface';
+import { baseUrlDev } from '../settings/consts/baseUrl';
 import { notifyError } from './ServiceApi';
 
 const baseUrl = 'http://localhost:8080';
@@ -28,6 +30,18 @@ export const listarColaboradores = async () => {
   });
 };
 
+export const getAllAvaliacoes = async () => {
+  return new Promise<AvaliacaoInteface[]>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(`${baseUrlDev}/avaliacoes`)
+          .then((response) => response.json())
+          .catch(() => notifyError())
+      )
+    );
+  });
+};
+
 export const salvarAvaliacao = async (avaliacao: SalvarAvaliacaoRequest) => {
   console.log(avaliacao);
   const options = {
@@ -46,6 +60,18 @@ export const salvarAvaliacao = async (avaliacao: SalvarAvaliacaoRequest) => {
     resolve(
       trackPromise(
         fetch(`${baseUrl}/avaliacoes`, options).catch(() => notifyError())
+      )
+    );
+  });
+};
+
+export const deleteAvaliacao = async (avaliacaoId: number) => {
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(`${baseUrlDev}/avaliacoes/${avaliacaoId}`, {
+          method: 'DELETE',
+        }).catch(() => notifyError())
       )
     );
   });
