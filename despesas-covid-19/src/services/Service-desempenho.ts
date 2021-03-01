@@ -53,3 +53,15 @@ export const deleteAvaliacao = async (avaliacaoId: number) => {
     );
   });
 };
+
+export const deleteColaborador = async (colaboradorId: number) => {
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(`${baseUrlDev}/colaborador/${colaboradorId}`, {
+          method: 'DELETE',
+        }).catch(() => notifyError())
+      )
+    );
+  });
+};
