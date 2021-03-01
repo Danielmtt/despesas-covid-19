@@ -1,6 +1,9 @@
 import { trackPromise } from 'react-promise-tracker';
 import { Colaborador } from '../settings/Colaborador';
 import { notifyError } from './ServiceApi';
+import { AvaliacaoInteface } from '../settings/AvaliacaoInterface';
+import { baseUrlDev } from '../settings/consts/baseUrl';
+
 // TODO: alterar para END-POINT certo
 export const salvarColaborador = async (data: {
   nomeColaborador: string;
@@ -22,6 +25,30 @@ export const getColaboradores = async () => {
         fetch('http://localhost:8080/colaborador')
           .then((response) => response.json())
           .catch(() => notifyError())
+      )
+    );
+  });
+};
+
+export const getAllAvaliacoes = async () => {
+  return new Promise<AvaliacaoInteface[]>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(`${baseUrlDev}/avaliacoes`)
+          .then((response) => response.json())
+          .catch(() => notifyError())
+      )
+    );
+  });
+};
+
+export const deleteAvaliacao = async (avaliacaoId: number) => {
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(`${baseUrlDev}/avaliacoes/${avaliacaoId}`, {
+          method: 'DELETE',
+        }).catch(() => notifyError())
       )
     );
   });
