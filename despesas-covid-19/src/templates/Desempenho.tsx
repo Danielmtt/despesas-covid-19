@@ -1,10 +1,9 @@
 import React from 'react';
-import Teste from '../atoms/atoms-desempenho/Atom-teste';
 import OrganismeTabPanel from '../organisms/organisms-desempenho/Organisme-Tab-Panel';
 import AtomFormularioColaborador from '../organisms/organisms-desempenho/Atom-Fomulario-Colaborador';
 import BoxPageTitleDesempenho from '../organisms/organisms-desempenho/BoxPageTitleDesempenho';
 import { OrganismeGridAvaliacoes } from '../organisms/organisms-desempenho/organisms-avaliacoes';
-import AtomGrafico from '../atoms/atoms-desempenho/Atom-Grafico';
+import AtomGraficoGoogle from '../atoms/atoms-desempenho/Atom-Grafico-Google';
 
 export const Desempenho = () => {
   return (
@@ -16,16 +15,12 @@ export const Desempenho = () => {
           componente: AtomFormularioColaborador()
         },
         {
-          nomeTab: 'Avaliação',
-          componente: Teste(),
-        },
-        {
           nomeTab: 'Avaliações',
           componente: OrganismeGridAvaliacoes(),
         },
         {
           nomeTab: 'Desempenho de Avaliações',
-          componente: AtomGrafico()
+          componente: AtomGraficoGoogle()
         }
       ]}/>
     </>
