@@ -14,7 +14,7 @@ export function OrganismeGridAvaliacoes() {
     })
   }, []);
   return (
-    <>
+    <> 
       {avaliacoes.length > 0 && <MoleculeGridAvaliacao data={avaliacoes} updateStateAtualizacao={setAvaliacoes} />}
       <ToastContainer />
     </>

@@ -33,7 +33,22 @@ export const deleteAvaliacao = async (avaliacaoId: number) => {
   return new Promise<any>((resolve) => {
     resolve(
       trackPromise(
-        fetch(`${baseUrlDev}/avaliacoes/${avaliacaoId}`, { method: 'DELETE' } )
+        fetch(`${baseUrlDev}/avaliacoes/${avaliacaoId}`, {
+          method: 'DELETE',
+        }).catch(() => notifyError())
+      )
+    );
+  });
+};
+
+export const listarAvaliacoesGrafico = async (idColaboradores: string[]) => {
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(
+          `${baseUrlDev}/colaborador/grafico?id=${idColaboradores.join(',')}`
+        )
+          .then((response) => response.json())
           .catch(() => notifyError())
       )
     );
