@@ -53,3 +53,33 @@ export const deleteAvaliacao = async (avaliacaoId: number) => {
     );
   });
 };
+
+export const uploadArquivo = async (excel: any) => {
+  const options: any = {
+    method: 'POST',
+    body: excel,
+  };
+
+  if (options && options.headers) {
+    delete options.headers['Content-Type'];
+  }
+
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(`${baseUrlDev}/avaliacoes/upload`, options)
+          .then((response) => {
+            if (response.status === 200) {
+              response.json();
+              console.log(response);
+            } else {
+              response.json();
+              console.log(response);
+            }
+          })
+
+          .catch(() => notifyError())
+      )
+    );
+  });
+};
