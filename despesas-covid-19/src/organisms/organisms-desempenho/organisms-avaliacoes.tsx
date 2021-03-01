@@ -20,7 +20,7 @@ export function OrganismeGridAvaliacoes() {
   function salvarArquivo(event: any) {
     const files = event.target.files
     const formData = new FormData()
-    formData.append('myFile', files[0])
+    formData.append('file', files[0])
   
 
     uploadArquivo(formData);
