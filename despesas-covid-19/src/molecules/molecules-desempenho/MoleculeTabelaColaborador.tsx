@@ -1,3 +1,7 @@
+import React, { useContext, useEffect, useState } from 'react';
+import { DataGrid, RowsProp, ColDef } from '@material-ui/data-grid';
+import { getColaboradores } from '../../services/Service-desempenho';
+import { DesempenhoAvaliacoesContext } from '../../providers/desempenho-avaliacoes-context';
 import React, { useEffect, useState } from 'react';
 import { DataGrid, RowsProp, ColDef, CellParams } from '@material-ui/data-grid';
 import { deleteColaborador, getColaboradores } from '../../services/Service-desempenho';
@@ -37,19 +41,24 @@ const columns: ColDef[] = [
 ];
 
 export default function App() {
+  const { listaColaboradores } = useContext<any | undefined>(DesempenhoAvaliacoesContext);
   columns.push(AtomGridBotaoDeletar(handleActionDeleteAvaliacao));
 
   const [rows, setRows] = useState<RowsProp>();
 
   const listarColaboradores = () => {
     getColaboradores().then((response) => {
-      setRows(response)
+      setRows(response);
     })
   }
 
   useEffect(() => {
     listarColaboradores()
   }, [])
+
+  useEffect(() => {
+    listarColaboradores()
+  }, [listaColaboradores])
 
   if (rows) {
     return (
