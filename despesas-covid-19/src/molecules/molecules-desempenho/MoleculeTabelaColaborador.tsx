@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { DataGrid, RowsProp, ColDef } from '@material-ui/data-grid';
-import { getColaboradores } from '../../services/Service-desempenho';
+import { DataGrid, RowsProp, ColDef, CellParams } from '@material-ui/data-grid';
+import { deleteColaborador, getColaboradores } from '../../services/Service-desempenho';
+import { AtomSweetAlert } from '../../atoms/atoms-desempenho/atom-sweet-alert';
+import { AtomGridBotaoDeletar } from '../../atoms/atoms-desempenho/atom-grid-botao-deletar';
+import { desejaDeletarColaborador } from '../../settings/consts/MessagesSweetAlert';
+import { notifySuccess, notifyError } from '../../services/ServiceApi';
 import { DesempenhoAvaliacoesContext } from '../../providers/desempenho-avaliacoes-context';
 
 // let rows: RowsProp = [
@@ -14,6 +18,8 @@ const columns: ColDef[] = [
 
 export default function App() {
   const { listaColaboradores } = useContext<any | undefined>(DesempenhoAvaliacoesContext);
+  columns.push(AtomGridBotaoDeletar(handleActionDeleteAvaliacao));
+
   const [rows, setRows] = useState<RowsProp>();
 
   const listarColaboradores = () => {
@@ -40,4 +46,25 @@ export default function App() {
     return (<></>);
   }
 
+  function handleDeleteColaborador(colaborador: any) {
+    deleteColaborador(colaborador.id)
+      .then((response) => {
+        if (response.status === 204) {
+          notifySuccess(`O colaborador ${colaborador.nome} foi deletado com sucesso`);
+          getColaboradores().then((response) => {
+            setRows(response);
+          });
+        } else if (response.status === 400) {
+          response.json().then((json: any) => {
+            notifyError(json.mensagem);
+          });
+        }
+      })
+  }
+
+  function handleActionDeleteAvaliacao(parametros: CellParams) {
+    const colaboradorRow: any = parametros.row;
+    
+    AtomSweetAlert(desejaDeletarColaborador(colaboradorRow.nome), () => handleDeleteColaborador(colaboradorRow));
+  }
 }
