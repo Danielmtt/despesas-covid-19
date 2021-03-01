@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { MoleculeFormulario } from '../../molecules/molecules-desempenho/Molecule-Formulario';
 import { salvarColaborador } from '../../services/Service-desempenho';
+import MoleculeTabelaColaborador from '../../molecules/molecules-desempenho/MoleculeTabelaColaborador'; 
 
 const FlexContainer = styled.div`
   justify-content: space-evenly;
@@ -21,6 +22,7 @@ export const AtomFormularioColaborador = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <MoleculeFormulario register={register} style={FlexContainer} />
+      <MoleculeTabelaColaborador/>
     </form>
   );
 };
