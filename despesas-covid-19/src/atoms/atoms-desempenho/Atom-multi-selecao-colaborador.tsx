@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
+import { Colaborador } from '../../settings/Colaborador';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,29 +57,48 @@ const names = [
 
 export default function MultipleSelect() {
   const classes = useStyles();
-  const [personName, setPersonName] = React.useState<any>([]);
+  const [personName, setPersonName] = React.useState<Colaborador[]>([]);
+  let listaSelecionados: string[] = [];
 
   const handleChange = (event: React.ChangeEvent<{ value: any }>) => {
     setPersonName(event.target.value);
+    console.log(event.target.value);
   };
+
+  function removerNomesDuplicados(lista: string[]): string[]{
+    let novaLista = lista.filter(function(item, i){
+      return lista.indexOf(item) === i;
+    })
+
+    return novaLista;
+  }
 
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-checkbox-label">Tag</InputLabel>
-        <Select
+        <InputLabel id="demo-mutiple-checkbox-label">Colaboradores</InputLabel>
+        <Select 
           labelId="demo-mutiple-checkbox-label"
           id="demo-mutiple-checkbox"
           multiple
           value={personName}
           onChange={handleChange}
           input={<Input />}
-          renderValue={(selected: any) => (selected).join(', ')}
+          renderValue={(selected: any) => (
+            (selected.map((colaborador: Colaborador) => {
+              listaSelecionados.push(colaborador.nome);
+            })),
+            (removerNomesDuplicados(listaSelecionados)).join(', '))}
           MenuProps={MenuProps}
         >
           {names.map((name) => (
-            <MenuItem key={name.id} value={name.nome}>
-              <Checkbox checked={personName.indexOf(name.nome) > -1} />
+            <MenuItem
+              key={name.id}
+              // @ts-ignore
+              value={name}
+              name={name.nome}
+            >
+              <Checkbox checked={personName.indexOf(name) > -1} />
               <ListItemText primary={name.nome} />
             </MenuItem>
           ))}
