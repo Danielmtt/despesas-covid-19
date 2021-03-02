@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import { BolsaFamiliaContext } from './bolsa-familia-context';
-export const DesempenhoAvaliacoesContext = React.createContext([{}]);
+export const DesempenhoAvaliacoesContext = React.createContext([]);
 
 export const DesempenhoAvaliacoesProvider = (props) => {
   const [listaColaboradores, setListaColaboradores] = useState([]);
+  const [colaboradoresSelecionados, setColaboradoresSelecionados] = useState(
+    []
+  );
 
   return (
-    <BolsaFamiliaContext.Provider
+    <DesempenhoAvaliacoesContext.Provider
       value={{
         listaColaboradores,
         setListaColaboradores,
+        colaboradoresSelecionados,
+        setColaboradoresSelecionados,
       }}
     >
       {props.children}
-    </BolsaFamiliaContext.Provider>
+    </DesempenhoAvaliacoesContext.Provider>
   );
 };

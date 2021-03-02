@@ -4,16 +4,22 @@ import { notifyError } from './ServiceApi';
 import { AvaliacaoInteface } from '../settings/AvaliacaoInterface';
 import { baseUrlDev } from '../settings/consts/baseUrl';
 
-// TODO: alterar para END-POINT certo
 export const salvarColaborador = async (data: {
   nomeColaborador: string;
   siglaColaborador: string;
 }) => {
-  return new Promise<any[]>((resolve) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      nome: data.nomeColaborador,
+      sigla: data.siglaColaborador,
+    }),
+  };
+
+  return new Promise<any>((resolve) => {
     resolve(
-      trackPromise(
-        new Promise<any[]>(() => [data.nomeColaborador, data.siglaColaborador])
-      )
+      trackPromise(fetch('http://localhost:8080/colaborador', requestOptions))
     );
   });
 };
@@ -77,8 +83,33 @@ export const uploadArquivo = async (excel: any) => {
               console.log(response);
             }
           })
-
           .catch(() => notifyError())
+      )
+    );
+  });
+};
+
+export const listarAvaliacoesGrafico = async (idColaboradores: string[]) => {
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(
+          `${baseUrlDev}/colaborador/grafico?id=${idColaboradores.join(',')}`
+        )
+          .then((response) => response.json())
+          .catch(() => notifyError())
+      )
+    );
+  });
+};
+
+export const deleteColaborador = async (colaboradorId: number) => {
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(`${baseUrlDev}/colaborador/${colaboradorId}`, {
+          method: 'DELETE',
+        }).catch(() => notifyError())
       )
     );
   });
