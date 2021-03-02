@@ -10,7 +10,7 @@ export default function MoleculeGrafico() {
   const lista: any[] = [];
 
   const buscarAvaliacoes = () => {
-    listarAvaliacoesGrafico(['1']).then(
+    listarAvaliacoesGrafico(['1','2']).then(
       (response: GraficoAvaliacoesResponse[]) => {
         //setListaAvaliacoes(response);
         response.map((avaliacoes) => {
