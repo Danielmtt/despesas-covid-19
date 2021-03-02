@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
 import MoleculeFormularioAvaliacao from '../../molecules/molecules-desempenho/Molecule-Formulario-Avaliacao';
-import { DesempenhoContext } from '../../providers/desempenho-context';
+import { DesempenhoAvaliacoesContext } from '../../providers/desempenho-avaliacoes-context';
 import { salvarAvaliacao } from '../../services/Service-desempenho';
 import { Colaborador } from '../../settings/Colaborador';
 import { SalvarAvaliacaoRequest } from '../../settings/SalvarAvaliacaoRequest';
@@ -19,11 +19,11 @@ const FlexContainer = styled.div`
 
 export const OrganismeFormularioAvaliacao = () => {
   const { register, handleSubmit } = useForm();
-  const { colaboradores }: any = useContext(DesempenhoContext);
+  const { listaColaboradores }: any = useContext(DesempenhoAvaliacoesContext);
 
   const onSubmit = (avaliacao: SalvarAvaliacaoRequest) => {
-    const listaColaboradores: Colaborador[] = colaboradores;
-    const colaboradorId: any = listaColaboradores.find(x => x.nome === avaliacao.colaborador.toString());
+    const listaColaboradoresApi: Colaborador[] = listaColaboradores;
+    const colaboradorId: any = listaColaboradoresApi.find(x => x.nome === avaliacao.colaborador.toString());
     avaliacao.colaborador = colaboradorId.id;
     avaliacao.nota = Number(avaliacao.nota);
     salvarAvaliacao(avaliacao)

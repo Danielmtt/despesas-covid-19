@@ -104,7 +104,7 @@ export function MoleculeGridAvaliacao(props: {
   const { rows, columns} = criarGrid(props.data);
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: 400, width: '1000px' }}>
       <DataGrid rows={rows} columns={columns} />
     </div>
   );

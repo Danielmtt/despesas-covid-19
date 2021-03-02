@@ -1,12 +1,12 @@
 import { TextField } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import React, { useContext, useEffect, useState } from 'react';
-import { DesempenhoContext } from '../../providers/desempenho-context';
-import { listarColaboradores } from '../../services/Service-desempenho';
+import { getColaboradores } from '../../services/Service-desempenho';
 import { useDebounce } from 'use-debounce';
 import { Colaborador } from '../../settings/Colaborador';
 import styled from 'styled-components';
 import AtomErroCampo from './Atom-Erro-Campo';
+import { DesempenhoAvaliacoesContext } from '../../providers/desempenho-avaliacoes-context';
 
 const Campo = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const Campo = styled.div`
 
 export const AtomAutocompleteColaborador = (props: {register: any; name: string;}) => {
 
-  const {colaboradores, setColaboradores} = useContext<any>(DesempenhoContext);
+  const {listaColaboradores, setListaColaboradores} = useContext<any>(DesempenhoAvaliacoesContext);
   const [inputValue, setInputValue] = useState('');
   const [value, setValue] = useState<any>();
   const [debouncedValue] = useDebounce(inputValue, 500);
@@ -27,8 +27,8 @@ export const AtomAutocompleteColaborador = (props: {register: any; name: string;
   }
 
   useEffect(() => {
-    listarColaboradores().then((listaColaboradores) =>{
-      setColaboradores(listaColaboradores);
+    getColaboradores().then((listaColaboradores) =>{
+      setListaColaboradores(listaColaboradores);
     })
   }, [])
 
@@ -36,7 +36,7 @@ export const AtomAutocompleteColaborador = (props: {register: any; name: string;
     <Campo>
       <Autocomplete
         id="lista-colaboradores"
-        options={colaboradores}
+        options={listaColaboradores}
         style={{width: 250}}
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);
