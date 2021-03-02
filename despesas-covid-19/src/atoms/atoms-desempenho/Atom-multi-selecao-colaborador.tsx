@@ -55,7 +55,7 @@ const names = [
   }
 ];
 
-export default function MultipleSelect() {
+export default function AtomMultiSelecaoColaborador() {
   const classes = useStyles();
   const [personName, setPersonName] = React.useState<Colaborador[]>([]);
   let listaSelecionados: string[] = [];
@@ -84,6 +84,9 @@ export default function MultipleSelect() {
           value={personName}
           onChange={handleChange}
           input={<Input />}
+          style={{
+            width: 250
+          }}
           renderValue={(selected: any) => (
             (selected.map((colaborador: Colaborador) => {
               listaSelecionados.push(colaborador.nome);
