@@ -7,7 +7,6 @@ import { baseUrlDev } from '../settings/consts/baseUrl';
 
 const baseUrl = 'http://localhost:8080';
 
-// TODO: alterar para END-POINT certo
 export const salvarColaborador = async (data: {
   nomeColaborador: string;
   siglaColaborador: string;
@@ -63,7 +62,7 @@ export const getAllAvaliacoes = async () => {
 };
 
 export const salvarAvaliacao = async (avaliacao: SalvarAvaliacaoRequest) => {
-  console.log(avaliacao);
+  //console.log(avaliacao);
   const options = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -80,8 +79,6 @@ export const salvarAvaliacao = async (avaliacao: SalvarAvaliacaoRequest) => {
     resolve(
       trackPromise(
         fetch(`${baseUrl}/avaliacoes`, options)
-          .then((response) => response.json())
-          .catch(() => console.log())
       )
     );
   });

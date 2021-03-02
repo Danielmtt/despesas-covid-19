@@ -16,7 +16,7 @@ export const AtomSeletorData = (props: {register: any; name: string}) => {
   const [value, setValue] = useState<string | undefined>();
 
   function validarPreenchido() {
-    console.log(value);
+    //console.log(value);
     value ? setErros({colaborador: {preenchido: false}}) : setErros({colaborador: {preenchido: true}});
   }
 

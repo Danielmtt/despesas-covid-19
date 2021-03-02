@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast, ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
 import MoleculeFormularioAvaliacao from '../../molecules/molecules-desempenho/Molecule-Formulario-Avaliacao';
 import { DesempenhoAvaliacoesContext } from '../../providers/desempenho-avaliacoes-context';
 import { salvarAvaliacao } from '../../services/Service-desempenho';
+import { notifyError, notifySuccess } from '../../services/ServiceApi';
 import { Colaborador } from '../../settings/Colaborador';
 import { SalvarAvaliacaoRequest } from '../../settings/SalvarAvaliacaoRequest';
 
@@ -27,33 +27,24 @@ export const OrganismeFormularioAvaliacao = () => {
     avaliacao.colaborador = colaboradorId.id;
     avaliacao.nota = Number(avaliacao.nota);
     salvarAvaliacao(avaliacao)
-      .then(
-        (response: any) => {
-          if(response.codigoErro !== (400 || 401 || 402 || 403))
-          {
-            toast.success('Sucesso!', {
-              position: 'top-right',
-              autoClose: 5000,
-              closeOnClick: true,
-              pauseOnHover: true,
-            });
-          }
-          else {
-            toast.error(response.mensagem, {
-              position: 'top-right',
-              autoClose: 5000,
-              closeOnClick: true,
-              pauseOnHover: true,
-            });
-          }
+      .then((response: any) => {
+        if (response.status == (400 || 401 || 402 || 403)) {
+          return response.json()
         }
-      );
+        else {
+          notifySuccess('Avaliação salva com sucesso!');
+        }
+      })
+      .then((data) => {
+        if (data) {
+          notifyError(data.mensagem)
+        }
+      })
   }
 
-  return(
+  return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <MoleculeFormularioAvaliacao register={register} style={FlexContainer}/>
-      <ToastContainer />
+      <MoleculeFormularioAvaliacao register={register} style={FlexContainer} />
     </form>
   )
 
