@@ -11,14 +11,15 @@ export const salvarColaborador = async (data: {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ nome: data.nomeColaborador, sigla: data.siglaColaborador })
+    body: JSON.stringify({
+      nome: data.nomeColaborador,
+      sigla: data.siglaColaborador,
+    }),
   };
 
   return new Promise<any>((resolve) => {
     resolve(
-      trackPromise(
-        fetch('http://localhost:8080/colaborador', requestOptions)
-      )
+      trackPromise(fetch('http://localhost:8080/colaborador', requestOptions))
     );
   });
 };
@@ -54,6 +55,20 @@ export const deleteAvaliacao = async (avaliacaoId: number) => {
         fetch(`${baseUrlDev}/avaliacoes/${avaliacaoId}`, {
           method: 'DELETE',
         }).catch(() => notifyError())
+      )
+    );
+  });
+};
+
+export const listarAvaliacoesGrafico = async (idColaboradores: string[]) => {
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(
+          `${baseUrlDev}/colaborador/grafico?id=${idColaboradores.join(',')}`
+        )
+          .then((response) => response.json())
+          .catch(() => notifyError())
       )
     );
   });
