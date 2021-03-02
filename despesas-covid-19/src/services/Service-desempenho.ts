@@ -59,7 +59,9 @@ export const salvarAvaliacao = async (avaliacao: SalvarAvaliacaoRequest) => {
   return new Promise((resolve) => {
     resolve(
       trackPromise(
-        fetch(`${baseUrl}/avaliacoes`, options).catch(() => notifyError())
+        fetch(`${baseUrl}/avaliacoes`, options)
+          .then((response) => response.json())
+          .catch(() => console.log())
       )
     );
   });
