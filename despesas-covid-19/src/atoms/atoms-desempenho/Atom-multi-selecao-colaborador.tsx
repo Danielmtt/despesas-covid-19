@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Colaborador } from '../../settings/Colaborador';
+import { DesempenhoAvaliacoesContext } from '../../providers/desempenho-avaliacoes-context';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,35 +35,17 @@ const MenuProps = {
   },
 };
 
-const names = [
-  {
-    'id': 1,
-    'nome': 'Juliana',
-    'sigla': 'JLA',
-    'temAvaliacao': false
-  },
-  {
-    'id': 2,
-    'nome': 'Pedro',
-    'sigla': 'PDO',
-    'temAvaliacao': false
-  },
-  {
-    'id': 3,
-    'nome': 'Ander',
-    'sigla': 'ADR',
-    'temAvaliacao': false
-  }
-];
-
-export default function AtomMultiSelecaoColaborador() {
+export default function AtomMultiSelecaoColaborador(props: {lista: Colaborador[]}) {
   const classes = useStyles();
+  const {setColaboradoresSelecionados} = useContext<any>(DesempenhoAvaliacoesContext);
   const [personName, setPersonName] = React.useState<Colaborador[]>([]);
+  const listaColaboradores = props.lista;
   let listaSelecionados: string[] = [];
 
   const handleChange = (event: React.ChangeEvent<{ value: any }>) => {
-    setPersonName(event.target.value);
     console.log(event.target.value);
+    setPersonName(event.target.value);
+    setColaboradoresSelecionados(event.target.value);
   };
 
   function removerNomesDuplicados(lista: string[]): string[]{
@@ -87,19 +70,19 @@ export default function AtomMultiSelecaoColaborador() {
           style={{
             width: 250
           }}
-          renderValue={(selected: any) => (
-            (selected.map((colaborador: Colaborador) => {
-              listaSelecionados.push(colaborador.nome);
-            })),
-            (removerNomesDuplicados(listaSelecionados)).join(', '))}
+          renderValue={() => (
+            personName.forEach((colaborador: any) => {
+              listaSelecionados.push(colaborador.nome)
+            }),
+            (removerNomesDuplicados(listaSelecionados).join(', ')))
+          }
           MenuProps={MenuProps}
         >
-          {names.map((name) => (
+          {listaColaboradores.map((name) => (
             <MenuItem
               key={name.id}
               // @ts-ignore
               value={name}
-              name={name.nome}
             >
               <Checkbox checked={personName.indexOf(name) > -1} />
               <ListItemText primary={name.nome} />
