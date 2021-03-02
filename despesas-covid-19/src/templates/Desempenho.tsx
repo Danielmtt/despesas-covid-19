@@ -3,7 +3,7 @@ import OrganismeTabPanel from '../organisms/organisms-desempenho/Organisme-Tab-P
 import AtomFormularioColaborador from '../organisms/organisms-desempenho/Atom-Fomulario-Colaborador';
 import BoxPageTitleDesempenho from '../organisms/organisms-desempenho/BoxPageTitleDesempenho';
 import { OrganismeGridAvaliacoes } from '../organisms/organisms-desempenho/organisms-avaliacoes';
-import MoleculeGrafico from '../molecules/molecules-desempenho/Molecule-Grafico';
+import OrganismeGraficoDesempenho from '../organisms/organisms-desempenho/Organisme-Grafico-Desempenho';
 
 export const Desempenho = () => {
   return (
@@ -19,8 +19,8 @@ export const Desempenho = () => {
           componente: OrganismeGridAvaliacoes(),
         },
         {
-          nomeTab: 'Desempenho de Avaliações',
-          componente: MoleculeGrafico(),
+          nomeTab: 'Gráfico De Desempenho',
+          componente: OrganismeGraficoDesempenho(),
         }
       ]}/>
     </>
