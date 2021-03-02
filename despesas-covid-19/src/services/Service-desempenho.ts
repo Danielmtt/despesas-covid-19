@@ -60,6 +60,27 @@ export const deleteAvaliacao = async (avaliacaoId: number) => {
   });
 };
 
+export const uploadArquivo = async (excel: any) => {
+  const options: any = {
+    method: 'POST',
+    body: excel,
+  };
+
+  if (options && options.headers) {
+    delete options.headers['Content-Type'];
+  }
+
+  return new Promise<any>((resolve) => {
+    resolve(
+      trackPromise(
+        fetch(`${baseUrlDev}/avaliacoes/upload`, options)
+          .then((response) => response.json())
+          .catch(() => notifyError())
+      )
+    );
+  });
+};
+
 export const listarAvaliacoesGrafico = async (idColaboradores: string[]) => {
   return new Promise<any>((resolve) => {
     resolve(

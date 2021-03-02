@@ -13,6 +13,14 @@ export const notifyError = (
     pauseOnHover: true,
   });
 
+export const notificarRespostaErro = (mensagem) =>
+  toast.error(`${mensagem}`, {
+    position: 'top-right',
+    autoClose: 5000,
+    closeOnClick: true,
+    pauseOnHover: true,
+  });
+
 export const notify = () =>
   toast.warning('Não existe mais respostas aqui!', {
     position: 'top-right',
@@ -21,16 +29,14 @@ export const notify = () =>
     pauseOnHover: true,
   });
 
-export const notifySuccess = (
-  mensagem = 'Sucesso!'
-) => {
+export const notifySuccess = (mensagem = 'Sucesso!') => {
   toast.success(mensagem, {
     position: 'top-right',
     autoClose: 5000,
     closeOnClick: true,
     pauseOnHover: true,
   });
-}
+};
 
 export let sortItemsByPago = (arrayList) => {
   if (arrayList && typeof arrayList[0] === 'object') {
