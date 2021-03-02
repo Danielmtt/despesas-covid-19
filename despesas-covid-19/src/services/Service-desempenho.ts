@@ -74,15 +74,7 @@ export const uploadArquivo = async (excel: any) => {
     resolve(
       trackPromise(
         fetch(`${baseUrlDev}/avaliacoes/upload`, options)
-          .then((response) => {
-            if (response.status === 200) {
-              response.json();
-              console.log(response);
-            } else {
-              response.json();
-              console.log(response);
-            }
-          })
+          .then((response) => response.json())
           .catch(() => notifyError())
       )
     );
