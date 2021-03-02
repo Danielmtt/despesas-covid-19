@@ -12,6 +12,7 @@ import Desempenho from './templates/Desempenho.tsx';
 import { BolsaFamiliaProvider } from './providers/bolsa-familia-context';
 import Spinner from './atoms/atmos-despesas-publicas/Spinner';
 import styled from 'styled-components';
+import { DesempenhoAvaliacoesProvider } from './providers/desempenho-avaliacoes-context';
 
 const LoaderCSS = styled.div`
   top: 0;
@@ -35,9 +36,10 @@ ReactDOM.render(
         </BolsaFamiliaProvider>
       </Route>
       <Route path={'/desempenho'}>
-        <Desempenho />
+        <DesempenhoAvaliacoesProvider>
+          <Desempenho />
+        </DesempenhoAvaliacoesProvider>
       </Route>
-
       <Route path="/">
         <Home />
       </Route>
